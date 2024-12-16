@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "prepare": "husky"
+    "prepare": "husky && husky install"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",
@@ -41,9 +41,11 @@
     "vite": "^6.0.1"
   },
   "lint-staged": {
-    "*.{ts,tsx}": [
+    "*.{js,jsx,ts,tsx,json,css,scss,md}": [
       "prettier --write",
-      "eslint --max-warnings 0 ."
-    ]
+      "eslint --fix"
+    ],
+    "*.js": "eslint --cache --fix",
+    "*.{js,css,md}": "prettier --write"
   }
 }

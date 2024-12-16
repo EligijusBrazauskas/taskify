@@ -1,1 +1,5 @@
-export const App = () => <div>Hello</div>;
+export const App = () => {
+  const test = "test";
+
+  return <div>Hello</div>;
+};
