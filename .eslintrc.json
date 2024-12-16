@@ -23,7 +23,9 @@
     ],
     "import/prefer-default-export": "off",
     "simple-import-sort/imports": "error",
-    "simple-import-sort/exports": "error"
+    "simple-import-sort/exports": "error",
+    "global-require": "off",
+    "eslint@typescript-eslint/no-require-imports": "off"
   },
   "settings": {
     "import/resolver": {
