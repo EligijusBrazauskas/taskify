@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "format": "prettier -write",
+    "preview": "vite preview",
+    "prepare": "husky install"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",
@@ -35,6 +37,8 @@
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "globals": "^15.12.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.2.11",
     "postcss": "^8.4.49",
     "prettier": "^3.4.2",
     "prettier-eslint-cli": "^8.0.1",
@@ -42,5 +46,9 @@
     "tailwindcss": "^3.4.16",
     "typescript": "~5.6.2",
     "vite": "^6.0.1"
+  },
+  "lint-staged": {
+    "*.{ts,js}": "eslint --cache --fix",
+    "*.{ts,js,css,md}": "prettier --write"
   }
 }
