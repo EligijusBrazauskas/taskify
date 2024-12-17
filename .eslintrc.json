@@ -32,5 +32,6 @@
       }
     },
     "import/extensions": [".js", ".ts", ".mjs"]
-  }
+  },
+  "ignorePatterns": ["tailwind.config.js", "vite.config.ts"]
 }

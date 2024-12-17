@@ -1,1 +1,3 @@
-@import "./external/tailwind.css";
+@import './external/tailwind.css';
+@import './assets/fonts.css';
+@import './global.css';
