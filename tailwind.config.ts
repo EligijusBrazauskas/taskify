@@ -1,6 +1,5 @@
 import type { Config } from "tailwindcss";
 import animate from "tailwindcss-animate";
-
 import { shadcnDefaultTheme } from "./src/theme/external/shadcn.default";
 
 export default {
