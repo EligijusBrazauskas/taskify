@@ -1,4 +1,4 @@
-import { Flex } from "@/components/base/flex.component";
+import { Flex } from "@/components/base";
 import { Sidebar } from "@/components/composite/sidebar";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 
