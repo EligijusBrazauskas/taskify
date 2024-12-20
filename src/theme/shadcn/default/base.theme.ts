@@ -1,6 +1,6 @@
 import type { ThemeConfig } from "tailwindcss/types/config";
 
-export const shadcnDefaultTheme: Partial<ThemeConfig> = {
+export const baseTheme: Partial<ThemeConfig> = {
   borderRadius: {
     lg: "var(--radius)",
     md: "calc(var(--radius) - 2px)",
