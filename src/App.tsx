@@ -1,30 +1,25 @@
-import { Box } from "@/components/ui/base/box.component";
-import { Flex } from "@/components/ui/base/flex.component";
-import { Button } from "@/components/ui/button";
+import { Flex } from "@/components/base";
 import {
   Sidebar,
-  SidebarContent,
-  SidebarFooter,
-  SidebarGroup,
-  SidebarHeader,
   SidebarProvider,
   SidebarTrigger,
-} from "@/components/ui/sidebar";
+} from "@/components/composite/sidebar";
 
-export const App = () => (
-  <Flex className="min-h-screen w-screen">
-    <SidebarProvider className=" bg-blue-200">
-      <Sidebar>
-        <SidebarHeader>USER</SidebarHeader>
-        <SidebarContent>
-          <SidebarGroup>GROUP</SidebarGroup>
-          <SidebarGroup>GROUP</SidebarGroup>
-        </SidebarContent>
-        <SidebarFooter>FOOTER</SidebarFooter>
-      </Sidebar>
-      <Flex className="w-full bg-red-200">
-        <SidebarTrigger />
-      </Flex>
-    </SidebarProvider>
-  </Flex>
-);
+export const App = () => {
+  return (
+    <Flex className="min-h-screen w-screen">
+      <SidebarProvider>
+        <Sidebar />
+        <Flex className="w-full p-2 bg-gray-50">
+          <Flex className="bg-white flex-1 p-2 border rounded-lg flex-col">
+            <Flex>
+              <SidebarTrigger />
+            </Flex>
+            <Flex>FILTERS</Flex>
+            <Flex>CONTENT</Flex>
+          </Flex>
+        </Flex>
+      </SidebarProvider>
+    </Flex>
+  );
+};

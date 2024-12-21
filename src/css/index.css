@@ -1,3 +1,4 @@
+@import "./global/index.css";
 @import "./external/index.css";
 @import "./assets/index.css";
-@import "./global.css";
+@import "./variables/index.css";
