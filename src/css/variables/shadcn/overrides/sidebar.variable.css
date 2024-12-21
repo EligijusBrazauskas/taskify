@@ -1,4 +1,5 @@
 @layer base {
-    :root {
-    }
+  :root {
+    --sidebar-background: #f9fafb;
+  }
 }

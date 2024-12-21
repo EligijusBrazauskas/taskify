@@ -1,13 +1,11 @@
 import { Button } from "@/components/ui/button";
 import {
-  Drawer,
   DrawerClose,
   DrawerContent,
   DrawerDescription,
   DrawerFooter,
   DrawerHeader,
   DrawerTitle,
-  DrawerTrigger,
 } from "@/components/ui/drawer";
 import {
   Sidebar as ShadcnSidebar,
@@ -23,7 +21,7 @@ export const Sidebar = () => {
 
   if (!isMobile) {
     return (
-      <ShadcnSidebar>
+      <ShadcnSidebar className="group-data-[side=left]:border-0 py-2 pl-2">
         <SidebarHeader>USER</SidebarHeader>
         <SidebarContent>
           <SidebarGroup>GROUP</SidebarGroup>
@@ -35,20 +33,15 @@ export const Sidebar = () => {
   }
 
   return (
-    <Drawer>
-      <DrawerTrigger>Open drawer</DrawerTrigger>
-      <DrawerContent>
-        <DrawerHeader>
-          <DrawerTitle>Are you absolutely sure?</DrawerTitle>
-          <DrawerDescription>This action cannot be undone.</DrawerDescription>
-        </DrawerHeader>
-        <DrawerFooter>
-          <Button>Submit</Button>
-          <DrawerClose>
-            <Button variant="outline">Cancel</Button>
-          </DrawerClose>
-        </DrawerFooter>
-      </DrawerContent>
-    </Drawer>
+    <DrawerContent>
+      <DrawerHeader>
+        <DrawerTitle>Drawer Title</DrawerTitle>
+        <DrawerDescription>Drawer Desc</DrawerDescription>
+      </DrawerHeader>
+      <DrawerFooter>
+        <Button>Submit</Button>
+        <DrawerClose>Cancel</DrawerClose>
+      </DrawerFooter>
+    </DrawerContent>
   );
 };

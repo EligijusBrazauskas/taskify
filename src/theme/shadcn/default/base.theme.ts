@@ -1,6 +1,6 @@
-import type { ThemeConfig } from "tailwindcss/types/config";
+import { ThemeConfig } from "@/types/tailwind.type";
 
-export const baseTheme: Partial<ThemeConfig> = {
+export const baseTheme: ThemeConfig = {
   borderRadius: {
     lg: "var(--radius)",
     md: "calc(var(--radius) - 2px)",

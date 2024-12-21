@@ -1,5 +1,6 @@
 import type { Config } from "tailwindcss";
 import animate from "tailwindcss-animate";
+import { iconsTheme } from "./src/theme/custom/index";
 import { baseTheme, sidebarTheme } from "./src/theme/shadcn/default";
 
 export default {
@@ -7,14 +8,17 @@ export default {
   content: ["./index.html", "./src/**/*.{ts,tsx,js,jsx}"],
   theme: {
     extend: {
-      ...baseTheme,
       colors: {
         ...baseTheme.colors,
-        sidebar: {
-          ...sidebarTheme,
-        },
+        ...sidebarTheme.colors,
+      },
+      borderRadius: {
+        ...baseTheme.borderRadius,
+      },
+      strokeWidth: {
+        ...iconsTheme.strokeWidth,
       },
     },
   },
-  plugins: [animate, require("@mertasan/tailwindcss-variables")],
+  plugins: [animate],
 } satisfies Config;
