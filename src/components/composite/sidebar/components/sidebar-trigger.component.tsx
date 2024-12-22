@@ -10,7 +10,7 @@ export const SidebarTrigger = () => {
   const { open, toggleSidebar } = useSidebar();
 
   const ButtonComponent = (props: ButtonProps) => (
-    <Button variant="outline" {...props}>
+    <Button variant="ghost" {...props}>
       {!isMobile ? (
         <PanelLeftOpen className={open ? "rotate-180" : ""} />
       ) : (

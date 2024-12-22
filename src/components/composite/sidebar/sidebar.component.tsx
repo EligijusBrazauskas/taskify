@@ -1,3 +1,4 @@
+import { Flex } from "@/components/base";
 import { Button } from "@/components/ui/button";
 import {
   DrawerClose,
@@ -21,13 +22,15 @@ export const Sidebar = () => {
 
   if (!isMobile) {
     return (
-      <ShadcnSidebar className="group-data-[side=left]:border-0 py-2 pl-2">
-        <SidebarHeader>USER</SidebarHeader>
-        <SidebarContent>
-          <SidebarGroup>GROUP</SidebarGroup>
-          <SidebarGroup>GROUP</SidebarGroup>
-        </SidebarContent>
-        <SidebarFooter>FOOTER</SidebarFooter>
+      <ShadcnSidebar className="group-data-[side=left]:border-0">
+        <Flex className="flex-col py-2 pl-2">
+          <SidebarHeader>USER</SidebarHeader>
+          <SidebarContent>
+            <SidebarGroup>GROUP</SidebarGroup>
+            <SidebarGroup>GROUP</SidebarGroup>
+          </SidebarContent>
+          <SidebarFooter>FOOTER</SidebarFooter>
+        </Flex>
       </ShadcnSidebar>
     );
   }
