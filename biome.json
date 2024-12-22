@@ -41,6 +41,9 @@
       },
       "suspicious": {
         "noConsoleLog": "error"
+      },
+      "nursery": {
+        "useSortedClasses": "error"
       }
     }
   },
