@@ -1,11 +1,10 @@
+import { UserInfoButton } from "@/components/composite/sidebar/components/user-info-button.component";
 import { Button } from "@/components/ui/button";
 import {
   DrawerClose,
   DrawerContent,
-  DrawerDescription,
   DrawerFooter,
   DrawerHeader,
-  DrawerTitle,
   DrawerTrigger,
   Drawer as ShadcnDrawer,
 } from "@/components/ui/drawer";
@@ -20,13 +19,13 @@ export const Drawer = () => (
     </DrawerTrigger>
     <DrawerContent>
       <DrawerHeader>
-        <DrawerTitle>Drawer Title</DrawerTitle>
-        <DrawerDescription>Drawer Desc</DrawerDescription>
+        <UserInfoButton />
       </DrawerHeader>
       <DrawerFooter>
-        <Button>Submit</Button>
         <DrawerClose asChild>
-          <Button variant="outline">Close</Button>
+          <Button variant="outline" size="default">
+            Cancel
+          </Button>
         </DrawerClose>
       </DrawerFooter>
     </DrawerContent>

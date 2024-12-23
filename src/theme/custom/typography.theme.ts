@@ -5,6 +5,7 @@ export const typographyTheme: ThemeConfig = {
     inter: ["Inter Variable", "sans-serif"],
   },
   fontSize: {
+    xs: "12px",
     sm: "14px",
   },
 };
