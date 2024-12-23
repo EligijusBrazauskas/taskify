@@ -1,17 +1,17 @@
-import { Flex } from "@/components/base";
+import { Divider, Flex } from "@/components/base";
 import { NavBar } from "@/components/composite/navbar";
-import { Sidebar, SidebarProvider } from "@/components/composite/sidebar";
+import { Sidebar } from "@/components/composite/sidebar";
+import { SidebarProvider } from "@/components/ui/sidebar";
 
 export const App = () => {
   return (
     <Flex className="min-h-screen w-screen">
       <SidebarProvider>
         <Sidebar />
-        <Flex className="w-full bg-secondary-background p-2">
-          <Flex className="flex-1 flex-col rounded-lg border border-secondary-border bg-white p-2">
+        <Flex className="w-full p-2">
+          <Flex className="flex-1 flex-col rounded-lg border border-secondary-border bg-white">
             <NavBar />
-            <Flex>FILTERS</Flex>
-            <Flex>CONTENT</Flex>
+            <Divider orientation="horizontal" />
           </Flex>
         </Flex>
       </SidebarProvider>

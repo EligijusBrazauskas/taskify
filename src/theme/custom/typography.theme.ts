@@ -4,4 +4,7 @@ export const typographyTheme: ThemeConfig = {
   fontFamily: {
     inter: ["Inter Variable", "sans-serif"],
   },
+  fontSize: {
+    sm: "14px",
+  },
 };
