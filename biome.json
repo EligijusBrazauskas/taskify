@@ -42,8 +42,8 @@
       "suspicious": {
         "noConsoleLog": "error"
       },
-      "nursery": {
-        "useSortedClasses": "error"
+      "a11y": {
+        "useFocusableInteractive": "off"
       }
     }
   },
