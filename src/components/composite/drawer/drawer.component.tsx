@@ -23,7 +23,7 @@ export const Drawer = () => (
       </Button>
     </DrawerTrigger>
     <DrawerContent className="max-h-[80vh]">
-      <ScrollArea className="overflow-y-scroll flex flex-col gap-2">
+      <ScrollArea className="overflow-y-scroll flex flex-col gap-2 py-2">
         <DrawerHeader>
           <SidebarUserButton />
         </DrawerHeader>

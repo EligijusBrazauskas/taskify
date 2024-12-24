@@ -7,6 +7,9 @@ export const colorsTheme: ThemeConfig["colors"] = {
     border: "#f2f2f7",
     hover: "#b7b7c31a",
   },
+  dark: {
+    DEFAULT: "#1d1d2c",
+  },
   text: {
     DEFAULT: "#222346",
     light: "#b7b7c3",

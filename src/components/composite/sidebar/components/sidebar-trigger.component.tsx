@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { useSidebar } from "@/components/ui/sidebar";
+import clsx from "clsx";
 import { PanelLeftOpen } from "lucide-react";
 
 export const SidebarTrigger = () => {
@@ -7,9 +8,7 @@ export const SidebarTrigger = () => {
 
   return (
     <Button variant="ghost" onClick={toggleSidebar}>
-      <PanelLeftOpen
-        className={`transition-transform ${open ? "rotate-180" : ""}`}
-      />
+      <PanelLeftOpen className={clsx(open && "rotate-180")} />
     </Button>
   );
 };

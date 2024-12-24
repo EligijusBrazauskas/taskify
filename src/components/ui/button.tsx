@@ -9,7 +9,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        default: "bg-dark text-primary-foreground hover:bg-primary/90",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:
@@ -19,16 +19,16 @@ const buttonVariants = cva(
         ghost:
           "hover:bg-secondary-hover hover:text-accent-foreground text-secondary",
         link: "text-primary underline-offset-4 hover:underline",
-        menu: "bg-transparent justify-start border-none justify-between text-xs font-medium text-secondary hover:text-text",
+        menu: "bg-transparent justify-start border-none justify-between text-xs font-medium text-secondary hover:text-text border",
         menuItem:
-          "bg-transparent gap-3 font-sm text-secondary hover:text-text w-full justify-start",
+          "bg-transparent gap-3 font-sm text-secondary hover:text-text w-full justify-start text-md md:text-sm sm:border sm:border-secondary-border md:border-none",
       },
       size: {
         default: "h-10 px-4 py-2",
         sm: "h-8 rounded-md px-2",
         lg: "h-11 rounded-md px-8",
         icon: "h-10 w-10",
-        menu: "py-0",
+        menu: "py-1 md:py-0",
       },
     },
     defaultVariants: {
