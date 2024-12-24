@@ -17,7 +17,7 @@ export const Sidebar = () => {
   return (
     <ShadcnSidebar>
       <Flex className="flex-col h-full pl-2 py-2 justify-between">
-        <Flex className="flex-col gap-3">
+        <Flex className="flex-col overflow-auto">
           <SidebarHeader>
             <SidebarUserButton />
           </SidebarHeader>
