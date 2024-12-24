@@ -1,4 +1,8 @@
-import { SidebarUserButton } from "@/components/composite/sidebar";
+import {
+  SidebarMenu,
+  SidebarProjects,
+  SidebarUserButton,
+} from "@/components/composite/sidebar";
 import { Button } from "@/components/ui/button";
 import {
   DrawerClose,
@@ -8,6 +12,7 @@ import {
   DrawerTrigger,
   Drawer as ShadcnDrawer,
 } from "@/components/ui/drawer";
+import { ScrollArea } from "@radix-ui/react-scroll-area";
 import { Menu } from "lucide-react";
 
 export const Drawer = () => (
@@ -17,14 +22,18 @@ export const Drawer = () => (
         <Menu />
       </Button>
     </DrawerTrigger>
-    <DrawerContent>
-      <DrawerHeader>
-        <SidebarUserButton />
-      </DrawerHeader>
+    <DrawerContent className="max-h-[80vh]">
+      <ScrollArea className="overflow-y-scroll flex flex-col gap-2">
+        <DrawerHeader>
+          <SidebarUserButton />
+        </DrawerHeader>
+        <SidebarMenu />
+        <SidebarProjects />
+      </ScrollArea>
       <DrawerFooter>
         <DrawerClose asChild>
           <Button variant="outline" size="default">
-            Cancel
+            Close
           </Button>
         </DrawerClose>
       </DrawerFooter>

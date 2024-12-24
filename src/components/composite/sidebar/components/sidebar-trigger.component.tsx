@@ -7,7 +7,9 @@ export const SidebarTrigger = () => {
 
   return (
     <Button variant="ghost" onClick={toggleSidebar}>
-      <PanelLeftOpen className={open ? "rotate-180" : ""} />
+      <PanelLeftOpen
+        className={`transition-transform ${open ? "rotate-180" : ""}`}
+      />
     </Button>
   );
 };
