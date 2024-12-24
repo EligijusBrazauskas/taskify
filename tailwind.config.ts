@@ -2,6 +2,7 @@ import containerQueries from "@tailwindcss/container-queries";
 import type { Config } from "tailwindcss";
 import animate from "tailwindcss-animate";
 import {
+  animationTheme,
   bordersTheme,
   colorsTheme,
   iconsTheme,
@@ -39,6 +40,12 @@ export default {
       },
       fontSize: {
         ...typographyTheme.fontSize,
+      },
+      keyframes: {
+        ...animationTheme.keyframes,
+      },
+      animation: {
+        ...animationTheme.animation,
       },
     },
   },

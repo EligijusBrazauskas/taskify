@@ -30,10 +30,10 @@ export const SidebarMenu = () => (
       <CollapsibleTrigger asChild className="w-full">
         <Button variant="menu" size="menu">
           <Typography>MAIN MENU</Typography>
-          <ChevronDown className="chevron" />
+          <ChevronDown className="chevron transition-transform" />
         </Button>
       </CollapsibleTrigger>
-      <CollapsibleContent>
+      <CollapsibleContent className="overflow-hidden data-[state=open]:animate-slideDown data-[state=closed]:animate-slideUp">
         <SidebarGroupContent>
           <ShadcnSidebarMenu>
             <SidebarMenuItem>
