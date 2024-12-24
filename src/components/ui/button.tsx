@@ -19,12 +19,16 @@ const buttonVariants = cva(
         ghost:
           "hover:bg-secondary-hover hover:text-accent-foreground text-secondary",
         link: "text-primary underline-offset-4 hover:underline",
+        menu: "bg-transparent justify-start border-none justify-between text-xs font-medium text-secondary hover:text-text",
+        menuItem:
+          "bg-transparent gap-3 font-sm text-secondary hover:text-text w-full justify-start",
       },
       size: {
         default: "h-10 px-4 py-2",
         sm: "h-8 rounded-md px-2",
         lg: "h-11 rounded-md px-8",
         icon: "h-10 w-10",
+        menu: "py-0",
       },
     },
     defaultVariants: {

@@ -2,6 +2,7 @@ import * as React from "react";
 import { Drawer as DrawerPrimitive } from "vaul";
 
 import { cn } from "@/lib/utils";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 const Drawer = ({
   shouldScaleBackground = true,
@@ -41,7 +42,7 @@ const DrawerContent = React.forwardRef<
     <DrawerPrimitive.Content
       ref={ref}
       className={cn(
-        "fixed inset-x-0 bottom-0 z-50 mt-24 flex h-auto flex-col rounded-t-[10px] border bg-background",
+        "fixed inset-x-0 bottom-0 z-50 mt-24 flex h-auto flex-col rounded-t-[10px] border bg-background gap-2 p-2",
         className,
       )}
       {...props}
@@ -55,12 +56,19 @@ DrawerContent.displayName = "DrawerContent";
 
 const DrawerHeader = ({
   className,
+  children,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
-    className={cn("grid gap-1.5 p-4 text-center sm:text-left", className)}
+    className={cn("grid gap-1.5 text-center sm:text-left", className)}
     {...props}
-  />
+  >
+    <VisuallyHidden>
+      <DrawerTitle />
+      <DrawerDescription />
+    </VisuallyHidden>
+    {children}
+  </div>
 );
 DrawerHeader.displayName = "DrawerHeader";
 
@@ -68,10 +76,7 @@ const DrawerFooter = ({
   className,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div
-    className={cn("mt-auto flex flex-col gap-2 p-4", className)}
-    {...props}
-  />
+  <div className={cn("mt-auto flex flex-col gap-2", className)} {...props} />
 );
 DrawerFooter.displayName = "DrawerFooter";
 

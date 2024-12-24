@@ -1,4 +1,4 @@
-import { UserInfoButton } from "@/components/composite/sidebar/components/user-info-button.component";
+import { SidebarUserButton } from "@/components/composite/sidebar";
 import { Button } from "@/components/ui/button";
 import {
   DrawerClose,
@@ -19,7 +19,7 @@ export const Drawer = () => (
     </DrawerTrigger>
     <DrawerContent>
       <DrawerHeader>
-        <UserInfoButton />
+        <SidebarUserButton />
       </DrawerHeader>
       <DrawerFooter>
         <DrawerClose asChild>

@@ -6,7 +6,6 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { Slash } from "lucide-react";
 
 const linkStyles = "text-text-light hover:cursor-pointer";
 
@@ -16,15 +15,11 @@ export const NavBarBreadcrumb = () => (
       <BreadcrumbItem>
         <BreadcrumbLink className={linkStyles}>Home</BreadcrumbLink>
       </BreadcrumbItem>
-      <BreadcrumbSeparator>
-        <Slash className="text-text-light" />
-      </BreadcrumbSeparator>
+      <BreadcrumbSeparator />
       <BreadcrumbItem>
         <BreadcrumbLink className={linkStyles}>Projects</BreadcrumbLink>
       </BreadcrumbItem>
-      <BreadcrumbSeparator>
-        <Slash className="text-text-light" />
-      </BreadcrumbSeparator>
+      <BreadcrumbSeparator />
       <BreadcrumbItem>
         <BreadcrumbPage className="text-secondary">Project</BreadcrumbPage>
       </BreadcrumbItem>

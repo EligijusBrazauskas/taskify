@@ -1,3 +1,4 @@
+import containerQueries from "@tailwindcss/container-queries";
 import type { Config } from "tailwindcss";
 import animate from "tailwindcss-animate";
 import {
@@ -41,5 +42,5 @@ export default {
       },
     },
   },
-  plugins: [animate],
+  plugins: [animate, containerQueries],
 } satisfies Config;
