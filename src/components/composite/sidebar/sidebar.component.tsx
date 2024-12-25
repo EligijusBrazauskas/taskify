@@ -5,6 +5,7 @@ import {
   SidebarUserButton,
 } from "@/components/composite/sidebar";
 import { Button } from "@/components/ui/button";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   Sidebar as ShadcnSidebar,
   SidebarContent,
@@ -16,34 +17,38 @@ import { Plus } from "lucide-react";
 export const Sidebar = () => {
   return (
     <ShadcnSidebar>
-      <Flex className="flex-col h-full pl-2 py-2 justify-between">
-        <Flex className="flex-col overflow-auto">
-          <SidebarHeader>
-            <SidebarUserButton />
-          </SidebarHeader>
-          <SidebarContent>
+      <SidebarHeader>
+        <SidebarUserButton />
+      </SidebarHeader>
+      <SidebarContent>
+        <ScrollArea>
+          <Flex className="flex-col py-2">
+            <SidebarMenu />
+            <SidebarMenu />
+            <SidebarMenu />
+            <SidebarMenu />
             <SidebarMenu />
             <SidebarProjects />
-          </SidebarContent>
-        </Flex>
-        <SidebarFooter>
-          <Card>
-            <Typography className="text-sm">
-              Start by creating your first project.
-            </Typography>
-            <Typography className="text-xs text-secondary">
-              Add issues to your projects to start task planning.
-            </Typography>
-            <Button>
-              <Plus />
-              <Typography>New Project</Typography>
-            </Button>
-          </Card>
-          <Typography className="text-text-light text-xs">
-            Taskify v1.0.0
+          </Flex>
+        </ScrollArea>
+      </SidebarContent>
+      <SidebarFooter>
+        <Card>
+          <Typography size="sm">
+            Start by creating your first project.
           </Typography>
-        </SidebarFooter>
-      </Flex>
+          <Typography variant="secondary" size="xs">
+            Add issues to your projects to start task planning.
+          </Typography>
+          <Button>
+            <Plus />
+            <Typography>New Project</Typography>
+          </Button>
+        </Card>
+        <Typography variant="light" size="xs">
+          Taskify v1.0.0
+        </Typography>
+      </SidebarFooter>
     </ShadcnSidebar>
   );
 };

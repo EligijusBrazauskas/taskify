@@ -17,15 +17,15 @@ export const SidebarProjects = () => (
   <SidebarGroup>
     <Collapsible
       defaultOpen
-      className="flex flex-col gap-2 [&_.chevron]:data-[state=open]:rotate-180"
+      className="[&_.chevron]:data-[state=open]:rotate-180"
     >
       <CollapsibleTrigger asChild className="w-full">
-        <Button variant="menu" size="menu">
+        <Button variant="menuButton" size="menu">
           <Typography>MY PROJECTS</Typography>
           <ChevronDown className="chevron transition-transform" />
         </Button>
       </CollapsibleTrigger>
-      <CollapsibleContent className="overflow-hidden data-[state=open]:animate-slideDown data-[state=closed]:animate-slideUp">
+      <CollapsibleContent className="data-[state=open]:animate-slideDown data-[state=closed]:animate-slideUp">
         <SidebarGroupContent>
           <SidebarMenu>
             <SidebarMenuItem>

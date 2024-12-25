@@ -7,7 +7,7 @@ export const SidebarTrigger = () => {
   const { open, toggleSidebar } = useSidebar();
 
   return (
-    <Button variant="ghost" onClick={toggleSidebar}>
+    <Button variant="ghost" size="sm" onClick={toggleSidebar}>
       <PanelLeftOpen className={clsx(open && "rotate-180")} />
     </Button>
   );

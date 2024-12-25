@@ -1,3 +1,4 @@
+import { Flex } from "@/components/base";
 import {
   SidebarMenu,
   SidebarProjects,
@@ -12,24 +13,30 @@ import {
   DrawerTrigger,
   Drawer as ShadcnDrawer,
 } from "@/components/ui/drawer";
-import { ScrollArea } from "@radix-ui/react-scroll-area";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { Menu } from "lucide-react";
 
 export const Drawer = () => (
   <ShadcnDrawer autoFocus>
     <DrawerTrigger asChild>
-      <Button variant="ghost">
+      <Button variant="ghost" size="sm">
         <Menu />
       </Button>
     </DrawerTrigger>
-    <DrawerContent className="max-h-[80vh]">
-      <ScrollArea className="overflow-y-scroll flex flex-col gap-2 py-2">
+    <DrawerContent>
+      <Flex className="flex-col pt-2 overflow-auto">
         <DrawerHeader>
           <SidebarUserButton />
         </DrawerHeader>
-        <SidebarMenu />
-        <SidebarProjects />
-      </ScrollArea>
+        <ScrollArea className="flex flex-col">
+          <Flex className="flex-col py-4">
+            <SidebarMenu />
+            <SidebarMenu />
+            <SidebarMenu />
+            <SidebarProjects />
+          </Flex>
+        </ScrollArea>
+      </Flex>
       <DrawerFooter>
         <DrawerClose asChild>
           <Button variant="outline" size="default">

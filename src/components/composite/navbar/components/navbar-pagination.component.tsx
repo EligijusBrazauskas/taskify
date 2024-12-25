@@ -4,10 +4,10 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export const NavBarPagination = () => (
   <Flex>
-    <Button variant="ghost">
+    <Button variant="ghost" size="sm">
       <ChevronLeft />
     </Button>
-    <Button variant="ghost">
+    <Button variant="ghost" size="sm">
       <ChevronRight />
     </Button>
   </Flex>

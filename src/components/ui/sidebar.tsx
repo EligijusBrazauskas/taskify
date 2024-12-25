@@ -374,7 +374,7 @@ const SidebarHeader = React.forwardRef<
     <div
       ref={ref}
       data-sidebar="header"
-      className={cn("flex flex-col gap-2", className)}
+      className={cn("flex flex-col gap-2 px-2", className)}
       {...props}
     />
   );
@@ -420,7 +420,7 @@ const SidebarContent = React.forwardRef<
       ref={ref}
       data-sidebar="content"
       className={cn(
-        "flex min-h-0 flex-1 flex-col px-2 py-4 gap-3 overflow-auto group-data-[collapsible=icon]:overflow-hidden",
+        "flex min-h-0 flex-1 flex-col px-2 overflow-auto group-data-[collapsible=icon]:overflow-hidden",
         className,
       )}
       {...props}
@@ -495,7 +495,7 @@ const SidebarGroupContent = React.forwardRef<
   <div
     ref={ref}
     data-sidebar="group-content"
-    className={cn("w-full text-sm px-2", className)}
+    className={cn("w-full p-2", className)}
     {...props}
   />
 ));
@@ -521,7 +521,7 @@ const SidebarMenuItem = React.forwardRef<
   <li
     ref={ref}
     data-sidebar="menu-item"
-    className={cn("group/menu-item relative flex w-full", className)}
+    className={cn("group/menu-item relative flex w-full text-sm", className)}
     {...props}
   />
 ));

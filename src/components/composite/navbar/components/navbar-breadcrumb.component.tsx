@@ -7,21 +7,19 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 
-const linkStyles = "text-text-light hover:cursor-pointer";
-
 export const NavBarBreadcrumb = () => (
   <Breadcrumb>
-    <BreadcrumbList className="px-2 gap-2 sm:gap-2 text-sm">
+    <BreadcrumbList className="px-2">
       <BreadcrumbItem>
-        <BreadcrumbLink className={linkStyles}>Home</BreadcrumbLink>
+        <BreadcrumbLink>Home</BreadcrumbLink>
       </BreadcrumbItem>
       <BreadcrumbSeparator />
       <BreadcrumbItem>
-        <BreadcrumbLink className={linkStyles}>Projects</BreadcrumbLink>
+        <BreadcrumbLink>Projects</BreadcrumbLink>
       </BreadcrumbItem>
       <BreadcrumbSeparator />
       <BreadcrumbItem>
-        <BreadcrumbPage className="text-secondary">Project</BreadcrumbPage>
+        <BreadcrumbPage>Project</BreadcrumbPage>
       </BreadcrumbItem>
     </BreadcrumbList>
   </Breadcrumb>
