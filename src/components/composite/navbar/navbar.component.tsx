@@ -21,16 +21,16 @@ export const NavBar = () => {
         <NavBarBreadcrumb />
       </Flex>
       <Flex className="gap-2">
-        <Button variant="ghost">
+        <Button variant="ghost" size="sm">
           <Plus />
           <Typography>New Project</Typography>
         </Button>
         <Divider />
         <Flex>
-          <Button variant="ghost">
+          <Button variant="ghost" size="sm">
             <Star />
           </Button>
-          <Button variant="ghost">
+          <Button variant="ghost" size="sm">
             <Ellipsis />
           </Button>
         </Flex>

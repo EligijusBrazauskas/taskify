@@ -1,24 +1,54 @@
-import { Flex } from "@/components/base";
-import { UserInfoButton } from "@/components/composite/sidebar/components/user-info-button.component";
+import { Card, Flex, Typography } from "@/components/base";
+import {
+  SidebarMenu,
+  SidebarProjects,
+  SidebarUserButton,
+} from "@/components/composite/sidebar";
+import { Button } from "@/components/ui/button";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   Sidebar as ShadcnSidebar,
   SidebarContent,
   SidebarFooter,
-  SidebarGroup,
   SidebarHeader,
 } from "@/components/ui/sidebar";
+import { Plus } from "lucide-react";
 
-export const Sidebar = () => (
-  <ShadcnSidebar>
-    <Flex className="flex-col py-2 pl-2">
+export const Sidebar = () => {
+  return (
+    <ShadcnSidebar>
       <SidebarHeader>
-        <UserInfoButton />
+        <SidebarUserButton />
       </SidebarHeader>
       <SidebarContent>
-        <SidebarGroup>Group 1</SidebarGroup>
-        <SidebarGroup>Group 2</SidebarGroup>
+        <ScrollArea>
+          <Flex className="flex-col py-2">
+            <SidebarMenu />
+            <SidebarMenu />
+            <SidebarMenu />
+            <SidebarMenu />
+            <SidebarMenu />
+            <SidebarProjects />
+          </Flex>
+        </ScrollArea>
       </SidebarContent>
-      <SidebarFooter>Footer</SidebarFooter>
-    </Flex>
-  </ShadcnSidebar>
-);
+      <SidebarFooter>
+        <Card>
+          <Typography size="sm">
+            Start by creating your first project.
+          </Typography>
+          <Typography variant="secondary" size="xs">
+            Add issues to your projects to start task planning.
+          </Typography>
+          <Button>
+            <Plus />
+            <Typography>New Project</Typography>
+          </Button>
+        </Card>
+        <Typography variant="light" size="xs">
+          Taskify v1.0.0
+        </Typography>
+      </SidebarFooter>
+    </ShadcnSidebar>
+  );
+};

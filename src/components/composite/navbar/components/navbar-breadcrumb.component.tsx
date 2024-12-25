@@ -6,27 +6,20 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { Slash } from "lucide-react";
-
-const linkStyles = "text-text-light hover:cursor-pointer";
 
 export const NavBarBreadcrumb = () => (
   <Breadcrumb>
-    <BreadcrumbList className="px-2 gap-2 sm:gap-2 text-sm">
+    <BreadcrumbList className="px-2">
       <BreadcrumbItem>
-        <BreadcrumbLink className={linkStyles}>Home</BreadcrumbLink>
+        <BreadcrumbLink>Home</BreadcrumbLink>
       </BreadcrumbItem>
-      <BreadcrumbSeparator>
-        <Slash className="text-text-light" />
-      </BreadcrumbSeparator>
+      <BreadcrumbSeparator />
       <BreadcrumbItem>
-        <BreadcrumbLink className={linkStyles}>Projects</BreadcrumbLink>
+        <BreadcrumbLink>Projects</BreadcrumbLink>
       </BreadcrumbItem>
-      <BreadcrumbSeparator>
-        <Slash className="text-text-light" />
-      </BreadcrumbSeparator>
+      <BreadcrumbSeparator />
       <BreadcrumbItem>
-        <BreadcrumbPage className="text-secondary">Project</BreadcrumbPage>
+        <BreadcrumbPage>Project</BreadcrumbPage>
       </BreadcrumbItem>
     </BreadcrumbList>
   </Breadcrumb>
