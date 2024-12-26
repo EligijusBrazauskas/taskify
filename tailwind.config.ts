@@ -1,6 +1,4 @@
-import containerQueries from "@tailwindcss/container-queries";
 import type { Config } from "tailwindcss";
-import animate from "tailwindcss-animate";
 import {
   animationTheme,
   bordersTheme,
@@ -49,5 +47,8 @@ export default {
       },
     },
   },
-  plugins: [animate, containerQueries],
+  plugins: [
+    require("tailwindcss-animate"),
+    require("@tailwindcss/container-queries"),
+  ],
 } satisfies Config;

@@ -14,6 +14,7 @@ import {
 import {
   ChevronDown,
   FolderKanban,
+  Home,
   MessageSquare,
   Search,
   SquareUserRound,
@@ -36,6 +37,12 @@ export const SidebarMenu = () => (
       <CollapsibleContent className="bg-white md:bg-secondary-background">
         <SidebarGroupContent>
           <ShadcnSidebarMenu>
+            <SidebarMenuItem>
+              <Button variant="menuItem" size="sm">
+                <Home />
+                <Typography>Home</Typography>
+              </Button>
+            </SidebarMenuItem>
             <SidebarMenuItem>
               <Button variant="menuItem" size="sm">
                 <Search />

@@ -21,7 +21,7 @@ export const SidebarProjects = () => (
     >
       <CollapsibleTrigger asChild className="w-full">
         <Button variant="menuButton" size="sm">
-          <Typography>MY PROJECTS</Typography>
+          <Typography>PINNED PROJECTS</Typography>
           <ChevronDown className="chevron transition-transform" />
         </Button>
       </CollapsibleTrigger>

@@ -13,5 +13,6 @@ export const colorsTheme: ThemeConfig["colors"] = {
   text: {
     DEFAULT: "#222346",
     light: "#b7b7c3",
+    danger: "#dc2626",
   },
 };

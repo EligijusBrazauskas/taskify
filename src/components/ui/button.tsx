@@ -10,7 +10,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-dark text-white hover:bg-dark/90 focus-visible:ring-blue-600",
+          "bg-dark text-white hover:bg-dark/90",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:
@@ -20,13 +20,14 @@ const buttonVariants = cva(
         ghost: "hover:bg-secondary-hover hover:text-text text-secondary",
         link: "text-primary underline-offset-4 hover:underline",
         menuButton:
-          "justify-start justify-between text-xs font-medium text-secondary hover:text-text",
+          "justify-start justify-between text-xs font-medium text-secondary hover:text-text hover:bg-white",
         menuItem:
-          "gap-3 font-sm text-secondary hover:text-text w-full justify-start text-md md:text-sm md:hover:shadow-sm md:hover:bg-white",
+          "gap-3 font-sm text-secondary hover:text-text w-full justify-start text-sm md:text-sm md:hover:bg-white",
+          breadcrumb: 'max-w-[100px] justify-start [&_span]:truncate text-xs border border-secondary-border bg-background hover:bg-secondary-hover text-secondary disabled:opacity-100 disabled:bg-secondary-hover disabled:text-text',
       },
       size: {
         default: "p-2",
-        sm: "py-1",
+        sm: "py-1 min-h-29",
         lg: "p-3",
         icon: "w-10 h-10",
       },

@@ -29,11 +29,7 @@ export const Sidebar = () => {
       </SidebarHeader>
       <SidebarContent>
         <ScrollArea>
-          <Flex className="flex-col gap-2 overflow-auto">
-            <SidebarMenu />
-            <SidebarMenu />
-            <SidebarMenu />
-            <SidebarMenu />
+          <Flex className="flex-col gap-2 overflow-auto py-2">
             <SidebarMenu />
             <SidebarProjects />
           </Flex>
