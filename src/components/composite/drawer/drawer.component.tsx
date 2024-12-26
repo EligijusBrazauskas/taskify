@@ -1,10 +1,17 @@
-import { Flex } from "@/components/base";
+import { Flex, Typography } from "@/components/base";
 import {
   SidebarMenu,
   SidebarProjects,
   SidebarUserButton,
 } from "@/components/composite/sidebar";
 import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import {
   DrawerClose,
   DrawerContent,
@@ -14,7 +21,8 @@ import {
   Drawer as ShadcnDrawer,
 } from "@/components/ui/drawer";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Menu } from "lucide-react";
+import { SidebarGroup } from "@/components/ui/sidebar";
+import { Menu, Plus } from "lucide-react";
 
 export const Drawer = () => (
   <ShadcnDrawer autoFocus>
@@ -24,19 +32,33 @@ export const Drawer = () => (
       </Button>
     </DrawerTrigger>
     <DrawerContent>
-      <Flex className="flex-col pt-2 overflow-auto">
-        <DrawerHeader>
-          <SidebarUserButton />
-        </DrawerHeader>
-        <ScrollArea className="flex flex-col">
-          <Flex className="flex-col py-4">
-            <SidebarMenu />
-            <SidebarMenu />
-            <SidebarMenu />
-            <SidebarProjects />
-          </Flex>
-        </ScrollArea>
-      </Flex>
+      <DrawerHeader>
+        <SidebarUserButton />
+      </DrawerHeader>
+      <ScrollArea className="flex flex-col">
+        <Flex className="flex-col gap-2 overflow-auto py-2">
+          <SidebarMenu />
+          <SidebarMenu />
+          <SidebarMenu />
+          <SidebarProjects />
+        </Flex>
+        <SidebarGroup>
+          <Card className="mt-4">
+            <CardHeader>
+              <CardTitle>Start by creating your first project.</CardTitle>
+              <CardDescription>
+                Add issues to your projects to start task planning.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Button>
+                <Plus />
+                <Typography>New Project</Typography>
+              </Button>
+            </CardContent>
+          </Card>
+        </SidebarGroup>
+      </ScrollArea>
       <DrawerFooter>
         <DrawerClose asChild>
           <Button variant="outline" size="default">

@@ -5,7 +5,7 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm ring-inset focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg]:size-5 [&_svg]:stroke-1.5 px-2 gap-2 transition-all duration-200 font-normal",
+  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg]:size-5 [&_svg]:stroke-1.5 px-2 gap-2 transition-all duration-200 font-normal",
   {
     variants: {
       variant: {
@@ -22,14 +22,13 @@ const buttonVariants = cva(
         menuButton:
           "justify-start justify-between text-xs font-medium text-secondary hover:text-text",
         menuItem:
-          "gap-3 font-sm text-secondary hover:text-text w-full justify-start text-md md:text-sm",
+          "gap-3 font-sm text-secondary hover:text-text w-full justify-start text-md md:text-sm md:hover:shadow-sm md:hover:bg-white",
       },
       size: {
         default: "p-2",
-        sm: "py-1 px-2",
-        lg: "px-8 py-1",
-        icon: "w-10",
-        menu: "py-1 md:py-0",
+        sm: "py-1",
+        lg: "p-3",
+        icon: "w-10 h-10",
       },
     },
     defaultVariants: {

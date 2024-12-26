@@ -1,10 +1,17 @@
-import { Card, Flex, Typography } from "@/components/base";
+import { Flex, Typography } from "@/components/base";
 import {
   SidebarMenu,
   SidebarProjects,
   SidebarUserButton,
 } from "@/components/composite/sidebar";
 import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   Sidebar as ShadcnSidebar,
@@ -22,7 +29,7 @@ export const Sidebar = () => {
       </SidebarHeader>
       <SidebarContent>
         <ScrollArea>
-          <Flex className="flex-col py-2">
+          <Flex className="flex-col gap-2 overflow-auto">
             <SidebarMenu />
             <SidebarMenu />
             <SidebarMenu />
@@ -34,16 +41,18 @@ export const Sidebar = () => {
       </SidebarContent>
       <SidebarFooter>
         <Card>
-          <Typography size="sm">
-            Start by creating your first project.
-          </Typography>
-          <Typography variant="secondary" size="xs">
-            Add issues to your projects to start task planning.
-          </Typography>
-          <Button>
-            <Plus />
-            <Typography>New Project</Typography>
-          </Button>
+          <CardHeader>
+            <CardTitle>Start by creating your first project.</CardTitle>
+            <CardDescription>
+              Add issues to your projects to start task planning.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Button>
+              <Plus />
+              <Typography>New Project</Typography>
+            </Button>
+          </CardContent>
         </Card>
         <Typography variant="light" size="xs">
           Taskify v1.0.0
