@@ -495,7 +495,7 @@ const SidebarGroupContent = React.forwardRef<
   <div
     ref={ref}
     data-sidebar="group-content"
-    className={cn("w-full px-2 pt-2", className)}
+    className={cn("w-full px-2 pt-1", className)}
     {...props}
   />
 ));

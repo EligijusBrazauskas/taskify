@@ -23,7 +23,7 @@ const buttonVariants = cva(
           "justify-start justify-between text-xs font-medium text-secondary hover:text-text hover:bg-white",
         menuItem:
           "gap-3 font-sm text-secondary hover:text-text w-full justify-start text-sm md:text-sm md:hover:bg-white",
-          breadcrumb: 'max-w-[100px] justify-start [&_span]:truncate text-xs border border-secondary-border bg-background hover:bg-secondary-hover text-secondary disabled:opacity-100 disabled:bg-secondary-hover disabled:text-text',
+          breadcrumb: 'max-w-[90px] justify-start [&_span]:truncate text-xs border border-secondary-border text-secondary hover:bg-secondary-hover disabled:opacity-100 disabled:bg-secondary-hover disabled:text-text',
       },
       size: {
         default: "p-2",
