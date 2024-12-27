@@ -1,21 +1,25 @@
 import { Flex, Typography } from "@/components/base";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
+import { Button, ButtonProps } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { forwardRef } from "react";
 
-export const SidebarUserButton = () => {
-  return (
+export const SidebarUserButton = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant = "outline", size = "sm", ...rest }, ref) => (
     <Button
-      variant="outline"
-      size="sm"
-      className=" hover:bg-white hover:shadow-md justify-start"
+      ref={ref}
+      variant={variant}
+      size={size}
+      className={cn("justify-start hover:bg-white", className)}
+      {...rest}
     >
-      <Avatar className="w-8 h-8 shadow-lg">
-        <AvatarFallback className="bg-purple-200 text-text font-semibold">
+      <Avatar className="h-8 w-8 shadow-lg">
+        <AvatarFallback className="bg-purple-200 font-semibold text-text">
           EB
         </AvatarFallback>
       </Avatar>
-      <Flex className="flex-col text-start overflow-hidden">
-        <Typography variant="default" className="font-semibold truncate">
+      <Flex className="flex-col overflow-hidden text-start">
+        <Typography variant="default" className="truncate font-semibold">
           Eligijus Brazauskas
         </Typography>
         <Typography variant="secondary" size="xs" className="truncate">
@@ -23,5 +27,7 @@ export const SidebarUserButton = () => {
         </Typography>
       </Flex>
     </Button>
-  );
-};
+  ),
+);
+
+SidebarUserButton.displayName = "SidebarUserButton";

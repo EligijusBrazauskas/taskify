@@ -11,7 +11,7 @@ import {
   SidebarMenu,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { ChevronDown, FolderOpenDot, Plus } from "lucide-react";
+import { ChevronDown, FolderOpenDot, Minus, Plus } from "lucide-react";
 
 export const SidebarProjects = () => (
   <SidebarGroup>
@@ -20,34 +20,43 @@ export const SidebarProjects = () => (
       className="[&_.chevron]:data-[state=open]:rotate-180"
     >
       <CollapsibleTrigger asChild className="w-full">
-        <Button variant="menuButton" size="menu">
-          <Typography>MY PROJECTS</Typography>
+        <Button variant="menuButton" size="sm">
+          <Typography>PINNED PROJECTS</Typography>
           <ChevronDown className="chevron transition-transform" />
         </Button>
       </CollapsibleTrigger>
-      <CollapsibleContent className="data-[state=open]:animate-slideDown data-[state=closed]:animate-slideUp">
+      <CollapsibleContent className="bg-white md:bg-secondary-background">
         <SidebarGroupContent>
           <SidebarMenu>
             <SidebarMenuItem>
-              <Button variant="menuItem" size="menu">
+              <Button variant="menuItem" size="sm">
                 <FolderOpenDot />
                 <Typography>Poject 1</Typography>
               </Button>
+              <Button size="sm" variant="menuItem" className="w-auto">
+                <Minus />
+              </Button>
             </SidebarMenuItem>
             <SidebarMenuItem>
-              <Button variant="menuItem" size="menu">
+              <Button variant="menuItem" size="sm">
                 <FolderOpenDot />
                 <Typography>Poject 2</Typography>
               </Button>
-            </SidebarMenuItem>
-            <SidebarMenuItem>
-              <Button variant="menuItem" size="menu">
-                <FolderOpenDot />
-                <Typography>Poject 3</Typography>
+              <Button size="sm" variant="menuItem" className="w-auto">
+                <Minus />
               </Button>
             </SidebarMenuItem>
             <SidebarMenuItem>
-              <Button variant="menuItem" size="menu">
+              <Button variant="menuItem" size="sm">
+                <FolderOpenDot />
+                <Typography>Poject 3</Typography>
+              </Button>
+              <Button size="sm" variant="menuItem" className="w-auto">
+                <Minus />
+              </Button>
+            </SidebarMenuItem>
+            <SidebarMenuItem>
+              <Button variant="menuItem" size="sm">
                 <Plus />
                 <Typography>New Project</Typography>
               </Button>

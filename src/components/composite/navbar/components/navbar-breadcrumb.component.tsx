@@ -1,3 +1,4 @@
+import { Typography } from "@/components/base";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -6,20 +7,33 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { Button } from "@/components/ui/button";
 
 export const NavBarBreadcrumb = () => (
   <Breadcrumb>
-    <BreadcrumbList className="px-2">
-      <BreadcrumbItem>
-        <BreadcrumbLink>Home</BreadcrumbLink>
+    <BreadcrumbList className="gap-1 px-2 md:gap-2">
+      <BreadcrumbItem className="@xl:flex hidden">
+        <BreadcrumbLink asChild>
+          <Button variant="breadcrumb" size="sm">
+            <Typography>Home</Typography>
+          </Button>
+        </BreadcrumbLink>
       </BreadcrumbItem>
-      <BreadcrumbSeparator />
-      <BreadcrumbItem>
-        <BreadcrumbLink>Projects</BreadcrumbLink>
+      <BreadcrumbSeparator className="@xl:flex hidden" />
+      <BreadcrumbItem className="@lg:flex hidden">
+        <BreadcrumbLink asChild>
+          <Button variant="breadcrumb" size="sm">
+            <Typography>Projects</Typography>
+          </Button>
+        </BreadcrumbLink>
       </BreadcrumbItem>
-      <BreadcrumbSeparator />
-      <BreadcrumbItem>
-        <BreadcrumbPage>Project</BreadcrumbPage>
+      <BreadcrumbSeparator className="@lg:flex hidden" />
+      <BreadcrumbItem className="@sm:flex hidden">
+        <BreadcrumbPage>
+          <Button variant="breadcrumb" size="sm" disabled>
+            <Typography>ProjectProjectProjectProject</Typography>
+          </Button>
+        </BreadcrumbPage>
       </BreadcrumbItem>
     </BreadcrumbList>
   </Breadcrumb>
