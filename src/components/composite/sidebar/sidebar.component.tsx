@@ -1,8 +1,10 @@
 import { Flex, Typography } from "@/components/base";
 import {
+  MenuGroup,
   SidebarMenu,
-  SidebarProjects,
   SidebarUserButton,
+  mockPinnedProjectsResponse,
+  sidebarMenuConfig,
 } from "@/components/composite/sidebar";
 import { Button } from "@/components/ui/button";
 import {
@@ -19,9 +21,38 @@ import {
   SidebarFooter,
   SidebarHeader,
 } from "@/components/ui/sidebar";
-import { Plus } from "lucide-react";
+import { FolderOpen, Plus } from "lucide-react";
 
 export const Sidebar = () => {
+  const mockPinnedProjectsData: mockPinnedProjectsResponse = {
+    data: [
+      {
+        id: 1,
+        label: "Projektas",
+      },
+      {
+        id: 2,
+        label: "Projektas 2",
+      },
+      {
+        id: 3,
+        label: "Projektas 3",
+      },
+    ],
+  };
+
+  const configItems: MenuGroup[] = [
+    {
+      label: "PINNED PROJECTS",
+      key: "pinnedProjects",
+      children: mockPinnedProjectsData.data.map((item) => ({
+        ...item,
+        path: `pinned-projects/${item.id}`,
+        icon: <FolderOpen />,
+      })),
+    },
+  ];
+
   return (
     <ShadcnSidebar>
       <SidebarHeader>
@@ -30,8 +61,9 @@ export const Sidebar = () => {
       <SidebarContent>
         <ScrollArea>
           <Flex className="flex-col gap-2 overflow-auto py-2">
-            <SidebarMenu />
-            <SidebarProjects />
+            {sidebarMenuConfig(configItems).map((group) => (
+              <SidebarMenu key={group.key} group={group} />
+            ))}
           </Flex>
         </ScrollArea>
       </SidebarContent>

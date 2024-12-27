@@ -31,7 +31,7 @@ export const NavBarBreadcrumb = () => (
       <BreadcrumbItem className="@sm:flex hidden">
         <BreadcrumbPage>
           <Button variant="breadcrumb" size="sm" disabled>
-            <Typography>ProjectProjectProjectProject</Typography>
+            <Typography>Project</Typography>
           </Button>
         </BreadcrumbPage>
       </BreadcrumbItem>

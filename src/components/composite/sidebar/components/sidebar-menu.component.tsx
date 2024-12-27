@@ -1,4 +1,5 @@
 import { Typography } from "@/components/base";
+import { MenuGroup } from "@/components/composite/sidebar";
 import { Button } from "@/components/ui/button";
 import {
   Collapsible,
@@ -11,77 +12,47 @@ import {
   SidebarGroupContent,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import {
-  ChevronDown,
-  FolderKanban,
-  Home,
-  MessageSquare,
-  Search,
-  SquareUserRound,
-  Tag,
-  Tickets,
-} from "lucide-react";
+import { ChevronDown, Minus } from "lucide-react";
 
-export const SidebarMenu = () => (
-  <SidebarGroup>
-    <Collapsible
-      defaultOpen
-      className="[&_.chevron]:data-[state=open]:rotate-180"
-    >
-      <CollapsibleTrigger asChild className="w-full">
-        <Button variant="menuButton" size="sm">
-          <Typography>MAIN MENU</Typography>
-          <ChevronDown className="chevron transition-transform" />
-        </Button>
-      </CollapsibleTrigger>
-      <CollapsibleContent className="bg-white md:bg-secondary-background">
-        <SidebarGroupContent>
-          <ShadcnSidebarMenu>
-            <SidebarMenuItem>
-              <Button variant="menuItem" size="sm">
-                <Home />
-                <Typography>Home</Typography>
-              </Button>
-            </SidebarMenuItem>
-            <SidebarMenuItem>
-              <Button variant="menuItem" size="sm">
-                <Search />
-                <Typography>Search</Typography>
-              </Button>
-            </SidebarMenuItem>
-            <SidebarMenuItem>
-              <Button variant="menuItem" size="sm">
-                <FolderKanban />
-                <Typography>Projects</Typography>
-              </Button>
-            </SidebarMenuItem>
-            <SidebarMenuItem>
-              <Button variant="menuItem" size="sm">
-                <Tickets />
-                <Typography>Issues</Typography>
-              </Button>
-            </SidebarMenuItem>
-            <SidebarMenuItem>
-              <Button variant="menuItem" size="sm">
-                <Tag />
-                <Typography>Tags</Typography>
-              </Button>
-            </SidebarMenuItem>
-            <SidebarMenuItem>
-              <Button variant="menuItem" size="sm">
-                <SquareUserRound />
-                <Typography>Activity</Typography>
-              </Button>
-            </SidebarMenuItem>
-            <SidebarMenuItem>
-              <Button variant="menuItem" size="sm">
-                <MessageSquare />
-                <Typography>Comments</Typography>
-              </Button>
-            </SidebarMenuItem>
-          </ShadcnSidebarMenu>
-        </SidebarGroupContent>
-      </CollapsibleContent>
-    </Collapsible>
-  </SidebarGroup>
-);
+interface SidebarMenuProps {
+  group: MenuGroup;
+}
+
+export const SidebarMenu = ({ group }: SidebarMenuProps) => {
+  const { key, label, children } = group;
+
+  return (
+    <SidebarGroup key={key}>
+      <Collapsible
+        defaultOpen
+        className="[&_.chevron]:data-[state=open]:rotate-180"
+      >
+        <CollapsibleTrigger asChild className="w-full">
+          <Button variant="menuButton" size="sm">
+            <Typography>{label.toUpperCase()}</Typography>
+            <ChevronDown className="chevron transition-transform" />
+          </Button>
+        </CollapsibleTrigger>
+        <CollapsibleContent className="bg-white md:bg-secondary-background">
+          <SidebarGroupContent>
+            <ShadcnSidebarMenu>
+              {children.map(({ id, label, icon }) => (
+                <SidebarMenuItem key={id}>
+                  <Button variant="menuItem" size="sm">
+                    {icon}
+                    <Typography>{label}</Typography>
+                  </Button>
+                  {key === "pinnedProjects" && (
+                    <Button variant="menuButton" size="sm">
+                      <Minus />
+                    </Button>
+                  )}
+                </SidebarMenuItem>
+              ))}
+            </ShadcnSidebarMenu>
+          </SidebarGroupContent>
+        </CollapsibleContent>
+      </Collapsible>
+    </SidebarGroup>
+  );
+};
