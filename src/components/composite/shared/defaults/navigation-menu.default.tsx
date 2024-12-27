@@ -1,4 +1,4 @@
-import { MenuGroup } from "@/components/composite/sidebar";
+import { MenuGroup } from "@/components/composite/sidebar/interfaces";
 import {
   FolderKanban,
   Home,
@@ -8,7 +8,7 @@ import {
   Tag,
 } from "lucide-react";
 
-export const sidebarMenuDefaults: MenuGroup[] = [
+export const navigationMenuDefaults: MenuGroup[] = [
   {
     label: "MAIN MENU",
     key: "mainMenu",

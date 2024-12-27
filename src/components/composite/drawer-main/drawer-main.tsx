@@ -1,6 +1,10 @@
 import { Flex, Typography } from "@/components/base";
 import { DrawerProfile } from "@/components/composite/drawer-profile";
-import { SidebarMenu, SidebarProjects } from "@/components/composite/sidebar";
+import {
+  configItems,
+  navigationMenuConfig,
+} from "@/components/composite/shared/config";
+import { SidebarMenu } from "@/components/composite/sidebar";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -33,8 +37,9 @@ export const DrawerMain = () => (
       </DrawerHeader>
       <ScrollArea className="flex flex-col">
         <Flex className="flex-col gap-2 overflow-auto pt-2 pb-4">
-          <SidebarMenu />
-          <SidebarProjects />
+          {navigationMenuConfig(configItems).map((group) => (
+            <SidebarMenu key={group.key} group={group} />
+          ))}
         </Flex>
         <Card>
           <CardHeader>

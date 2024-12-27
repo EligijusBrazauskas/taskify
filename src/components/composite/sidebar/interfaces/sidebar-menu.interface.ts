@@ -1,4 +1,4 @@
-import { MenuKey } from "@/components/composite/sidebar";
+import { MenuKey } from "@/components/composite/sidebar/types";
 import { DynamicPath, Path } from "@/types/path.type";
 
 export interface MenuItemRecord {

@@ -12,7 +12,7 @@ export const animationTheme: ThemeConfig = {
     },
   },
   animation: {
-    slideDown: "slideDown 150ms ease-in",
-    slideUp: "slideUp 150ms ease-in",
+    slideDown: "slideDown 100ms ease-in",
+    slideUp: "slideUp 100ms ease-in",
   },
 };

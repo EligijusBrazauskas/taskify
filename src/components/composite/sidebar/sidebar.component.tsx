@@ -1,11 +1,9 @@
 import { Flex, Typography } from "@/components/base";
 import {
-  MenuGroup,
-  SidebarMenu,
-  SidebarUserButton,
-  mockPinnedProjectsResponse,
-  sidebarMenuConfig,
-} from "@/components/composite/sidebar";
+  configItems,
+  navigationMenuConfig,
+} from "@/components/composite/shared/config";
+import { SidebarMenu, SidebarUserButton } from "@/components/composite/sidebar";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -21,38 +19,9 @@ import {
   SidebarFooter,
   SidebarHeader,
 } from "@/components/ui/sidebar";
-import { FolderOpen, Plus } from "lucide-react";
+import { Plus } from "lucide-react";
 
 export const Sidebar = () => {
-  const mockPinnedProjectsData: mockPinnedProjectsResponse = {
-    data: [
-      {
-        id: 1,
-        label: "Projektas",
-      },
-      {
-        id: 2,
-        label: "Projektas 2",
-      },
-      {
-        id: 3,
-        label: "Projektas 3",
-      },
-    ],
-  };
-
-  const configItems: MenuGroup[] = [
-    {
-      label: "PINNED PROJECTS",
-      key: "pinnedProjects",
-      children: mockPinnedProjectsData.data.map((item) => ({
-        ...item,
-        path: `pinned-projects/${item.id}`,
-        icon: <FolderOpen />,
-      })),
-    },
-  ];
-
   return (
     <ShadcnSidebar>
       <SidebarHeader>
@@ -61,7 +30,7 @@ export const Sidebar = () => {
       <SidebarContent>
         <ScrollArea>
           <Flex className="flex-col gap-2 overflow-auto py-2">
-            {sidebarMenuConfig(configItems).map((group) => (
+            {navigationMenuConfig(configItems).map((group) => (
               <SidebarMenu key={group.key} group={group} />
             ))}
           </Flex>
