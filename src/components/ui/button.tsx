@@ -26,7 +26,7 @@ const buttonVariants = cva(
           breadcrumb: 'max-w-[90px] justify-start [&_span]:truncate text-xs border border-secondary-border text-secondary hover:bg-secondary-hover disabled:opacity-100 disabled:bg-secondary-hover disabled:text-text',
       },
       size: {
-        default: "p-2",
+        default: "py-2 px-4",
         sm: "py-1 min-h-29",
         lg: "p-3",
         icon: "w-10 h-10",

@@ -1,4 +1,4 @@
-import { MenuGroup } from "@/components/composite/sidebar/interfaces";
+import { MenuGroup } from "@/components/composite/shared/interfaces";
 import {
   FolderKanban,
   Home,
@@ -11,7 +11,6 @@ import {
 export const navigationMenuDefaults: MenuGroup[] = [
   {
     label: "MAIN MENU",
-    key: "mainMenu",
     children: [
       {
         id: 1,

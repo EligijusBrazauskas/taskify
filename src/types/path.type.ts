@@ -1,6 +1,5 @@
 export type Path =
   | ""
-  | "pinned-projects"
   | "projects"
   | "issues"
   | "tags"

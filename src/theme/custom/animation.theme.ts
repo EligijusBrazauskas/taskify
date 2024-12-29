@@ -3,12 +3,12 @@ import { ThemeConfig } from "@/types/tailwind.type";
 export const animationTheme: ThemeConfig = {
   keyframes: {
     slideDown: {
-      from: { height: "0" },
-      to: { height: "var(--radix-collapsible-content-height)" },
+      from: { height: "0", opacity: "0" },
+      to: { height: "var(--radix-collapsible-content-height)", opacity: "1" },
     },
     slideUp: {
-      from: { height: "var(--radix-collapsible-content-height)" },
-      to: { height: "0" },
+      from: { height: "var(--radix-collapsible-content-height)", opacity: "1" },
+      to: { height: "0", opacity: "0" },
     },
   },
   animation: {
