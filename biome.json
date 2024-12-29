@@ -40,7 +40,8 @@
         "useExhaustiveDependencies": "off"
       },
       "suspicious": {
-        "noConsoleLog": "error"
+        "noConsoleLog": "error",
+        "noArrayIndexKey": "off"
       },
       "a11y": {
         "useFocusableInteractive": "off"
@@ -54,6 +55,9 @@
             "functions": ["clsx", "cva", "tw", "tw.*"]
           }
         }
+      },
+      "complexity": {
+        "noForEach": "off"
       }
     }
   },
