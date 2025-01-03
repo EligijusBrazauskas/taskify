@@ -1,40 +1,46 @@
 import { Typography } from "@/components/base";
+import { mapBreadcrumbs } from "@/components/composite/navbar/helpers";
 import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
-  BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
+import { Link, useLocation } from "@tanstack/react-router";
+import { Fragment } from "react/jsx-runtime";
 
-export const NavBarBreadcrumb = () => (
-  <Breadcrumb>
-    <BreadcrumbList className="gap-1 px-2 md:gap-2">
-      <BreadcrumbItem className="@xl:flex hidden">
-        <BreadcrumbLink asChild>
-          <Button variant="breadcrumb" size="sm">
-            <Typography>Home</Typography>
-          </Button>
-        </BreadcrumbLink>
-      </BreadcrumbItem>
-      <BreadcrumbSeparator className="@xl:flex hidden" />
-      <BreadcrumbItem className="@lg:flex hidden">
-        <BreadcrumbLink asChild>
-          <Button variant="breadcrumb" size="sm">
-            <Typography>Projects</Typography>
-          </Button>
-        </BreadcrumbLink>
-      </BreadcrumbItem>
-      <BreadcrumbSeparator className="@lg:flex hidden" />
-      <BreadcrumbItem className="@sm:flex hidden">
-        <BreadcrumbPage>
-          <Button variant="breadcrumb" size="sm" disabled>
-            <Typography>Project</Typography>
-          </Button>
-        </BreadcrumbPage>
-      </BreadcrumbItem>
-    </BreadcrumbList>
-  </Breadcrumb>
-);
+export const NavBarBreadcrumb = () => {
+  const { pathname } = useLocation();
+  const pathSegments = pathname.split("/");
+
+  return (
+    <Breadcrumb>
+      <BreadcrumbList className="px-2">
+        {mapBreadcrumbs(pathSegments, pathname).map((breadcrumb, index) => (
+          <Fragment key={index}>
+            <BreadcrumbSeparator className="first:hidden" />
+            <BreadcrumbItem>
+              <Link
+                to={breadcrumb?.path}
+                disabled={pathname === breadcrumb?.path}
+              >
+                <BreadcrumbLink asChild>
+                  <Button
+                    variant="outline"
+                    disabled={pathname === breadcrumb?.path}
+                  >
+                    <Typography className="first-letter:uppercase">
+                      {breadcrumb?.label}
+                    </Typography>
+                  </Button>
+                </BreadcrumbLink>
+              </Link>
+            </BreadcrumbItem>
+          </Fragment>
+        ))}
+      </BreadcrumbList>
+    </Breadcrumb>
+  );
+};

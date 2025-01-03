@@ -1,7 +1,7 @@
-import { DynamicPath, Path } from "@/types/path.type";
+import { Path } from "@/types/path.type";
 
 export interface MenuItemRecord {
-  id: number;
+  id: number | string;
   label: string;
 }
 
@@ -11,8 +11,10 @@ export interface MenuItemChildrenAction {
 }
 
 export interface MenuItem extends MenuItemRecord {
-  path: Path | DynamicPath;
+  type: "link" | "button";
+  path?: Path;
   icon?: JSX.Element;
+  onClick?: () => void;
   action?: MenuItemChildrenAction;
 }
 

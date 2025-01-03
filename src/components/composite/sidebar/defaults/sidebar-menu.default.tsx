@@ -8,45 +8,51 @@ import {
   Tag,
 } from "lucide-react";
 
-export const navigationMenuDefaults: MenuGroup[] = [
+export const sidebarMenuDefaults: MenuGroup[] = [
   {
     label: "MAIN MENU",
     children: [
       {
         id: 1,
+        type: "link",
         label: "Home",
         icon: <Home />,
-        path: "",
+        path: "/",
       },
       {
         id: 2,
+        type: "button",
         label: "Search",
         icon: <Search />,
-        path: "",
+        onClick: () => console.log("search"),
       },
       {
         id: 3,
+        type: "link",
         label: "Projects",
         icon: <FolderKanban />,
-        path: "projects",
+        path: "/projects",
       },
       {
         id: 4,
+        type: "link",
         label: "Tags",
         icon: <Tag />,
-        path: "tags",
+        path: "/tags",
       },
       {
         id: 5,
+        type: "link",
         label: "Activity",
         icon: <SquareUserRound />,
-        path: "activity",
+        path: "/activity",
       },
       {
         id: 6,
+        type: "link",
         label: "Comments",
         icon: <MessageSquare />,
-        path: "comments",
+        path: "/comments",
       },
     ],
   },

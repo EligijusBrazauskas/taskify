@@ -20,14 +20,13 @@ type HeadingProps = {
 const typographyVariants = cva("", {
   variants: {
     variant: {
-      default: "text-text",
-      secondary: "text-secondary",
-      light: "text-text-light",
-      unstyled: "text-xs",
+      default: "text-secondary",
+      medium: "text-secondary-medium",
+      regular: "text-primary",
     },
     size: {
+      default: "text-sm",
       xs: "text-xs",
-      sm: "text-sm",
       md: "text-md",
       lg: "text-lg",
     },

@@ -1,18 +1,13 @@
 import { ThemeConfig } from "@/types/tailwind.type";
 
 export const colorsTheme: ThemeConfig["colors"] = {
-  secondary: {
-    DEFAULT: "#8e8ea0",
-    background: "#f6f7fa",
-    border: "#f2f2f7",
-    hover: "#b7b7c31a",
-  },
-  dark: {
+  primary: {
     DEFAULT: "#1d1d2c",
   },
-  text: {
-    DEFAULT: "#222346",
-    light: "#b7b7c3",
-    danger: "#dc2626",
+  secondary: {
+    DEFAULT: "#8e8ea0",
+    body: "#f6f7fa",
+    light: "#f2f2f7",
+    medium: "#b7b7c3",
   },
 };
