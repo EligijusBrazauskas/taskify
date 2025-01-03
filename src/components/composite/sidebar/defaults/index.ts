@@ -1,3 +1,3 @@
-import { sidebarMenuDefaults } from "@/components/composite/sidebar/defaults/sidebar-menu.default";
+import { sidebarNavigationDefaults } from "@/components/composite/sidebar/defaults/sidebar-navigation.default";
 
-export { sidebarMenuDefaults };
+export { sidebarNavigationDefaults };

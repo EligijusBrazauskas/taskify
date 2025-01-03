@@ -1,4 +1,3 @@
-import { MenuGroup } from "@/components/composite/shared/interfaces";
 import { mockPinnedProjectsData } from "@/components/composite/shared/mocks";
 import {
   SideBarNavigation,
@@ -6,7 +5,8 @@ import {
   SideBarTrigger,
   SideBarUserButton,
 } from "@/components/composite/sidebar";
-import { sidebarMenuDefaults } from "@/components/composite/sidebar/defaults";
+import { sidebarNavigationDefaults } from "@/components/composite/sidebar/defaults";
+import { MenuGroup } from "@/components/composite/sidebar/interfaces";
 import {
   Sidebar,
   SidebarContent,
@@ -58,7 +58,7 @@ export const SideBar = () => {
         )}
       </SidebarHeader>
       <SidebarContent>
-        {sidebarMenuDefaults.map((group, index) =>
+        {sidebarNavigationDefaults.map((group, index) =>
           isMediumOrExpanded ? (
             <SideBarNavigation
               key={index}

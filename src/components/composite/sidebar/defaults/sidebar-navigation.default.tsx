@@ -1,4 +1,4 @@
-import { MenuGroup } from "@/components/composite/shared/interfaces";
+import { MenuGroup } from "@/components/composite/sidebar/interfaces";
 import {
   FolderKanban,
   Home,
@@ -6,9 +6,10 @@ import {
   Search,
   SquareUserRound,
   Tag,
+  Ticket,
 } from "lucide-react";
 
-export const sidebarMenuDefaults: MenuGroup[] = [
+export const sidebarNavigationDefaults: MenuGroup[] = [
   {
     label: "MAIN MENU",
     children: [
@@ -36,19 +37,26 @@ export const sidebarMenuDefaults: MenuGroup[] = [
       {
         id: 4,
         type: "link",
+        label: "Issues",
+        icon: <Ticket />,
+        path: "/issues",
+      },
+      {
+        id: 5,
+        type: "link",
         label: "Tags",
         icon: <Tag />,
         path: "/tags",
       },
       {
-        id: 5,
+        id: 6,
         type: "link",
         label: "Activity",
         icon: <SquareUserRound />,
         path: "/activity",
       },
       {
-        id: 6,
+        id: 7,
         type: "link",
         label: "Comments",
         icon: <MessageSquare />,

@@ -1,4 +1,4 @@
-import { mockPinnedProjectsResponse } from "@/components/composite/shared/interfaces";
+import { mockPinnedProjectsResponse } from "@/components/composite/sidebar/interfaces";
 
 export const mockPinnedProjectsData: mockPinnedProjectsResponse = {
   data: [

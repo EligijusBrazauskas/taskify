@@ -1,4 +1,4 @@
-import { MenuGroup } from "@/components/composite/shared/interfaces";
+import { MenuGroup } from "@/components/composite/sidebar/interfaces";
 import { Button } from "@/components/ui/button";
 import {
   SidebarGroup,
@@ -16,24 +16,19 @@ export const SideBarNavigationCollapsed = ({
 }: SideBarNavigationCollapsedProps) => (
   <SidebarGroup>
     <SidebarMenu>
-      {group.children.map(({ id, type, icon, path, onClick }) => (
-        <SidebarMenuSubItem key={id} className="group/action">
-          {type === "link" ? (
-            <Button
-              asChild
-              variant="ghost"
-              className="w-full hover:bg-white"
-              onClick={onClick}
-            >
-              <Link to={path}>{icon}</Link>
+      {group.children.map((item) => (
+        <SidebarMenuSubItem key={item.id} className="group/action">
+          {item.type === "link" ? (
+            <Button asChild variant="ghost" className="w-full hover:bg-white">
+              <Link to={item.path}>{item.icon}</Link>
             </Button>
           ) : (
             <Button
               variant="ghost"
               className="w-full hover:bg-white"
-              onClick={onClick}
+              onClick={item.onClick}
             >
-              {icon}
+              {item.icon}
             </Button>
           )}
         </SidebarMenuSubItem>
