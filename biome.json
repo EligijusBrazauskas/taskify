@@ -17,7 +17,7 @@
       "src/**/*.tsx"
     ],
     "ignoreUnknown": false,
-    "ignore": ["src/components/ui"]
+    "ignore": ["src/main.tsx", "src/components/ui", "src/routeTree.gen.ts"]
   },
   "formatter": {
     "enabled": true,

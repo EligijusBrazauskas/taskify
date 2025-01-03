@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 import { VariantProps, cva } from "class-variance-authority";
 import { HTMLAttributes } from "react";
 
-const dividerVariants = cva("flex bg-secondary-border h-full", {
+const dividerVariants = cva("flex h-full bg-secondary-light", {
   variants: {
     size: {
       default: "w-1.5",

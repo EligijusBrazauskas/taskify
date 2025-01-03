@@ -1,9 +1,9 @@
-export type Path =
-  | ""
-  | "projects"
-  | "issues"
-  | "tags"
-  | "activity"
-  | "comments";
+export type PathString =
+  | "/"
+  | "/issues"
+  | "/projects"
+  | "/tags"
+  | "/activity"
+  | "/comments";
 
-export type DynamicPath = `${Path}/${number | string}`;
+export type Path = PathString | Exclude<string, PathString>;
