@@ -71,7 +71,11 @@ export const SideBar = () => {
         )}
         {isMediumOrExpanded &&
           pinnedProjectsGroup.map((group, index) => (
-            <SideBarNavigation key={index} group={group} />
+            <SideBarNavigation
+              key={index}
+              group={group}
+              onClick={() => setOpenMobile(false)}
+            />
           ))}
       </SidebarContent>
     </Sidebar>

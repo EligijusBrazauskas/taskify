@@ -59,13 +59,13 @@ export const SideBarNavigation = ({
                           !!matchRoute({ to: item.path }) &&
                           "bg-white",
                       )}
-                      onClick={onClick}
                     >
                       {item.type === "link" ? (
                         <Button
                           asChild
                           variant="ghost"
                           className="w-full justify-start hover:bg-white"
+                          onClick={onClick}
                         >
                           <Link to={item.path}>
                             {item.icon}
@@ -76,7 +76,10 @@ export const SideBarNavigation = ({
                         <Button
                           variant="ghost"
                           className="w-full justify-start hover:bg-white"
-                          onClick={onClick}
+                          onClick={() => {
+                            onClick?.();
+                            item.onClick?.();
+                          }}
                         >
                           {item.icon}
                           {item.label}

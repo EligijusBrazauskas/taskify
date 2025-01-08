@@ -20,7 +20,7 @@ export const App = () => {
       description: "Add issues to your projects to start task planning.",
       action: (
         <ToastAction altText="Add a new project" asChild>
-          <Button size="md">
+          <Button>
             <Plus />
             <Typography>New Project</Typography>
           </Button>

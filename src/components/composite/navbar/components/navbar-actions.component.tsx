@@ -1,4 +1,4 @@
-import { Flex, Typography } from "@/components/base";
+import { Divider, Flex, Typography } from "@/components/base";
 import { getActionDefaults } from "@/components/composite/navbar/helpers";
 import { Button } from "@/components/ui/button";
 import {
@@ -41,12 +41,15 @@ export const NavBarActions = () => {
   return (
     <Flex className="gap-2">
       {getActionDefaults(pathname).map(({ icon, label }, index) => (
-        <Button key={index} variant="ghost">
-          {icon}
-          <Typography className={clsx("hidden", !index && "@xl:flex hidden")}>
-            {label}
-          </Typography>
-        </Button>
+        <>
+          <Button key={index} variant="ghost">
+            {icon}
+            <Typography className={clsx("hidden", !index && "@xl:flex hidden")}>
+              {label}
+            </Typography>
+          </Button>
+          {!index && <Divider />}
+        </>
       ))}
     </Flex>
   );

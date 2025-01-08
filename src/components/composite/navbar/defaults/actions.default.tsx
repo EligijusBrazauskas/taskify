@@ -23,7 +23,7 @@ export const projectActionDefaults: DropdownItem[] = [
 export const issueActionDefaults: DropdownItem[] = [
   {
     icon: <Plus />,
-    label: "New Issue",
+    label: "New Task",
   },
   ...actionDefaults,
 ];

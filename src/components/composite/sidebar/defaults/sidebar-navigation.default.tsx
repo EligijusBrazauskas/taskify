@@ -37,9 +37,9 @@ export const sidebarNavigationDefaults: MenuGroup[] = [
       {
         id: 4,
         type: "link",
-        label: "Issues",
+        label: "Tasks",
         icon: <Ticket />,
-        path: "/issues",
+        path: "/tasks",
       },
       {
         id: 5,

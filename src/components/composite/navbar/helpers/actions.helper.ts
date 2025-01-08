@@ -9,7 +9,7 @@ export const getActionDefaults = (pathname: string) => {
     return projectActionDefaults;
   }
 
-  if (pathname.includes("issues")) {
+  if (pathname.includes("tasks")) {
     return issueActionDefaults;
   }
 
