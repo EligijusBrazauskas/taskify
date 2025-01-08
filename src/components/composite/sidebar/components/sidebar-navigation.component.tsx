@@ -1,5 +1,5 @@
 import { Typography } from "@/components/base";
-import { MenuGroup } from "@/components/composite/shared/interfaces";
+import { MenuGroup } from "@/components/composite/sidebar/interfaces";
 import { Button } from "@/components/ui/button";
 import {
   Collapsible,
@@ -50,43 +50,48 @@ export const SideBarNavigation = ({
             <CollapsibleContent>
               <SidebarGroupContent>
                 <SidebarMenuSub>
-                  {children.map(({ id, label, icon, path, type, action }) => (
+                  {children.map((item) => (
                     <SidebarMenuSubItem
-                      key={id}
+                      key={item.id}
                       className={clsx(
                         "group/action rounded-md hover:bg-white",
-                        path && !!matchRoute({ to: path }) && "bg-white",
+                        item.type === "link" &&
+                          !!matchRoute({ to: item.path }) &&
+                          "bg-white",
                       )}
-                      onClick={onClick}
                     >
-                      {type === "link" ? (
+                      {item.type === "link" ? (
                         <Button
                           asChild
                           variant="ghost"
                           className="w-full justify-start hover:bg-white"
+                          onClick={onClick}
                         >
-                          <Link to={path}>
-                            {icon}
-                            {label}
+                          <Link to={item.path}>
+                            {item.icon}
+                            {item.label}
                           </Link>
                         </Button>
                       ) : (
                         <Button
                           variant="ghost"
                           className="w-full justify-start hover:bg-white"
-                          onClick={onClick}
+                          onClick={() => {
+                            onClick?.();
+                            item.onClick?.();
+                          }}
                         >
-                          {icon}
-                          {label}
+                          {item.icon}
+                          {item.label}
                         </Button>
                       )}
-                      {action && (
+                      {item.action && (
                         <Button
                           variant="ghost"
                           className="group-hover/action:bg-white"
-                          onClick={action.onClick}
+                          onClick={item.action.onClick}
                         >
-                          {action.icon}
+                          {item.action.icon}
                         </Button>
                       )}
                     </SidebarMenuSubItem>

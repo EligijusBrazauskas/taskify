@@ -1,15 +1,17 @@
 import {
   MenuGroup,
   MenuItem,
+  MenuItemBase,
   MenuItemChildrenAction,
   MenuItemRecord,
   mockPinnedProjectsResponse,
-} from "@/components/composite/shared/interfaces/navigation-menu.interface";
+} from "@/components/composite/sidebar/interfaces/sidebar-navigation.interface";
 
 export type {
   MenuItemRecord,
-  MenuItem,
   MenuGroup,
   MenuItemChildrenAction,
   mockPinnedProjectsResponse,
+  MenuItem,
+  MenuItemBase,
 };

@@ -5,18 +5,27 @@ export interface MenuItemRecord {
   label: string;
 }
 
+export interface MenuItemBase extends MenuItemRecord {
+  icon?: JSX.Element;
+  action?: MenuItemChildrenAction;
+}
+
 export interface MenuItemChildrenAction {
   icon?: JSX.Element;
   onClick?: () => void;
 }
 
-export interface MenuItem extends MenuItemRecord {
-  type: "link" | "button";
-  path?: Path;
-  icon?: JSX.Element;
+export interface MenuButton extends MenuItemBase {
+  type: "button";
   onClick?: () => void;
-  action?: MenuItemChildrenAction;
 }
+
+export interface MenuLink extends MenuItemBase {
+  type: "link";
+  path?: Path;
+}
+
+export type MenuItem = MenuButton | MenuLink;
 
 export interface MenuGroup {
   label: string;

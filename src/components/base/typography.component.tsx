@@ -29,6 +29,8 @@ const typographyVariants = cva("", {
       xs: "text-xs",
       md: "text-md",
       lg: "text-lg",
+      xl: "text-xl",
+      "2xl": "text-2xl",
     },
   },
 });
