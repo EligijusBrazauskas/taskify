@@ -4,9 +4,9 @@ import { Content, Filters, Header } from "@/pages/project";
 
 export const ProjectPage = () => {
   return (
-    <Flex className="flex-col">
+    <Flex className="h-full flex-col">
       <Header />
-      <Tabs defaultValue="board">
+      <Tabs defaultValue="board" className="flex h-full flex-col">
         <Filters />
         <Content />
       </Tabs>

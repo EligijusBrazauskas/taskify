@@ -8,11 +8,11 @@ export const Board = () => {
     "inReview",
     "readyForQA",
     "inQA",
-    "Done",
+    "done",
   ];
 
   return (
-    <Flex className="w-full gap-4">
+    <Flex className="gap-4 overflow-x-auto px-6">
       {statuses.map((status, index) => (
         <Column key={index} status={status} />
       ))}

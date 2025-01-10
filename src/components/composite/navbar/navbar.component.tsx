@@ -5,7 +5,7 @@ import { NavBarBreadcrumb } from "@/components/composite/navbar/components/navba
 import { SideBarTrigger } from "@/components/composite/sidebar";
 
 export const NavBar = () => (
-  <Flex className="@container justify-between p-2">
+  <Flex className="justify-between p-2">
     <Flex className="items-center gap-2">
       <SideBarTrigger />
       <Divider />

@@ -3,8 +3,8 @@ import { TabsContent } from "@/components/ui/tabs";
 import { Board } from "@/pages/project/components/board";
 
 export const Content = () => (
-  <Flex className="px-6 pt-4 pb-2">
-    <TabsContent value="board" className="w-full overflow-auto">
+  <Flex className="h-full py-4">
+    <TabsContent value="board" className="overflow-x-scroll">
       <Board />
     </TabsContent>
     <TabsContent value="list">

@@ -1,4 +1,3 @@
-import { Typography } from "@/components/base";
 import { mapBreadcrumbs } from "@/components/composite/navbar/helpers";
 import {
   Breadcrumb,
@@ -7,7 +6,6 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "@tanstack/react-router";
 import { Fragment } from "react/jsx-runtime";
 
@@ -17,26 +15,16 @@ export const NavBarBreadcrumb = () => {
 
   return (
     <Breadcrumb>
-      <BreadcrumbList className="px-2">
+      <BreadcrumbList>
         {mapBreadcrumbs(pathSegments, pathname).map((breadcrumb, index) => (
           <Fragment key={index}>
-            <BreadcrumbSeparator className="first:hidden" />
+            <BreadcrumbSeparator className="text-secondary first:hidden">
+              /
+            </BreadcrumbSeparator>
             <BreadcrumbItem>
-              <Link
-                to={breadcrumb?.path}
-                disabled={pathname === breadcrumb?.path}
-              >
-                <BreadcrumbLink asChild>
-                  <Button
-                    variant="outline"
-                    disabled={pathname === breadcrumb?.path}
-                  >
-                    <Typography className="first-letter:uppercase">
-                      {breadcrumb?.label}
-                    </Typography>
-                  </Button>
-                </BreadcrumbLink>
-              </Link>
+              <BreadcrumbLink asChild>
+                <Link to={breadcrumb?.path}>{breadcrumb?.label}</Link>
+              </BreadcrumbLink>
             </BreadcrumbItem>
           </Fragment>
         ))}

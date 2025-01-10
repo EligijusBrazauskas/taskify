@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { ToastAction } from "@/components/ui/toast";
 import { Toaster } from "@/components/ui/toaster";
-import { useToast } from "@/hooks/use-toast";
+import { useToast } from "@/hooks/use-toast.hook";
 import { Outlet } from "@tanstack/react-router";
 import { Plus } from "lucide-react";
 import { useEffect } from "react";
@@ -32,8 +32,8 @@ export const App = () => {
   return (
     <SidebarProvider>
       <SideBar />
-      <Flex className="w-full md:py-2 md:pr-2">
-        <Flex className="w-full flex-col border-1.5 border-secondary-light bg-white md:rounded-lg">
+      <Flex className="w-full overflow-hidden md:py-2 md:pr-2">
+        <Flex className="@container container-main w-full flex-col border-1.5 border-secondary-light bg-white md:rounded-lg">
           <NavBar />
           <Divider orientation="horizontal" />
           <Outlet />
