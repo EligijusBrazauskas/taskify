@@ -30,6 +30,9 @@ export default {
       borderRadius: {
         ...baseTheme.borderRadius,
       },
+      borderColor: {
+        ...bordersTheme.borderColor,
+      },
       strokeWidth: {
         ...iconsTheme.strokeWidth,
       },

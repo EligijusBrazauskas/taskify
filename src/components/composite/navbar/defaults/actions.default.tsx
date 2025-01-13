@@ -12,26 +12,33 @@ export const actionDefaults: DropdownItem[] = [
   },
 ];
 
-export const projectActionDefaults: DropdownItem[] = [
+export const projectsActionDefaults: DropdownItem[] = [
   {
     icon: <Plus />,
     label: "New Project",
   },
-  ...actionDefaults,
 ];
 
-export const issueActionDefaults: DropdownItem[] = [
+export const tasksActionDefaults: DropdownItem[] = [
   {
     icon: <Plus />,
     label: "New Task",
   },
+];
+
+export const projectActionDefaults: DropdownItem[] = [
+  ...projectsActionDefaults,
   ...actionDefaults,
 ];
 
-export const tagActionDefaults: DropdownItem[] = [
+export const taskActionDefaults: DropdownItem[] = [
+  ...tasksActionDefaults,
+  ...actionDefaults,
+];
+
+export const tagsActionDefaults: DropdownItem[] = [
   {
     icon: <Plus />,
     label: "New Tag",
   },
-  ...actionDefaults,
 ];

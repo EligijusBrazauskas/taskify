@@ -23,7 +23,9 @@ export const NavBarBreadcrumb = () => {
             </BreadcrumbSeparator>
             <BreadcrumbItem>
               <BreadcrumbLink asChild>
-                <Link to={breadcrumb?.path}>{breadcrumb?.label}</Link>
+                <Link to={breadcrumb?.path} className="first-letter:uppercase">
+                  {breadcrumb?.label}
+                </Link>
               </BreadcrumbLink>
             </BreadcrumbItem>
           </Fragment>

@@ -19,15 +19,11 @@ export const SideBarNavigationCollapsed = ({
       {group.children.map((item) => (
         <SidebarMenuSubItem key={item.id} className="group/action">
           {item.type === "link" ? (
-            <Button asChild variant="ghost" className="w-full hover:bg-white">
+            <Button asChild variant="ghost" className="w-full">
               <Link to={item.path}>{item.icon}</Link>
             </Button>
           ) : (
-            <Button
-              variant="ghost"
-              className="w-full hover:bg-white"
-              onClick={item.onClick}
-            >
+            <Button variant="ghost" className="w-full" onClick={item.onClick}>
               {item.icon}
             </Button>
           )}

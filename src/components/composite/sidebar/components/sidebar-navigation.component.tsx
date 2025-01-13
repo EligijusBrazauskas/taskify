@@ -40,8 +40,8 @@ export const SideBarNavigation = ({
           <SidebarMenuItem>
             <CollapsibleTrigger asChild>
               <Button
-                variant="link"
-                className="justify-between hover:bg-secondary-light"
+                variant="ghost"
+                className="w-full justify-between hover:bg-secondary-light"
               >
                 <Typography size="xs">{label}</Typography>
                 <ChevronDown className="chevron transition-transform" />
@@ -54,7 +54,7 @@ export const SideBarNavigation = ({
                     <SidebarMenuSubItem
                       key={item.id}
                       className={clsx(
-                        "group/action rounded-md hover:bg-secondary-light",
+                        "group/action rounded-md transition-all hover:bg-secondary-light",
                         item.type === "link" &&
                           !!matchRoute({ to: item.path }) &&
                           "bg-secondary-light",
@@ -63,7 +63,7 @@ export const SideBarNavigation = ({
                       {item.type === "link" ? (
                         <Button
                           asChild
-                          variant="ghost"
+                          variant="link"
                           className="w-full justify-start"
                           onClick={onClick}
                         >
@@ -74,7 +74,7 @@ export const SideBarNavigation = ({
                         </Button>
                       ) : (
                         <Button
-                          variant="ghost"
+                          variant="link"
                           className="w-full justify-start"
                           onClick={() => {
                             onClick?.();
@@ -87,7 +87,7 @@ export const SideBarNavigation = ({
                       )}
                       {item.action && (
                         <Button
-                          variant="ghost"
+                          variant="link"
                           className="group-hover/action:bg-secondary-light"
                           onClick={item.action.onClick}
                         >

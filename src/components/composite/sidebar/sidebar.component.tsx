@@ -1,4 +1,3 @@
-import { mockPinnedProjectsData } from "@/components/composite/shared/mocks";
 import {
   SideBarNavigation,
   SideBarNavigationCollapsed,
@@ -14,6 +13,7 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { useBreakpoint } from "@/hooks";
+import { mockPinnedProjectsData } from "@/mocks";
 import { FolderOpen, PanelRightOpen, PinOff, Plus } from "lucide-react";
 
 export const SideBar = () => {
