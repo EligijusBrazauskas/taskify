@@ -1,4 +1,6 @@
+import { BaseComment } from "@/interfaces/comment.interface";
 import { DropdownItem } from "@/interfaces/dropdown.interface";
-import { Workspace } from "@/interfaces/workspace.interface";
+import { Priority } from "@/interfaces/priority.type";
+import { BaseStatus } from "@/interfaces/status.interface";
 
-export type { DropdownItem, Workspace };
+export type { DropdownItem, BaseComment, Priority, BaseStatus };

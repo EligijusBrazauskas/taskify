@@ -1,4 +1,4 @@
-import { TaskComment } from "@/modules/projects/interfaces";
+import { TaskComment } from "@/modules/tasks/interfaces";
 
 export const taskComments: TaskComment[] = [
   {

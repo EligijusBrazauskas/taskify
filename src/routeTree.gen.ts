@@ -12,7 +12,9 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as IndexImport } from './routes/index'
+import { Route as TasksIndexImport } from './routes/tasks/index'
 import { Route as ProjectsIndexImport } from './routes/projects/index'
+import { Route as TasksTaskIdIndexImport } from './routes/tasks/$taskId/index'
 import { Route as ProjectsProjectIdIndexImport } from './routes/projects/$projectId/index'
 
 // Create/Update Routes
@@ -23,12 +25,26 @@ const IndexRoute = IndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const TasksIndexRoute = TasksIndexImport.update({
+  id: '/tasks/',
+  path: '/tasks/',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/tasks/index.lazy').then((d) => d.Route))
+
 const ProjectsIndexRoute = ProjectsIndexImport.update({
   id: '/projects/',
   path: '/projects/',
   getParentRoute: () => rootRoute,
 } as any).lazy(() =>
   import('./routes/projects/index.lazy').then((d) => d.Route),
+)
+
+const TasksTaskIdIndexRoute = TasksTaskIdIndexImport.update({
+  id: '/tasks/$taskId/',
+  path: '/tasks/$taskId/',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() =>
+  import('./routes/tasks/$taskId/index.lazy').then((d) => d.Route),
 )
 
 const ProjectsProjectIdIndexRoute = ProjectsProjectIdIndexImport.update({
@@ -57,11 +73,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProjectsIndexImport
       parentRoute: typeof rootRoute
     }
+    '/tasks/': {
+      id: '/tasks/'
+      path: '/tasks'
+      fullPath: '/tasks'
+      preLoaderRoute: typeof TasksIndexImport
+      parentRoute: typeof rootRoute
+    }
     '/projects/$projectId/': {
       id: '/projects/$projectId/'
       path: '/projects/$projectId'
       fullPath: '/projects/$projectId'
       preLoaderRoute: typeof ProjectsProjectIdIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/tasks/$taskId/': {
+      id: '/tasks/$taskId/'
+      path: '/tasks/$taskId'
+      fullPath: '/tasks/$taskId'
+      preLoaderRoute: typeof TasksTaskIdIndexImport
       parentRoute: typeof rootRoute
     }
   }
@@ -72,41 +102,62 @@ declare module '@tanstack/react-router' {
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/projects': typeof ProjectsIndexRoute
+  '/tasks': typeof TasksIndexRoute
   '/projects/$projectId': typeof ProjectsProjectIdIndexRoute
+  '/tasks/$taskId': typeof TasksTaskIdIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/projects': typeof ProjectsIndexRoute
+  '/tasks': typeof TasksIndexRoute
   '/projects/$projectId': typeof ProjectsProjectIdIndexRoute
+  '/tasks/$taskId': typeof TasksTaskIdIndexRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/projects/': typeof ProjectsIndexRoute
+  '/tasks/': typeof TasksIndexRoute
   '/projects/$projectId/': typeof ProjectsProjectIdIndexRoute
+  '/tasks/$taskId/': typeof TasksTaskIdIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/projects' | '/projects/$projectId'
+  fullPaths:
+    | '/'
+    | '/projects'
+    | '/tasks'
+    | '/projects/$projectId'
+    | '/tasks/$taskId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/projects' | '/projects/$projectId'
-  id: '__root__' | '/' | '/projects/' | '/projects/$projectId/'
+  to: '/' | '/projects' | '/tasks' | '/projects/$projectId' | '/tasks/$taskId'
+  id:
+    | '__root__'
+    | '/'
+    | '/projects/'
+    | '/tasks/'
+    | '/projects/$projectId/'
+    | '/tasks/$taskId/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ProjectsIndexRoute: typeof ProjectsIndexRoute
+  TasksIndexRoute: typeof TasksIndexRoute
   ProjectsProjectIdIndexRoute: typeof ProjectsProjectIdIndexRoute
+  TasksTaskIdIndexRoute: typeof TasksTaskIdIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ProjectsIndexRoute: ProjectsIndexRoute,
+  TasksIndexRoute: TasksIndexRoute,
   ProjectsProjectIdIndexRoute: ProjectsProjectIdIndexRoute,
+  TasksTaskIdIndexRoute: TasksTaskIdIndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -121,7 +172,9 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/projects/",
-        "/projects/$projectId/"
+        "/tasks/",
+        "/projects/$projectId/",
+        "/tasks/$taskId/"
       ]
     },
     "/": {
@@ -130,8 +183,14 @@ export const routeTree = rootRoute
     "/projects/": {
       "filePath": "projects/index.tsx"
     },
+    "/tasks/": {
+      "filePath": "tasks/index.tsx"
+    },
     "/projects/$projectId/": {
       "filePath": "projects/$projectId/index.tsx"
+    },
+    "/tasks/$taskId/": {
+      "filePath": "tasks/$taskId/index.tsx"
     }
   }
 }

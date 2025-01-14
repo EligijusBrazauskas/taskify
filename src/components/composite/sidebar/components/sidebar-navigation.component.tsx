@@ -88,7 +88,7 @@ export const SideBarNavigation = ({
                       {item.action && (
                         <Button
                           variant="link"
-                          className="group-hover/action:bg-secondary-light"
+                          className="opacity-0 group-focus-within/action:opacity-100 group-hover/action:bg-secondary-light group-hover/action:opacity-100"
                           onClick={item.action.onClick}
                         >
                           {item.action.icon}

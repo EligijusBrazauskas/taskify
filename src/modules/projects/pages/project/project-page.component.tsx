@@ -1,6 +1,7 @@
 import { Flex } from "@/components/base";
+import { Content, Filters } from "@/components/composite/shared";
 import { Tabs } from "@/components/ui/tabs";
-import { Content, Filters, Header } from "@/modules/projects/pages/project";
+import { Header } from "@/modules/projects/pages/project";
 
 export const ProjectPage = () => (
   <Flex className="h-full flex-col overflow-hidden">

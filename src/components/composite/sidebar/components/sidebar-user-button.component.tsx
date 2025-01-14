@@ -30,7 +30,7 @@ export const SideBarUserButton = () => {
       return (
         <Button
           variant="ghost"
-          className="justify-between hover:bg-secondary-light"
+          className="items-center justify-between hover:bg-secondary-light"
         >
           <Flex className="items-center gap-2 overflow-hidden">
             {avatar}

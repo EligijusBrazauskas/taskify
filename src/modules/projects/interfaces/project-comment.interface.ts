@@ -1,8 +1,5 @@
-export interface ProjectComment {
-  id: number;
-  ownerId: number;
+import { BaseComment } from "@/interfaces";
+
+export interface ProjectComment extends BaseComment {
   projectId: number;
-  content: string;
-  createDate: Date;
-  updateDate?: Date;
 }

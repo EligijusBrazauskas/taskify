@@ -1,5 +1,5 @@
-import { ProjectStatus } from "@/modules/projects/interfaces";
-import { Priority } from "@/modules/projects/interfaces/task.interface";
+import { Priority } from "@/interfaces/priority.type";
+import { BaseStatus } from "@/interfaces/status.interface";
 
 export interface Project {
   id: number;
@@ -12,6 +12,6 @@ export interface Project {
   description?: string;
   priority?: Priority;
   dueDate?: Date;
-  status?: ProjectStatus;
+  status?: BaseStatus;
   endDate?: Date;
 }

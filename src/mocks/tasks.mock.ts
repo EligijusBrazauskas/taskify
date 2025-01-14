@@ -1,4 +1,4 @@
-import { Task } from "@/modules/projects/interfaces";
+import { Task } from "@/modules/tasks/interfaces";
 
 export const tasks: Task[] = [
   {
@@ -36,7 +36,7 @@ export const tasks: Task[] = [
   },
   {
     id: 4,
-    statusId: 2,
+    statusId: 3,
     title: "Fix some bugs",
     createDate: new Date(),
     dueDate: new Date(),

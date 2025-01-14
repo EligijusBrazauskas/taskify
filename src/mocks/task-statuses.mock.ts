@@ -1,4 +1,4 @@
-import { TaskStatus } from "@/modules/projects/interfaces";
+import { TaskStatus } from "@/modules/tasks/interfaces";
 
 export const taskStatuses: TaskStatus[] = [
   {
