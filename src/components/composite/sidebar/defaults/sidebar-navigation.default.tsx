@@ -1,7 +1,6 @@
 import { MenuGroup } from "@/components/composite/sidebar/interfaces";
 import {
   FolderKanban,
-  Home,
   MessageSquare,
   Search,
   SquareUserRound,
@@ -13,13 +12,13 @@ export const sidebarNavigationDefaults: MenuGroup[] = [
   {
     label: "MAIN MENU",
     children: [
-      {
-        id: 1,
-        type: "link",
-        label: "Home",
-        icon: <Home />,
-        path: "/",
-      },
+      // {
+      //   id: 1,
+      //   type: "link",
+      //   label: "Home",
+      //   icon: <Home />,
+      //   path: "/",
+      // },
       {
         id: 2,
         type: "button",

@@ -24,7 +24,7 @@ const TabsTrigger = React.forwardRef<
   <TabsPrimitive.Trigger
     ref={ref}
     className={cn(
-      "relative inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md px-2 py-1 text-secondary text-sm ring-ring transition-all hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-primary data-[state=active]:after:absolute data-[state=active]:after:bottom-[-9px] data-[state=active]:after:left-0 data-[state=active]:after:h-1.5 data-[state=active]:after:w-full data-[state=active]:after:bg-primary data-[state=active]:after:content-['_'] [&_svg]:size-5 [&_svg]:shrink-0 [&_svg]:stroke-1.5",
+      "relative inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md px-2 py-1 text-secondary text-sm ring-ring transition-all hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-primary data-[state=active]:after:absolute data-[state=active]:after:top-9 data-[state=active]:after:left-0 data-[state=active]:after:h-0.25 data-[state=active]:after:w-full data-[state=active]:after:bg-primary data-[state=active]:after:content-['_'] [&_svg]:size-5 [&_svg]:shrink-0 [&_svg]:stroke-0.25",
       className,
     )}
     {...props}
@@ -39,7 +39,7 @@ const TabsContent = React.forwardRef<
   <TabsPrimitive.Content
     ref={ref}
     className={cn(
-      "flex ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+      "flex h-full ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
       className,
     )}
     {...props}

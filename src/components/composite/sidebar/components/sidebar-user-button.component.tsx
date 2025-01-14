@@ -10,12 +10,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useSidebar } from "@/components/ui/sidebar";
-import { useBreakpoint } from "@/hooks/use-breakpoint";
+import { useBreakpoint } from "@/hooks";
 import { ChevronsUpDown, LogOut, Settings } from "lucide-react";
 
 export const SideBarUserButton = () => {
   const { state } = useSidebar();
-  const isMedium = useBreakpoint();
+  const [isMd] = useBreakpoint(["md"]);
 
   const avatar = (
     <Avatar className="size-8 rounded-sm">
@@ -26,11 +26,11 @@ export const SideBarUserButton = () => {
   );
 
   const renderButton = () => {
-    if (isMedium || (!isMedium && state === "expanded")) {
+    if (isMd || (!isMd && state === "expanded")) {
       return (
         <Button
           variant="ghost"
-          className="justify-between hover:bg-secondary-body md:hover:bg-white"
+          className="items-center justify-between hover:bg-secondary-light"
         >
           <Flex className="items-center gap-2 overflow-hidden">
             {avatar}

@@ -7,7 +7,8 @@ export const colorsTheme: ThemeConfig["colors"] = {
   secondary: {
     DEFAULT: "#8e8ea0",
     body: "#f6f7fa",
-    light: "#f2f2f7",
+    soft: "#f2f2f7",
+    light: "#ececf3",
     medium: "#b7b7c3",
   },
 };

@@ -31,7 +31,3 @@ export interface MenuGroup {
   label: string;
   children: MenuItem[];
 }
-
-export interface mockPinnedProjectsResponse {
-  data: MenuItemRecord[];
-}

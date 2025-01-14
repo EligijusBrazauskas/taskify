@@ -5,10 +5,10 @@ import { HTMLAttributes } from "react";
 const dividerVariants = cva("flex h-full bg-secondary-light", {
   variants: {
     size: {
-      default: "w-1.5",
+      default: "w-px",
     },
     orientation: {
-      horizontal: "h-1.5 w-full",
+      horizontal: "h-px min-h-px w-full",
     },
   },
   defaultVariants: {

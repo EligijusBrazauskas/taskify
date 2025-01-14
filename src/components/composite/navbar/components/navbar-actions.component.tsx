@@ -7,16 +7,17 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useBreakpoint } from "@/hooks/use-breakpoint";
+import { useBreakpoint, useContainerQuery } from "@/hooks";
 import { useLocation } from "@tanstack/react-router";
-import clsx from "clsx";
 import { Ellipsis } from "lucide-react";
+import { Fragment } from "react/jsx-runtime";
 
 export const NavBarActions = () => {
-  const isSmall = useBreakpoint("sm");
+  const [isSm] = useBreakpoint(["sm"]);
+  const [isXl] = useContainerQuery();
   const { pathname } = useLocation();
 
-  if (isSmall) {
+  if (isSm) {
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
@@ -41,15 +42,13 @@ export const NavBarActions = () => {
   return (
     <Flex className="gap-2">
       {getActionDefaults(pathname).map(({ icon, label }, index) => (
-        <>
-          <Button key={index} variant="ghost">
+        <Fragment key={index}>
+          <Button variant="ghost">
             {icon}
-            <Typography className={clsx("hidden", !index && "@xl:flex hidden")}>
-              {label}
-            </Typography>
+            {isXl && !index && <Typography>{label}</Typography>}
           </Button>
           {!index && <Divider />}
-        </>
+        </Fragment>
       ))}
     </Flex>
   );

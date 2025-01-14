@@ -1,13 +1,17 @@
 import {
   actionDefaults,
-  issueActionDefaults,
   projectActionDefaults,
-  tagActionDefaults,
+  projectsActionDefaults,
+  tagsActionDefaults,
+  taskActionDefaults,
+  tasksActionDefaults,
 } from "@/components/composite/navbar/defaults/actions.default";
 
 export {
   actionDefaults,
   projectActionDefaults,
-  issueActionDefaults,
-  tagActionDefaults,
+  projectsActionDefaults,
+  taskActionDefaults,
+  tasksActionDefaults,
+  tagsActionDefaults,
 };

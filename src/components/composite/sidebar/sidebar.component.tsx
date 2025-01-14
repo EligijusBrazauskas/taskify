@@ -1,4 +1,3 @@
-import { mockPinnedProjectsData } from "@/components/composite/shared/mocks";
 import {
   SideBarNavigation,
   SideBarNavigationCollapsed,
@@ -13,14 +12,15 @@ import {
   SidebarHeader,
   useSidebar,
 } from "@/components/ui/sidebar";
-import { useBreakpoint } from "@/hooks/use-breakpoint";
+import { useBreakpoint } from "@/hooks";
+import { mockPinnedProjectsData } from "@/mocks";
 import { FolderOpen, PanelRightOpen, PinOff, Plus } from "lucide-react";
 
 export const SideBar = () => {
-  const isMedium = useBreakpoint();
+  const [isMd] = useBreakpoint(["md"]);
   const { state, setOpenMobile } = useSidebar();
   const isSidebarExpanded = state === "expanded";
-  const isMediumOrExpanded = isMedium || (!isMedium && isSidebarExpanded);
+  const isMediumOrExpanded = isMd || (!isMd && isSidebarExpanded);
 
   const pinnedProjectsGroup: MenuGroup[] = [
     {
@@ -51,7 +51,7 @@ export const SideBar = () => {
     <Sidebar collapsible="icon" className="border-none">
       <SidebarHeader>
         <SideBarUserButton />
-        {isMedium && (
+        {isMd && (
           <SideBarTrigger>
             <PanelRightOpen />
           </SideBarTrigger>

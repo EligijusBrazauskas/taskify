@@ -35,7 +35,7 @@
         "useImportType": "off"
       },
       "correctness": {
-        "noUnusedVariables": "error",
+        "noUnusedVariables": "warn",
         "noUnusedImports": "error",
         "useExhaustiveDependencies": "off"
       },
@@ -58,6 +58,9 @@
       },
       "complexity": {
         "noForEach": "off"
+      },
+      "performance": {
+        "noAccumulatingSpread": "off"
       }
     }
   },
