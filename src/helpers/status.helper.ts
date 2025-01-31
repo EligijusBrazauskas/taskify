@@ -1,4 +1,4 @@
-import { StatusColor } from "@/modules/tasks/interfaces/task-status.interface";
+import { StatusColor } from "@/interfaces/status.interface";
 
 export const getStatusColor = (color: StatusColor = "secondary") => {
   switch (color) {

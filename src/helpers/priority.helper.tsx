@@ -1,4 +1,5 @@
-import { Priority } from "@/modules/projects/interfaces";
+import { Priority } from "@/interfaces";
+import { Type } from "@/modules/tasks/interfaces";
 import {
   CircleDashed,
   CircleDot,
@@ -46,3 +47,6 @@ export const getPriorityIcon = (priority: Priority) => {
     }
   }
 };
+
+export const isPriority = (property: Priority | Type): property is Priority =>
+  ["lowest", "low", "medium", "high", "highest"].includes(property);

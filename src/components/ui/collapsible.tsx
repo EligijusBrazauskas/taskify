@@ -13,7 +13,7 @@ const CollapsibleContent = ({
 }: CollapsiblePrimitive.CollapsibleProps) => (
   <ShadcnCollapsibleContent
     className={cn(
-      "data-[state=open]:animate-slideDown data-[state=closed]:animate-slideUp",
+      "data-[state=closed]:animate-slideUp data-[state=open]:animate-slideDown",
       className,
     )}
     {...rest}

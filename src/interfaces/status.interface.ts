@@ -6,8 +6,10 @@ export type StatusColor =
   | "yellow"
   | "green";
 
-export interface BaseStatus {
+export interface Status {
+  type: "project" | "task";
   id: number;
   label: string;
-  color: StatusColor;
+  order: number;
+  color?: StatusColor;
 }

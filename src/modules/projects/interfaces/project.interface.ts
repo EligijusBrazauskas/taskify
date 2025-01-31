@@ -1,5 +1,4 @@
 import { Priority } from "@/interfaces/priority.type";
-import { BaseStatus } from "@/interfaces/status.interface";
 
 export interface Project {
   id: number;
@@ -9,9 +8,9 @@ export interface Project {
   favorite: boolean;
   pinned: boolean;
   createDate: Date;
+  assigneeIds?: number[];
   description?: string;
   priority?: Priority;
   dueDate?: Date;
-  status?: BaseStatus;
   endDate?: Date;
 }

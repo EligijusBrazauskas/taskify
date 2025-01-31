@@ -1,25 +1,28 @@
 import { Column } from "@/components/composite/shared";
 import { ScrollBar } from "@/components/ui/scroll-area";
-import { BaseStatus } from "@/interfaces";
-import { projectStatuses, taskStatuses } from "@/mocks";
-import { TaskStatus } from "@/modules/tasks/interfaces";
+import { Status } from "@/interfaces";
+import { statuses } from "@/mocks";
 import { ScrollArea } from "@radix-ui/react-scroll-area";
 import { useMatchRoute } from "@tanstack/react-router";
+import { sortBy } from "lodash";
 
 export const Board = () => {
   const matchRoute = useMatchRoute();
 
-  const renderItems = (): BaseStatus[] | TaskStatus[] => {
+  const renderItems = (): Status[] => {
     if (matchRoute({ to: "/projects" })) {
-      return projectStatuses;
+      return sortBy(statuses, "order").filter(
+        (status) => status.type === "project",
+      );
     }
 
-    if (matchRoute({ to: "/projects/$projectId" })) {
-      return taskStatuses;
-    }
-
-    if (matchRoute({ to: "/tasks" })) {
-      return taskStatuses;
+    if (
+      matchRoute({ to: "/projects/$projectId" }) ||
+      matchRoute({ to: "/tasks" })
+    ) {
+      return sortBy(statuses, "order").filter(
+        (status) => status.type === "task",
+      );
     }
 
     return [];

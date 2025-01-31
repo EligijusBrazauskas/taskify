@@ -1,32 +1,12 @@
-import { uniq } from "lodash";
+import { Breadcrumb } from "@/components/composite/navbar/interfaces";
 
 export const checkSegment = (segment: string) =>
   segment === "projects" ||
-  segment === "issues" ||
+  segment === "tasks" ||
   segment === "tags" ||
   segment === "comments" ||
   segment === "activity";
 
-export const mapBreadcrumbs = (segments: string[], path: string) =>
-  uniq(segments).map((segment) => {
-    if (!segment) {
-      return {
-        label: "home",
-        path: "/",
-      };
-    }
-
-    if (checkSegment(segment)) {
-      return {
-        label: segment,
-        path: `/${segment}`,
-      };
-    }
-
-    if (path.includes(segment)) {
-      return {
-        label: segment,
-        path,
-      };
-    }
-  });
+export const mapBreadcrumbs = (pathname: string): Breadcrumb[] => {
+  const breadcumbs = pathname.split("/").filter((segment) => !!segment.length);
+};

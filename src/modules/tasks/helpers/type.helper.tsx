@@ -79,5 +79,8 @@ export const getTypeIcon = (type: Type) => {
     case "incident": {
       return <ShieldAlert />;
     }
+    default: {
+      return <Feather />;
+    }
   }
 };

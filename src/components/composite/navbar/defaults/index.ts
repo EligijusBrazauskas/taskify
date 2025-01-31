@@ -6,6 +6,10 @@ import {
   taskActionDefaults,
   tasksActionDefaults,
 } from "@/components/composite/navbar/defaults/actions.default";
+import {
+  projectsBreadcrumb,
+  tasksBreadcrumb,
+} from "@/components/composite/navbar/defaults/breadcrumbs.default";
 
 export {
   actionDefaults,
@@ -14,4 +18,6 @@ export {
   taskActionDefaults,
   tasksActionDefaults,
   tagsActionDefaults,
+  projectsBreadcrumb,
+  tasksBreadcrumb,
 };
