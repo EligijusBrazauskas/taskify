@@ -1,5 +1,6 @@
 import { Divider, Flex, Typography } from "@/components/base";
-import { AvatarButton, Badge } from "@/components/composite/shared";
+import { AvatarButton } from "@/components/composite/shared";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -10,8 +11,10 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { DialogTrigger } from "@/components/ui/dialog";
+import { getPriorityColorScheme, getPriorityIcon } from "@/helpers";
 import { taskComments } from "@/mocks";
 import { Project } from "@/modules/projects/interfaces";
+import { getTypeColorScheme, getTypeIcon } from "@/modules/tasks/helpers";
 import { Task as ITask } from "@/modules/tasks/interfaces";
 import { useMatchRoute } from "@tanstack/react-router";
 import { Ellipsis, MessageSquare } from "lucide-react";
@@ -44,12 +47,32 @@ export const Task = ({ task }: TaskProps) => {
       <CardHeader>
         <Flex className="w-full justify-between">
           <Flex className="flex-wrap gap-2">
-            {"type" in task && task.type && <Badge property={task.type} />}
-            {task.priority && <Badge property={task.priority} />}
+            {"type" in task && task.type && (
+              <Badge
+                colorScheme={getTypeColorScheme(task.type)}
+                className="self-center"
+              >
+                {getTypeIcon(task.type)}
+                <Typography className="first-letter:uppercase">
+                  {task.type}
+                </Typography>
+              </Badge>
+            )}
+            {task.priority && (
+              <Badge
+                colorScheme={getPriorityColorScheme(task.priority)}
+                className="self-center"
+              >
+                {getPriorityIcon(task.priority)}
+                <Typography className="first-letter:uppercase">
+                  {task.priority}
+                </Typography>
+              </Badge>
+            )}
           </Flex>
           <Button
             variant="ghost"
-            className="hover:bg-secondary-light"
+            className="self-start hover:bg-secondary-light"
             onClick={handleOnMoreClick}
           >
             <Ellipsis />

@@ -1,5 +1,4 @@
 import { AvatarButton } from "@/components/composite/shared/avatar-button.component";
-import { Badge } from "@/components/composite/shared/badge.component";
 import { Board } from "@/components/composite/shared/board.component";
 import { Column } from "@/components/composite/shared/column.component";
 import { Content } from "@/components/composite/shared/content.component";
@@ -16,6 +15,5 @@ export {
   Header,
   Task,
   StatusLabel,
-  Badge,
   AvatarButton,
 };

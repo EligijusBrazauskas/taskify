@@ -4,7 +4,7 @@ import { TabsContent } from "@/components/ui/tabs";
 
 export const Content = () => (
   <Flex className="h-full overflow-hidden">
-    <TabsContent value="board" className="w-full overflow-hidden">
+    <TabsContent value="board" className="overflow-hidden">
       <Board />
     </TabsContent>
     <TabsContent value="list">
