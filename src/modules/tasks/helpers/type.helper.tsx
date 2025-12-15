@@ -1,3 +1,4 @@
+import { BadgeProps } from "@/components/ui/badge";
 import { Type } from "@/modules/tasks/interfaces";
 import {
   ArrowUpRight,
@@ -12,42 +13,42 @@ import {
   Vote,
 } from "lucide-react";
 
-export const getTypeColorScheme = (type: Type) => {
+export const getTypeColorScheme = (type: Type): BadgeProps["colorScheme"] => {
   switch (type) {
     case "feature": {
-      return "bg-green-100 text-green-700";
+      return "success";
     }
     case "story": {
-      return "bg-lime-100 text-lime-700";
+      return "lime";
     }
     case "epic": {
-      return "bg-emerald-100 text-emerald-700";
+      return "emerald";
     }
     case "improvement": {
-      return "bg-teal-100 text-teal-700";
+      return "teal";
     }
     case "task": {
-      return "bg-cyan-100 text-cyan-700";
+      return "cyan";
     }
     case "sub-task": {
-      return "bg-sky-100 text-sky-700";
+      return "sky";
     }
     case "spike": {
-      return "bg-indigo-100 text-indigo-700";
+      return "indigo";
     }
     case "bug": {
-      return "bg-red-100 text-red-700";
+      return "danger";
     }
     case "chore": {
-      return "bg-yellow-100 text-yellow-700";
+      return "warning";
     }
     case "incident": {
-      return "bg-orange-100 text-orange-700";
+      return "alert";
     }
   }
 };
 
-export const getTypeIcon = (type: Type) => {
+export const getTypeIcon = (type: Type): JSX.Element => {
   switch (type) {
     case "feature": {
       return <Feather />;
@@ -78,6 +79,9 @@ export const getTypeIcon = (type: Type) => {
     }
     case "incident": {
       return <ShieldAlert />;
+    }
+    default: {
+      return <Feather />;
     }
   }
 };

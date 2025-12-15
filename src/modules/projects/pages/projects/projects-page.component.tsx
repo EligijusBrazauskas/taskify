@@ -1,5 +1,5 @@
 import { Flex } from "@/components/base";
-import { Content, Filters } from "@/components/composite/shared";
+import { Content, Filters } from "@/components/composite/page";
 import { Tabs } from "@/components/ui/tabs";
 
 export const ProjectsPage = () => (

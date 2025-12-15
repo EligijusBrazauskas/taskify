@@ -1,5 +1,8 @@
-import { BaseComment } from "@/interfaces";
-
-export interface TaskComment extends BaseComment {
+export interface TaskComment {
+  id: number;
+  ownerId: number;
   taskId: number;
+  content: string;
+  createDate: Date;
+  updateDate?: Date;
 }

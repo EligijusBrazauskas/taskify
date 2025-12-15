@@ -1,8 +1,9 @@
-import { Priority } from "@/interfaces";
 import { Type } from "@/modules/tasks/interfaces";
+import { Priority } from "@/types";
 
 export interface Task {
   id: number;
+  projectId: number;
   statusId: number;
   title: string;
   createDate: Date;
@@ -11,5 +12,4 @@ export interface Task {
   dueDate?: Date;
   priority?: Priority;
   type?: Type;
-  tags?: string[];
 }

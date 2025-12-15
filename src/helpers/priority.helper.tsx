@@ -1,4 +1,6 @@
-import { Priority } from "@/modules/projects/interfaces";
+import { BadgeProps } from "@/components/ui/badge";
+import { Type } from "@/modules/tasks/interfaces";
+import { Priority } from "@/types";
 import {
   CircleDashed,
   CircleDot,
@@ -7,22 +9,24 @@ import {
   CircleEqual,
 } from "lucide-react";
 
-export const getPriorityColorScheme = (priority: Priority) => {
+export const getPriorityColorScheme = (
+  priority: Priority,
+): BadgeProps["colorScheme"] => {
   switch (priority) {
     case "lowest": {
-      return "bg-green-100 text-green-700";
+      return "success";
     }
     case "low": {
-      return "bg-blue-100 text-blue-700";
+      return "neutral";
     }
     case "medium": {
-      return "bg-yellow-100 text-yellow-700";
+      return "warning";
     }
     case "high": {
-      return "bg-orange-100 text-orange-700";
+      return "alert";
     }
     case "highest": {
-      return "bg-red-100 text-red-700";
+      return "danger";
     }
   }
 };
@@ -46,3 +50,6 @@ export const getPriorityIcon = (priority: Priority) => {
     }
   }
 };
+
+export const isPriority = (property: Priority | Type): property is Priority =>
+  ["lowest", "low", "medium", "high", "highest"].includes(property);

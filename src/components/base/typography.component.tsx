@@ -33,6 +33,9 @@ const typographyVariants = cva("", {
       "2xl": "text-2xl",
     },
   },
+  defaultVariants: {
+    size: "default",
+  },
 });
 
 type TypographyProps = (SpanProps | ParagraphProps | HeadingProps) &

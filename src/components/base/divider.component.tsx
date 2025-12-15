@@ -24,11 +24,9 @@ export const Divider = ({
   size,
   orientation,
   ...rest
-}: DividerProps) => {
-  return (
-    <span
-      className={cn(dividerVariants({ className, size, orientation }))}
-      {...rest}
-    />
-  );
-};
+}: DividerProps) => (
+  <span
+    className={cn(dividerVariants({ className, size, orientation }))}
+    {...rest}
+  />
+);

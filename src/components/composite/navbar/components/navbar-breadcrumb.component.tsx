@@ -1,4 +1,4 @@
-import { mapBreadcrumbs } from "@/components/composite/navbar/helpers";
+import { useBreadcrumbs } from "@/components/composite/navbar/hooks";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -6,28 +6,27 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { Link, useLocation } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { Fragment } from "react/jsx-runtime";
 
 export const NavBarBreadcrumb = () => {
-  const { pathname } = useLocation();
-  const pathSegments = pathname.split("/");
+  const breadcrumbs = useBreadcrumbs();
 
   return (
     <Breadcrumb>
       <BreadcrumbList>
-        {mapBreadcrumbs(pathSegments, pathname).map((breadcrumb, index) => (
+        {breadcrumbs.map(({ pathname, label }, index) => (
           <Fragment key={index}>
-            <BreadcrumbSeparator className="text-secondary first:hidden">
-              /
-            </BreadcrumbSeparator>
             <BreadcrumbItem>
               <BreadcrumbLink asChild>
-                <Link to={breadcrumb?.path} className="first-letter:uppercase">
-                  {breadcrumb?.label}
+                <Link to={pathname} className="first-letter:uppercase">
+                  {label}
                 </Link>
               </BreadcrumbLink>
             </BreadcrumbItem>
+            <BreadcrumbSeparator className="text-secondary last:hidden">
+              /
+            </BreadcrumbSeparator>
           </Fragment>
         ))}
       </BreadcrumbList>

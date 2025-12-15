@@ -43,11 +43,11 @@ export const NavBarActions = () => {
     <Flex className="gap-2">
       {getActionDefaults(pathname).map(({ icon, label }, index) => (
         <Fragment key={index}>
+          {index === 1 && <Divider />}
           <Button variant="ghost">
             {icon}
             {isXl && !index && <Typography>{label}</Typography>}
           </Button>
-          {!index && <Divider />}
         </Fragment>
       ))}
     </Flex>
