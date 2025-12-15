@@ -1,5 +1,5 @@
 import { Flex } from "@/components/base";
-import { Board } from "@/components/composite/shared";
+import { Board } from "@/components/composite/board";
 import { TabsContent } from "@/components/ui/tabs";
 
 export const Content = () => (

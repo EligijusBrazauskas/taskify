@@ -3,5 +3,5 @@ html * {
 }
 
 body {
-  @apply bg-secondary-body;
+  @apply bg-secondary-soft;
 }

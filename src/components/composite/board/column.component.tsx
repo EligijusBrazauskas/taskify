@@ -1,5 +1,5 @@
 import { Flex } from "@/components/base";
-import { Header, Task } from "@/components/composite/shared";
+import { Header, Task } from "@/components/composite/board";
 import { Status } from "@/interfaces";
 import { projects } from "@/mocks";
 import { tasks } from "@/mocks/tasks.mock";

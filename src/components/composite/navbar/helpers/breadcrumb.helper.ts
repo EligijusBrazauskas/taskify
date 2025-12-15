@@ -7,6 +7,7 @@ export const checkSegment = (segment: string) =>
   segment === "comments" ||
   segment === "activity";
 
+// @ts-ignore
 export const mapBreadcrumbs = (pathname: string): Breadcrumb[] => {
   const breadcumbs = pathname.split("/").filter((segment) => !!segment.length);
 };

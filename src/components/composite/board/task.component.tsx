@@ -41,7 +41,7 @@ export const Task = ({ task }: TaskProps) => {
 
   const cardContent = (
     <Card
-      className="cursor-pointer transition-all duration-200 hover:bg-secondary-body focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      className="cursor-pointer transition-all duration-200 hover:bg-secondary-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
       tabIndex={0}
     >
       <CardHeader>

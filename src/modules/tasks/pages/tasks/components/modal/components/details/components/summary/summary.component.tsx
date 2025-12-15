@@ -1,5 +1,6 @@
 import { Flex, Typography } from "@/components/base";
-import { AvatarButton, StatusLabel } from "@/components/composite/shared";
+import { StatusLabel } from "@/components/composite/board";
+import { AvatarButton } from "@/components/composite/shared";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardDescription } from "@/components/ui/card";
 import { getPriorityColorScheme, getPriorityIcon } from "@/helpers";

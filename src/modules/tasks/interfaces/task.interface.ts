@@ -1,5 +1,5 @@
-import { Priority } from "@/interfaces";
 import { Type } from "@/modules/tasks/interfaces";
+import { Priority } from "@/types";
 
 export interface Task {
   id: number;

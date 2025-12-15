@@ -13,6 +13,7 @@ import { useEffect } from "react";
 export const App = () => {
   const { toast } = useToast();
 
+  //TODO: Show toast to maybe suggest creating a first project
   useEffect(() => {
     toast({
       title: "Start by creating your first project.",

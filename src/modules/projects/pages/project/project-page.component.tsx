@@ -1,5 +1,5 @@
 import { Flex } from "@/components/base";
-import { Content, Filters } from "@/components/composite/shared";
+import { Content, Filters } from "@/components/composite/page";
 import { Dialog } from "@/components/ui/dialog";
 import { Tabs } from "@/components/ui/tabs";
 import { Header } from "@/modules/projects/pages/project";

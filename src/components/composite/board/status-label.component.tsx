@@ -11,7 +11,7 @@ export const StatusLabel = ({ status }: StatusLabelProps) => (
   <Flex className="items-center justify-center gap-2 truncate">
     <Box
       className={cn(
-        "relative -after:top-px -after:left-px flex size-3 flex-shrink-0 items-center justify-center rounded-full after:absolute after:size-2.5 after:rounded-full after:bg-secondary-body after:content-['_']",
+        "relative -after:top-px -after:left-px flex size-3 flex-shrink-0 items-center justify-center rounded-full after:absolute after:size-2.5 after:rounded-full after:bg-secondary-soft after:content-['_']",
         getStatusColor(status.color),
       )}
     />

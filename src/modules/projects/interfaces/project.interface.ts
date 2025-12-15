@@ -1,4 +1,4 @@
-import { Priority } from "@/interfaces/priority.type";
+import { Priority } from "@/types/priority.type";
 
 export interface Project {
   id: number;

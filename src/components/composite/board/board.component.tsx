@@ -1,4 +1,4 @@
-import { Column } from "@/components/composite/shared";
+import { Column } from "@/components/composite/board";
 import { ScrollBar } from "@/components/ui/scroll-area";
 import { Status } from "@/interfaces";
 import { statuses } from "@/mocks";

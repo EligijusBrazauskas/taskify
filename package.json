@@ -10,7 +10,8 @@
     "prepare": "husky",
     "format": "biome format --write",
     "lint": "biome lint --write",
-    "check": "biome check --write"
+    "check": "biome check --write",
+    "typescript": "npx tsc -p tsconfig.app.json --noEmit"
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.1.2",
