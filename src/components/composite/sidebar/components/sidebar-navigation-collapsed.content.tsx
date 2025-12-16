@@ -20,7 +20,9 @@ export const SideBarNavigationCollapsed = ({
         <SidebarMenuSubItem key={item.id} className="group/action">
           {item.type === "link" ? (
             <Button asChild variant="ghost" className="w-full">
-              <Link to={item.path}>{item.icon}</Link>
+              <Link to={item.path} params={item.params}>
+                {item.icon}
+              </Link>
             </Button>
           ) : (
             <Button variant="ghost" className="w-full" onClick={item.onClick}>

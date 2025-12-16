@@ -16,7 +16,7 @@ import { taskComments } from "@/mocks";
 import { Project } from "@/modules/projects/interfaces";
 import { getTypeColorScheme, getTypeIcon } from "@/modules/tasks/helpers";
 import { Task as ITask } from "@/modules/tasks/interfaces";
-import { useMatchRoute } from "@tanstack/react-router";
+import { Link, useMatchRoute } from "@tanstack/react-router";
 import { Ellipsis, MessageSquare } from "lucide-react";
 import { MouseEvent } from "react";
 
@@ -114,6 +114,14 @@ export const Task = ({ task }: TaskProps) => {
     matchRoute({ to: "/tasks" })
   ) {
     return <DialogTrigger asChild>{cardContent}</DialogTrigger>;
+  }
+
+  if (matchRoute({ to: "/projects" })) {
+    return (
+      <Link to="/projects/$projectId" params={{ projectId: String(task.id) }}>
+        {cardContent}
+      </Link>
+    );
   }
 
   return cardContent;

@@ -56,7 +56,10 @@ export const SideBarNavigation = ({
                       className={clsx(
                         "group/action rounded-md transition-all hover:bg-secondary-light",
                         item.type === "link" &&
-                          !!matchRoute({ to: item.path }) &&
+                          !!matchRoute({
+                            to: item.path,
+                            params: item.params,
+                          }) &&
                           "bg-secondary-light",
                       )}
                     >
@@ -67,7 +70,7 @@ export const SideBarNavigation = ({
                           className="w-full justify-start"
                           onClick={onClick}
                         >
-                          <Link to={item.path}>
+                          <Link to={item.path} params={item.params}>
                             {item.icon}
                             {item.label}
                           </Link>

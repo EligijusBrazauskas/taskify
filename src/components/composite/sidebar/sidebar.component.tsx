@@ -29,7 +29,8 @@ export const SideBar = () => {
         ...mockPinnedProjectsData.data.map((item) => ({
           ...item,
           type: "link" as const,
-          path: `/projects/${item.id}`,
+          path: "/projects/$projectId",
+          params: { projectId: String(item.id) },
           icon: <FolderOpen />,
           action: {
             icon: <PinOff />,

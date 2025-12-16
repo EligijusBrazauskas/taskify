@@ -23,6 +23,7 @@ export interface MenuButton extends MenuItemBase {
 export interface MenuLink extends MenuItemBase {
   type: "link";
   path?: Path;
+  params?: Record<string, string>;
 }
 
 export type MenuItem = MenuButton | MenuLink;
