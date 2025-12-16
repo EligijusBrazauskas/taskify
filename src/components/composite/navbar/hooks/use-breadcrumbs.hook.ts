@@ -2,6 +2,7 @@ import {
   projectsBreadcrumb,
   tasksBreadcrumb,
 } from "@/components/composite/navbar/defaults";
+import { projects, tasks } from "@/mocks";
 import { useMatchRoute } from "@tanstack/react-router";
 
 export const useBreadcrumbs = () => {
@@ -19,8 +20,9 @@ export const useBreadcrumbs = () => {
     return [
       ...projectsBreadcrumb,
       {
-        label: "Project",
-        pathname: `/projects/${projectId}`,
+        label: projects.find(({ id }) => projectId === String(id))?.title,
+        pathname: "/projects/$projectId",
+        params: { projectId },
       },
     ];
   }
@@ -35,8 +37,9 @@ export const useBreadcrumbs = () => {
     return [
       ...tasksBreadcrumb,
       {
-        label: "Task",
-        pathname: `/tasks/${taskId}`,
+        label: tasks.find(({ id }) => taskId === String(id))?.title,
+        pathname: "/tasks/$taskId",
+        params: { taskId },
       },
     ];
   }
