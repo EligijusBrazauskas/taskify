@@ -6,7 +6,7 @@ import { projects } from "@/mocks";
 import { useParams } from "@tanstack/react-router";
 import { BookOpenText } from "lucide-react";
 
-export const Header = () => {
+export const PageHeader = () => {
   const { projectId } = useParams({ from: "/projects/$projectId/" });
   const project = projects.find(({ id }) => String(id) === projectId);
 

@@ -1,46 +1,43 @@
 import { Status } from "@/interfaces";
 
-export const statuses: Status[] = [
+export const taskStatuses: Status[] = [
   {
     id: 1,
     label: "To-do",
     order: 1,
-    type: "task",
     color: "secondary",
   },
   {
     id: 2,
     label: "In Progress",
     order: 2,
-    type: "task",
     color: "blue",
   },
   {
     id: 3,
     label: "Done",
     order: 3,
-    type: "task",
     color: "green",
   },
+];
+
+export const projectStatuses: Status[] = [
   {
-    id: 4,
+    id: 1,
     label: "To-do",
     order: 1,
-    type: "project",
     color: "secondary",
   },
   {
-    id: 5,
+    id: 2,
     label: "In Progress",
     order: 2,
-    type: "project",
     color: "blue",
   },
   {
-    id: 6,
+    id: 3,
     label: "Cancelled",
     order: 3,
-    type: "project",
     color: "red",
   },
 ];

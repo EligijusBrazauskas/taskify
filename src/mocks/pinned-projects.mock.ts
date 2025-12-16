@@ -1,10 +1,10 @@
 import { MenuItemRecord } from "@/components/composite/sidebar/interfaces";
 
-export interface mockPinnedProjectsResponse {
+export interface MockPinnedProjectsResponse {
   data: MenuItemRecord[];
 }
 
-export const mockPinnedProjectsData: mockPinnedProjectsResponse = {
+export const mockPinnedProjectsData: MockPinnedProjectsResponse = {
   data: [
     {
       id: 1,

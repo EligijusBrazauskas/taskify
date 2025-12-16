@@ -8,7 +8,7 @@ interface SummaryItemProps
   icon?: ReactNode;
 }
 
-export const SummaryItem = ({
+export const TaskModalSummaryItem = ({
   label,
   icon,
   children,

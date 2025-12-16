@@ -37,7 +37,7 @@
       "correctness": {
         "noUnusedVariables": "warn",
         "noUnusedImports": "error",
-        "useExhaustiveDependencies": "off"
+        "useExhaustiveDependencies": "warn"
       },
       "suspicious": {
         "noConsoleLog": "error",

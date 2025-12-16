@@ -4,7 +4,7 @@ export const projects: Project[] = [
   {
     id: 1,
     ownerId: 1,
-    statusId: 4,
+    statusId: 1,
     title: "Project 1",
     description: "This is my project",
     createDate: new Date(),
@@ -16,7 +16,7 @@ export const projects: Project[] = [
   {
     id: 2,
     ownerId: 1,
-    statusId: 5,
+    statusId: 2,
     title: "Project 2",
     createDate: new Date(),
     dueDate: new Date(),
@@ -27,7 +27,7 @@ export const projects: Project[] = [
   {
     id: 3,
     ownerId: 1,
-    statusId: 6,
+    statusId: 3,
     title: "Project 3",
     createDate: new Date(),
     dueDate: new Date(),

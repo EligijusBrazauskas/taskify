@@ -7,7 +7,6 @@ export type StatusColor =
   | "green";
 
 export interface Status {
-  type: "project" | "task";
   id: number;
   label: string;
   order: number;

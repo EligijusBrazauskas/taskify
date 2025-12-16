@@ -16,7 +16,7 @@ import { taskComments } from "@/mocks";
 import { Project } from "@/modules/projects/interfaces";
 import { getTypeColorScheme, getTypeIcon } from "@/modules/tasks/helpers";
 import { Task as ITask } from "@/modules/tasks/interfaces";
-import { Link, useMatchRoute } from "@tanstack/react-router";
+import { Link, useMatchRoute, useNavigate } from "@tanstack/react-router";
 import { Ellipsis, MessageSquare } from "lucide-react";
 import { MouseEvent } from "react";
 
@@ -25,7 +25,15 @@ interface TaskProps {
 }
 
 export const Task = ({ task }: TaskProps) => {
+  const navigate = useNavigate();
   const matchRoute = useMatchRoute();
+
+  const handleModalOnClick = () => {
+    navigate({
+      from: "/projects/$projectId",
+      search: (previous) => ({ ...previous, taskId: task.id }),
+    });
+  };
 
   const handleOnCommentsClick = (event: MouseEvent<HTMLButtonElement>) => {
     event.stopPropagation();
@@ -113,7 +121,11 @@ export const Task = ({ task }: TaskProps) => {
     matchRoute({ to: "/projects/$projectId" }) ||
     matchRoute({ to: "/tasks" })
   ) {
-    return <DialogTrigger asChild>{cardContent}</DialogTrigger>;
+    return (
+      <DialogTrigger onClick={handleModalOnClick} asChild>
+        {cardContent}
+      </DialogTrigger>
+    );
   }
 
   if (matchRoute({ to: "/projects" })) {
