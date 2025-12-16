@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { DialogHeader } from "@/components/ui/dialog";
 import { Edit, Ellipsis, Maximize2 } from "lucide-react";
 
-export const Header = () => (
+export const TaskModalHeader = () => (
   <DialogHeader className="p-2">
     <Flex className="mr-2 w-full justify-between">
       <Flex className="gap-2">

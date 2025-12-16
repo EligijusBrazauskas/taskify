@@ -1,7 +1,7 @@
 import { Divider, Flex } from "@/components/base";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-export const DetailsTabs = () => (
+export const TaskModalDetailsTabs = () => (
   <Tabs
     defaultValue="subtasks"
     className="flex h-full w-full flex-col items-start"

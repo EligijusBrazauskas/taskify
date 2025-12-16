@@ -1,33 +1,28 @@
 import { Divider, Flex } from "@/components/base";
 import { NavBar } from "@/components/composite/navbar";
 import { SideBar } from "@/components/composite/sidebar";
-import { Button } from "@/components/ui/button";
 import { SidebarProvider } from "@/components/ui/sidebar";
-import { ToastAction } from "@/components/ui/toast";
 import { Toaster } from "@/components/ui/toaster";
-import { useToast } from "@/hooks";
 import { Outlet } from "@tanstack/react-router";
-import { Plus } from "lucide-react";
-import { useEffect } from "react";
 
 export const App = () => {
-  const { toast } = useToast();
+  // const { toast } = useToast();
 
   //TODO: Show toast to maybe suggest creating a first project
-  useEffect(() => {
-    toast({
-      title: "Start by creating your first project.",
-      description: "Add issues to your projects to start task planning.",
-      action: (
-        <ToastAction altText="Add a new project" asChild>
-          <Button className="self-start">
-            <Plus />
-            New Project
-          </Button>
-        </ToastAction>
-      ),
-    });
-  }, []);
+  // useEffect(() => {
+  //   toast({
+  //     title: "Start by creating your first project.",
+  //     description: "Add issues to your projects to start task planning.",
+  //     action: (
+  //       <ToastAction altText="Add a new project" asChild>
+  //         <Button className="self-start">
+  //           <Plus />
+  //           New Project
+  //         </Button>
+  //       </ToastAction>
+  //     ),
+  //   });
+  // }, [toast]);
 
   return (
     <SidebarProvider>

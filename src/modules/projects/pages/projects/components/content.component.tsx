@@ -1,11 +1,16 @@
 import { Flex } from "@/components/base";
-import { Board } from "@/components/composite/board";
 import { TabsContent } from "@/components/ui/tabs";
+import { Project } from "@/modules/projects/interfaces";
+import { Board } from "@/modules/projects/pages/projects/components";
 
-export const Content = () => (
+interface ContentProps {
+  projects: Project[];
+}
+
+export const Content = ({ projects }: ContentProps) => (
   <Flex className="h-full overflow-hidden">
     <TabsContent value="board" className="overflow-hidden">
-      <Board />
+      <Board projects={projects} />
     </TabsContent>
     <TabsContent value="list">
       <Flex>List</Flex>
