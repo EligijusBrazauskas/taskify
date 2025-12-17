@@ -6,7 +6,7 @@ import { Content } from "@/modules/projects/pages/projects/components";
 
 export const ProjectsPage = () => {
   //TODO: add user specific created projects when user login is ready
-  const { data: projects, isLoading } = useProjectsQuery();
+  const { data: projects } = useProjectsQuery();
 
   return (
     <Flex className="h-full flex-col overflow-hidden">

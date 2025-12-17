@@ -15,7 +15,7 @@ import { getPriorityColorScheme, getPriorityIcon } from "@/helpers";
 import { taskComments } from "@/mocks";
 import { getTypeColorScheme, getTypeIcon } from "@/modules/tasks/helpers";
 import { Task } from "@/modules/tasks/interfaces";
-import { useNavigate } from "@tanstack/react-router";
+import { Route } from "@/routes/projects/$projectId";
 import { Ellipsis, MessageSquare } from "lucide-react";
 import { MouseEvent } from "react";
 
@@ -24,11 +24,10 @@ interface ColumnItem {
 }
 
 export const ColumnItem = ({ task }: ColumnItem) => {
-  const navigate = useNavigate();
+  const navigate = Route.useNavigate();
 
   const handleModalOnClick = () => {
     navigate({
-      from: "/projects/$projectId",
       search: (previous) => ({ ...previous, taskId: task.id }),
     });
   };
