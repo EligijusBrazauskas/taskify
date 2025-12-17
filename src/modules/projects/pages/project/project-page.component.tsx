@@ -9,20 +9,19 @@ import {
   Content,
   PageHeader,
 } from "@/modules/projects/pages/project/components";
-import { useNavigate, useSearch } from "@tanstack/react-router";
+import { Route } from "@/routes/projects/$projectId";
 import { useEffect } from "react";
 
 export const ProjectPage = () => {
-  const navigate = useNavigate();
   const { toast } = useToast();
-  const { taskId } = useSearch({ from: "/projects/$projectId/" });
+  const navigate = Route.useNavigate();
+  const { taskId } = Route.useSearch();
   const { data: tasks, isSuccess } = useTasksQuery();
   const task = tasks.find(({ id }) => id === taskId);
 
   useEffect(() => {
     if (isSuccess && taskId && !task) {
       navigate({
-        from: "/projects/$projectId",
         search: (previous) => ({ ...previous, taskId: undefined }),
       });
 
@@ -35,7 +34,6 @@ export const ProjectPage = () => {
   const handleOnOpenChange = (open: boolean) => {
     if (!open) {
       navigate({
-        from: "/projects/$projectId",
         search: (previous) => ({ ...previous, taskId: undefined }),
       });
     }

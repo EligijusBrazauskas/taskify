@@ -12,10 +12,6 @@ interface ColumnProps {
 }
 
 export const Column = ({ status, tasks }: ColumnProps) => {
-  // const { projectId } = useParams({
-  //   from: "/projects/$projectId/",
-  // });
-
   //TODO: for now filtering all tasks to get specific ones, implement requests to get tasks by status
   const filteredTasks = tasks.filter((task) => task.statusId === status.id);
 
