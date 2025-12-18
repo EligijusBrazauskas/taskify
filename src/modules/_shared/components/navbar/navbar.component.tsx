@@ -1,16 +1,20 @@
 import { Divider } from "@/components/base";
 import { Flex } from "@/components/base/flex.component";
-import { NavBarActions } from "@/components/composite/navbar/components/navbar-actions.component";
-import { NavBarBreadcrumb } from "@/components/composite/navbar/components/navbar-breadcrumb.component";
 import { SideBarTrigger } from "@/components/composite/sidebar";
+import { ReactNode } from "react";
 
-export const NavBar = () => (
+interface NavBarProps {
+  BreadCrumbs?: ReactNode;
+  Actions?: ReactNode;
+}
+
+export const NavBar = ({ BreadCrumbs, Actions }: NavBarProps) => (
   <Flex className="justify-between p-2">
     <Flex className="items-center gap-2">
       <SideBarTrigger />
       <Divider />
-      <NavBarBreadcrumb />
+      {BreadCrumbs}
     </Flex>
-    <NavBarActions />
+    {Actions}
   </Flex>
 );

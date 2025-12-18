@@ -23,7 +23,7 @@ export const projectsQueryOptions = queryOptions({
 
 export const useProjectsSuspenseQuery = () => {
   //TODO: Implement real query function
-  const queryFn = async () => {};
+  // const queryFn = async () => {};
 
   return useSuspenseQuery(projectsQueryOptions);
 };

@@ -14,7 +14,7 @@ import {
   SidebarMenuSub,
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
-import { Link, useMatchRoute } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import clsx from "clsx";
 import { ChevronDown } from "lucide-react";
 
@@ -28,7 +28,6 @@ export const SideBarNavigation = ({
   onClick,
 }: SideBarNavigationProps) => {
   const { label, children } = group;
-  const matchRoute = useMatchRoute();
 
   return (
     <SidebarGroup>
@@ -55,12 +54,6 @@ export const SideBarNavigation = ({
                       key={item.id}
                       className={clsx(
                         "group/action rounded-md transition-all hover:bg-secondary-light",
-                        item.type === "link" &&
-                          !!matchRoute({
-                            to: item.path,
-                            params: item.params,
-                          }) &&
-                          "bg-secondary-light",
                       )}
                     >
                       {item.type === "link" ? (
@@ -70,7 +63,16 @@ export const SideBarNavigation = ({
                           className="w-full justify-start"
                           onClick={onClick}
                         >
-                          <Link to={item.path} params={item.params}>
+                          <Link
+                            to={item.to?.to}
+                            params={item.to?.params}
+                            activeOptions={{
+                              exact: true,
+                            }}
+                            activeProps={{
+                              className: "bg-secondary-light",
+                            }}
+                          >
                             {item.icon}
                             {item.label}
                           </Link>

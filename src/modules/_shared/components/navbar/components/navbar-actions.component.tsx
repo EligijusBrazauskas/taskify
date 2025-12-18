@@ -1,5 +1,4 @@
 import { Divider, Flex, Typography } from "@/components/base";
-import { getActionDefaults } from "@/components/composite/navbar/helpers";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -8,14 +7,17 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useBreakpoint, useContainerQuery } from "@/hooks";
-import { useLocation } from "@tanstack/react-router";
+import { DropdownItem } from "@/modules/_shared/interfaces";
 import { Ellipsis } from "lucide-react";
 import { Fragment } from "react/jsx-runtime";
 
-export const NavBarActions = () => {
+interface NavBarActionsProps {
+  actions: DropdownItem[];
+}
+
+export const NavBarActions = ({ actions }: NavBarActionsProps) => {
   const [isSm] = useBreakpoint(["sm"]);
   const [isXl] = useContainerQuery();
-  const { pathname } = useLocation();
 
   if (isSm) {
     return (
@@ -26,14 +28,12 @@ export const NavBarActions = () => {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          {getActionDefaults(pathname).map(
-            ({ icon, label, onClick }, index) => (
-              <DropdownMenuItem key={index} onClick={onClick}>
-                {icon}
-                {label}
-              </DropdownMenuItem>
-            ),
-          )}
+          {actions.map(({ icon, label, onClick }, index) => (
+            <DropdownMenuItem key={index} onClick={onClick}>
+              {icon}
+              {label}
+            </DropdownMenuItem>
+          ))}
         </DropdownMenuContent>
       </DropdownMenu>
     );
@@ -41,7 +41,7 @@ export const NavBarActions = () => {
 
   return (
     <Flex className="gap-2">
-      {getActionDefaults(pathname).map(({ icon, label }, index) => (
+      {actions.map(({ icon, label }, index) => (
         <Fragment key={index}>
           {index === 1 && <Divider />}
           <Button variant="ghost">

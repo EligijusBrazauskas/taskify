@@ -18,7 +18,7 @@ const mockQueryFn = (mode = "resolve"): SuccessResponse<Status[]> => {
 
 export const useProjectStatusesQuery = () => {
   //TODO: Implement real query function
-  const queryFn = async () => {};
+  // const queryFn = async () => {};
 
   const { data, isLoading, isSuccess, error } = useQuery({
     queryKey: ["projectStatuses"],

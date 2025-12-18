@@ -1,8 +1,16 @@
-import { Flex } from "@/components/base";
+import { Divider, Flex } from "@/components/base";
 import { Dialog } from "@/components/ui/dialog";
 import { Tabs } from "@/components/ui/tabs";
 import { useToast } from "@/hooks";
 import { Filters } from "@/modules/_shared/components";
+import {
+  NavBar,
+  NavBarActions,
+  NavBarBreadcrumbs,
+  projectActions,
+  projectBreadcrumbs,
+} from "@/modules/_shared/components/navbar";
+import { useProjectsSuspenseQuery } from "@/modules/projects/api/queries";
 import {
   Content,
   PageHeader,
@@ -16,11 +24,19 @@ export const ProjectPage = () => {
   const { toast } = useToast();
   const navigate = Route.useNavigate();
   const { taskId } = Route.useSearch();
+  const { projectId } = Route.useParams();
   const {
     data: { data: tasks },
     isSuccess,
   } = useTasksSuspenseQuery();
   const task = tasks.find(({ id }) => id === taskId);
+
+  //TODO: must be a better way to get a project title for breadcrumb (but maybe cache helpes here)
+  const {
+    data: { data: projects },
+  } = useProjectsSuspenseQuery();
+
+  const project = projects.find((project) => String(project.id) === projectId);
 
   useEffect(() => {
     if (isSuccess && taskId && !task) {
@@ -43,7 +59,19 @@ export const ProjectPage = () => {
   };
 
   return (
-    <Flex className="h-full flex-col overflow-hidden">
+    <Flex className="h-full w-full flex-col overflow-hidden">
+      <NavBar
+        BreadCrumbs={
+          <NavBarBreadcrumbs
+            breadcrumbs={projectBreadcrumbs(
+              project?.title ?? "Project",
+              projectId,
+            )}
+          />
+        }
+        Actions={<NavBarActions actions={projectActions} />}
+      />
+      <Divider orientation="horizontal" />
       <PageHeader />
       <Tabs
         defaultValue="board"

@@ -1,4 +1,4 @@
-import { Path } from "@/types/path.type";
+import { ToOptions } from "@tanstack/react-router";
 import { JSX } from "react";
 
 export interface MenuItemRecord {
@@ -23,8 +23,7 @@ export interface MenuButton extends MenuItemBase {
 
 export interface MenuLink extends MenuItemBase {
   type: "link";
-  path?: Path;
-  params?: Record<string, string>;
+  to?: ToOptions;
 }
 
 export type MenuItem = MenuButton | MenuLink;

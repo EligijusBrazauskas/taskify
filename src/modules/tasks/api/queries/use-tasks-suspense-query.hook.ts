@@ -23,7 +23,7 @@ export const tasksQueryOptions = queryOptions({
 
 export const useTasksSuspenseQuery = () => {
   //TODO: Implement real query function
-  const queryFn = async () => {};
+  // const queryFn = async () => {};
 
   return useSuspenseQuery(tasksQueryOptions);
 };

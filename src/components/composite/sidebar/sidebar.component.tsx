@@ -6,6 +6,7 @@ import {
 } from "@/components/composite/sidebar";
 import { sidebarNavigationDefaults } from "@/components/composite/sidebar/defaults";
 import { MenuGroup } from "@/components/composite/sidebar/interfaces";
+import { MenuLink } from "@/components/composite/sidebar/interfaces/sidebar-navigation.interface";
 import {
   Sidebar,
   SidebarContent,
@@ -26,17 +27,22 @@ export const SideBar = () => {
     {
       label: "PINNED PROJECTS",
       children: [
-        ...mockPinnedProjectsData.data.map((item) => ({
-          ...item,
-          type: "link" as const,
-          path: "/projects/$projectId",
-          params: { projectId: String(item.id) },
-          icon: <FolderOpen />,
-          action: {
-            icon: <PinOff />,
-            onClick: () => console.log("unpin"),
-          },
-        })),
+        ...mockPinnedProjectsData.data.map(
+          (item) =>
+            ({
+              ...item,
+              type: "link",
+              to: {
+                to: "/projects/$projectId",
+                params: { projectId: String(item.id) },
+              },
+              icon: <FolderOpen />,
+              action: {
+                icon: <PinOff />,
+                onClick: () => console.log("unpin"),
+              },
+            }) satisfies MenuLink,
+        ),
         {
           id: "new-project",
           type: "button",
