@@ -1,4 +1,5 @@
 import { Path } from "@/types/path.type";
+import { JSX } from "react";
 
 export interface MenuItemRecord {
   id: number | string;

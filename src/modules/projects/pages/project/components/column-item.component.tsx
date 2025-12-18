@@ -11,9 +11,15 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { DialogTrigger } from "@/components/ui/dialog";
-import { getPriorityColorScheme, getPriorityIcon } from "@/helpers";
 import { taskComments } from "@/mocks";
-import { getTypeColorScheme, getTypeIcon } from "@/modules/tasks/helpers";
+import {
+  priorityColorSchemeMap,
+  priorityIconMap,
+} from "@/modules/_shared/defaults";
+import {
+  taskTypeColorSchemeMap,
+  taskTypeIconMap,
+} from "@/modules/tasks/defaults";
 import { Task } from "@/modules/tasks/interfaces";
 import { Route } from "@/routes/projects/$projectId";
 import { Ellipsis, MessageSquare } from "lucide-react";
@@ -47,7 +53,7 @@ export const ColumnItem = ({ task }: ColumnItem) => {
   return (
     <DialogTrigger onClick={handleModalOnClick} asChild>
       <Card
-        className="cursor-pointer transition-all duration-200 hover:bg-secondary-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        className="cursor-pointer transition-all duration-200 hover:bg-secondary-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         tabIndex={0}
       >
         <CardHeader>
@@ -55,10 +61,10 @@ export const ColumnItem = ({ task }: ColumnItem) => {
             <Flex className="flex-wrap gap-2">
               {task.type && (
                 <Badge
-                  colorScheme={getTypeColorScheme(task.type)}
+                  colorScheme={taskTypeColorSchemeMap[task.type]}
                   className="self-center"
                 >
-                  {getTypeIcon(task.type)}
+                  {taskTypeIconMap[task.type]}
                   <Typography className="first-letter:uppercase">
                     {task.type}
                   </Typography>
@@ -66,10 +72,10 @@ export const ColumnItem = ({ task }: ColumnItem) => {
               )}
               {task.priority && (
                 <Badge
-                  colorScheme={getPriorityColorScheme(task.priority)}
+                  colorScheme={priorityColorSchemeMap[task.priority]}
                   className="self-center"
                 >
-                  {getPriorityIcon(task.priority)}
+                  {priorityIconMap[task.priority]}
                   <Typography className="first-letter:uppercase">
                     {task.priority}
                   </Typography>

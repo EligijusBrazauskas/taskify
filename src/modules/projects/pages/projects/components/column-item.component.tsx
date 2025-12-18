@@ -10,7 +10,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { getPriorityColorScheme, getPriorityIcon } from "@/helpers";
+import {
+  priorityColorSchemeMap,
+  priorityIconMap,
+} from "@/modules/_shared/defaults";
 import { Project } from "@/modules/projects/interfaces";
 import { Link } from "@tanstack/react-router";
 import { Ellipsis } from "lucide-react";
@@ -32,7 +35,7 @@ export const ColumnItem = ({ project }: ColumnItem) => {
   return (
     <Link to="/projects/$projectId" params={{ projectId: String(project.id) }}>
       <Card
-        className="cursor-pointer transition-all duration-200 hover:bg-secondary-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+        className="cursor-pointer transition-all duration-200 hover:bg-secondary-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
         tabIndex={0}
       >
         <CardHeader>
@@ -40,10 +43,10 @@ export const ColumnItem = ({ project }: ColumnItem) => {
             <Flex className="flex-wrap gap-2">
               {project.priority && (
                 <Badge
-                  colorScheme={getPriorityColorScheme(project.priority)}
+                  colorScheme={priorityColorSchemeMap[project.priority]}
                   className="self-center"
                 >
-                  {getPriorityIcon(project.priority)}
+                  {priorityIconMap[project.priority]}
                   <Typography className="first-letter:uppercase">
                     {project.priority}
                   </Typography>

@@ -1,0 +1,9 @@
+@layer base {
+  :root {
+    --primary: 239.31 15% 20%;
+    --secondary: 240.09 7% 53%;
+    --secondary-background: 225 35% 98%;
+    --secondary-light: 240 20% 93%;
+    --secondary-medium: 240 9% 74%;
+  }
+}

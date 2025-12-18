@@ -1,1 +1,2 @@
-@import "./default/index.css";
+@import "./base.variable.css";
+@import "./sidebar.variable.css";

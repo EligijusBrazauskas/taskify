@@ -1,14 +1,14 @@
-import { useTasksQuery } from "@/api/queries";
 import { Flex } from "@/components/base";
-import { Filters } from "@/components/composite/page";
 import { Dialog } from "@/components/ui/dialog";
 import { Tabs } from "@/components/ui/tabs";
 import { useToast } from "@/hooks";
-import { TaskModal } from "@/modules/_shared/components/task-modal.component.tsx";
+import { Filters } from "@/modules/_shared/components";
 import {
   Content,
   PageHeader,
 } from "@/modules/projects/pages/project/components";
+import { useTasksSuspenseQuery } from "@/modules/tasks/api/queries";
+import { TaskModal } from "@/modules/tasks/components/task-modal";
 import { Route } from "@/routes/projects/$projectId";
 import { useEffect } from "react";
 
@@ -19,7 +19,7 @@ export const ProjectPage = () => {
   const {
     data: { data: tasks },
     isSuccess,
-  } = useTasksQuery();
+  } = useTasksSuspenseQuery();
   const task = tasks.find(({ id }) => id === taskId);
 
   useEffect(() => {

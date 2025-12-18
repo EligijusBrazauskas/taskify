@@ -1,4 +1,4 @@
-export type Type =
+export type TaskType =
   | "feature"
   | "bug"
   | "task"
