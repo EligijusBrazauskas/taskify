@@ -1,5 +1,4 @@
-import { Divider, Flex } from "@/components/base";
-import { NavBar } from "@/components/composite/navbar";
+import { Flex } from "@/components/base";
 import { SideBar } from "@/components/composite/sidebar";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { Toaster } from "@/components/ui/toaster";
@@ -28,9 +27,7 @@ export const App = () => {
     <SidebarProvider>
       <SideBar />
       <Flex className="max-h-[100dvh] w-full md:py-2 md:pr-2">
-        <Flex className="@container container-main h-full w-full flex-col overflow-hidden border bg-white md:rounded-lg">
-          <NavBar />
-          <Divider orientation="horizontal" />
+        <Flex className="@container container-main h-full w-full overflow-hidden border bg-white md:rounded-lg">
           <Outlet />
         </Flex>
       </Flex>

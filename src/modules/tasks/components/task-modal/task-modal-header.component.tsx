@@ -1,9 +1,11 @@
 import { Divider, Flex } from "@/components/base";
-import { NavBarBreadcrumb } from "@/components/composite/navbar/components/navbar-breadcrumb.component";
 import { Button } from "@/components/ui/button";
 import { DialogHeader } from "@/components/ui/dialog";
+import { NavBarBreadcrumbs } from "@/modules/_shared/components/navbar";
+import { taskBreadcrumbs } from "@/modules/_shared/components/navbar/defaults";
 import { Edit, Ellipsis, Maximize2 } from "lucide-react";
 
+//TODO: Add modal to project overview
 export const TaskModalHeader = () => (
   <DialogHeader className="p-2">
     <Flex className="mr-2 w-full justify-between">
@@ -15,7 +17,7 @@ export const TaskModalHeader = () => (
           <Edit />
         </Button>
         <Divider />
-        <NavBarBreadcrumb />
+        <NavBarBreadcrumbs breadcrumbs={taskBreadcrumbs("TEST", "TEST")} />
       </Flex>
       <Button variant="ghost">
         <Ellipsis />

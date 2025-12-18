@@ -18,7 +18,7 @@ export const useTaskStatusesQuery = () => {
   };
 
   //TODO: Implement real query function
-  const queryFn = async () => {};
+  // const queryFn = async () => {};
 
   const { data, isLoading, isSuccess, error } = useQuery({
     queryKey: ["taskStatuses"],
