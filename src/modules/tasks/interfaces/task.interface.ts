@@ -1,5 +1,5 @@
-import { Type } from "@/modules/tasks/interfaces";
-import { Priority } from "@/types";
+import { Priority } from "@/modules/_shared/types";
+import { TaskType } from "@/modules/tasks/interfaces/type.type";
 
 export interface Task {
   id: number;
@@ -11,5 +11,5 @@ export interface Task {
   assigneeId?: number;
   dueDate?: Date;
   priority?: Priority;
-  type?: Type;
+  type?: TaskType;
 }

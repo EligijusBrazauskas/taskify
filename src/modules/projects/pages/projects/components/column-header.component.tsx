@@ -1,8 +1,8 @@
 import { Flex } from "@/components/base";
-import { StatusLabel } from "@/components/composite/board/status-label.component";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Status } from "@/interfaces";
+import { StatusLabel } from "@/modules/_shared/components/status-label.component";
+import { Status } from "@/modules/_shared/interfaces";
 import { Project } from "@/modules/projects/interfaces";
 import { EyeOff, Plus } from "lucide-react";
 
@@ -12,7 +12,7 @@ interface ColumnHeader {
 }
 
 export const ColumnHeader = ({ status, projects }: ColumnHeader) => (
-  <Flex className="group cursor-grab items-center justify-between rounded-md bg-secondary-soft px-2 py-1 text-sm transition-all duration-200">
+  <Flex className="group cursor-grab items-center justify-between rounded-md bg-secondary-background px-2 py-1 text-sm transition-all duration-200">
     <Flex className="items-center gap-2 overflow-hidden p-0.5">
       <Button
         size="xs"

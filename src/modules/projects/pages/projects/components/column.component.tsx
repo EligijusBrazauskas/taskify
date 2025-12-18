@@ -1,5 +1,5 @@
 import { Flex } from "@/components/base";
-import { Status } from "@/interfaces";
+import { Status } from "@/modules/_shared/interfaces";
 import { Project } from "@/modules/projects/interfaces";
 import {
   ColumnHeader,

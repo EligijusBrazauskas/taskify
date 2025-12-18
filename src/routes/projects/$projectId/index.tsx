@@ -1,4 +1,4 @@
-import { tasksQueryOptions } from "@/api/queries";
+import { tasksQueryOptions } from "@/modules/tasks/api/queries";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/projects/$projectId/")({

@@ -1,4 +1,4 @@
-import { Priority } from "@/types/priority.type";
+import { Priority } from "@/modules/_shared/types/priority.type";
 
 export interface Project {
   id: number;

@@ -1,7 +1,7 @@
 html * {
-  @apply font-inter;
+  @apply font-primary;
 }
 
 body {
-  @apply bg-secondary-soft;
+  @apply bg-secondary-background;
 }

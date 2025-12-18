@@ -1,8 +1,8 @@
 import { Flex, Typography } from "@/components/base";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { acronym } from "@/helpers";
 import { projects } from "@/mocks";
+import { acronym } from "@/modules/_shared/helpers";
 import { useParams } from "@tanstack/react-router";
 import { BookOpenText } from "lucide-react";
 

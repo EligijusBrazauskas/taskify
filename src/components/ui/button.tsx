@@ -11,10 +11,11 @@ const buttonVariants = cva(
       variant: {
         default: "bg-primary text-white hover:bg-primary/90",
         secondary:
-          "bg-secondary-soft text-secondary hover:bg-secondary-soft/90",
+          "bg-secondary-background text-secondary hover:bg-secondary-background/90",
         outline:
           "-outline-offset-1 bg-white text-secondary outline outline-1 outline-secondary-light hover:text-primary hover:outline-primary",
-        ghost: "text-secondary hover:bg-secondary-soft hover:text-primary",
+        ghost:
+          "text-secondary hover:bg-secondary-background hover:text-primary",
         link: "justify-between text-secondary hover:text-primary",
       },
       size: {

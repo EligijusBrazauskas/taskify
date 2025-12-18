@@ -1,4 +1,4 @@
-import { Status } from "@/interfaces";
+import { Status } from "@/modules/_shared/interfaces";
 
 export const taskStatuses: Status[] = [
   {
