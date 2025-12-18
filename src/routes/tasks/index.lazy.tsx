@@ -1,6 +1,12 @@
 import { TasksPage } from "@/modules/tasks/pages/tasks";
 import { createLazyFileRoute } from "@tanstack/react-router";
+import { Suspense } from "react";
 
 export const Route = createLazyFileRoute("/tasks/")({
-  component: () => <TasksPage />,
+  component: () => (
+    //TODO: replace with proper fallback
+    <Suspense fallback="Loading">
+      <TasksPage />
+    </Suspense>
+  ),
 });

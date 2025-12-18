@@ -1,5 +1,6 @@
 import { ThemeConfig } from "@/types/tailwind.type";
 
+//TODO: dont use already full colors because alpha channel won't work with oklch
 export const colorsTheme: ThemeConfig["colors"] = {
   primary: {
     DEFAULT: "oklch(30% 0.0286 284.02)",

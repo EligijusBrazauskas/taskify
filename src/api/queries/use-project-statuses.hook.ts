@@ -3,20 +3,20 @@ import { Status } from "@/interfaces";
 import { projectStatuses } from "@/mocks";
 import { useQuery } from "@tanstack/react-query";
 
+//TODO: Remove after API is ready
+const mockQueryFn = (mode = "resolve"): SuccessResponse<Status[]> => {
+  return new Promise((resolve, reject) => {
+    if (mode === "resolve") {
+      resolve({ data: projectStatuses });
+    }
+
+    if (mode === "reject") {
+      reject(new Error("Failed to fetch statuses"));
+    }
+  });
+};
+
 export const useProjectStatusesQuery = () => {
-  //TODO: Remove after API is ready
-  const mockQueryFn = (mode = "resolve"): SuccessResponse<Status[]> => {
-    return new Promise((resolve, reject) => {
-      if (mode === "resolve") {
-        resolve({ data: projectStatuses });
-      }
-
-      if (mode === "reject") {
-        reject(new Error("Failed to fetch statuses"));
-      }
-    });
-  };
-
   //TODO: Implement real query function
   const queryFn = async () => {};
 

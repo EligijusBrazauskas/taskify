@@ -1,7 +1,7 @@
 import { useTasksQuery } from "@/api/queries";
 import { Flex } from "@/components/base";
 import { Filters } from "@/components/composite/page";
-import { Dialog } from "@/components/ui/dialog";
+import { Dialog, DialogOverlay } from "@/components/ui/dialog";
 import { Tabs } from "@/components/ui/tabs";
 import { useToast } from "@/hooks";
 import { TaskModal } from "@/modules/_shared/components/task-modal.component.tsx";
@@ -10,10 +10,13 @@ import { Route } from "@/routes/tasks";
 import { useEffect } from "react";
 
 export const TasksPage = () => {
+  const { toast } = useToast();
   const navigate = Route.useNavigate();
   const { taskId } = Route.useSearch();
-  const { toast } = useToast();
-  const { data: tasks, isSuccess } = useTasksQuery();
+  const {
+    data: { data: tasks },
+    isSuccess,
+  } = useTasksQuery();
 
   const task = tasks.find(({ id }) => id === taskId);
 
@@ -45,6 +48,7 @@ export const TasksPage = () => {
       >
         <Filters />
         <Dialog open={!!task} onOpenChange={handleOnOpenChange}>
+          <DialogOverlay />
           <Content tasks={tasks} />
           <TaskModal task={task} />
         </Dialog>
