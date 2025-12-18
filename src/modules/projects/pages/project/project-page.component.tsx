@@ -16,7 +16,10 @@ export const ProjectPage = () => {
   const { toast } = useToast();
   const navigate = Route.useNavigate();
   const { taskId } = Route.useSearch();
-  const { data: tasks, isSuccess } = useTasksQuery();
+  const {
+    data: { data: tasks },
+    isSuccess,
+  } = useTasksQuery();
   const task = tasks.find(({ id }) => id === taskId);
 
   useEffect(() => {

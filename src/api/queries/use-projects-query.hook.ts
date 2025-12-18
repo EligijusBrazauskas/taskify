@@ -1,29 +1,29 @@
 import { SuccessResponse } from "@/api/types";
 import { projects } from "@/mocks";
 import { Project } from "@/modules/projects/interfaces";
-import { useQuery } from "@tanstack/react-query";
+import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
+
+//TODO: Remove after API is ready
+const mockQueryFn = async (mode = "resolve"): SuccessResponse<Project[]> => {
+  return new Promise((resolve, reject) => {
+    if (mode === "resolve") {
+      resolve({ data: projects });
+    }
+
+    if (mode === "reject") {
+      reject(new Error("Failed to fetch projects"));
+    }
+  });
+};
+
+export const projectsQueryOptions = queryOptions({
+  queryKey: ["projects"],
+  queryFn: async () => await mockQueryFn("resolve"),
+});
 
 export const useProjectsQuery = () => {
-  //TODO: Remove after API is ready
-  const mockQueryFn = (mode = "resolve"): SuccessResponse<Project[]> => {
-    return new Promise((resolve, reject) => {
-      if (mode === "resolve") {
-        resolve({ data: projects });
-      }
-
-      if (mode === "reject") {
-        reject(new Error("Failed to fetch projects"));
-      }
-    });
-  };
-
   //TODO: Implement real query function
   const queryFn = async () => {};
 
-  const { data, isLoading, isSuccess, error } = useQuery({
-    queryKey: ["projects"],
-    queryFn: () => mockQueryFn("resolve"),
-  });
-
-  return { data: isSuccess ? data.data : [], isLoading, isSuccess, error };
+  return useSuspenseQuery(projectsQueryOptions);
 };
