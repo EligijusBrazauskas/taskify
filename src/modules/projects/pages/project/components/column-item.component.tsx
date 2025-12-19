@@ -1,3 +1,5 @@
+import { Ellipsis, MessageSquare } from "lucide-react";
+import { MouseEvent } from "react";
 import { Divider, Flex, Typography } from "@/components/base";
 import { AvatarButton } from "@/components/composite/shared";
 import { Badge } from "@/components/ui/badge";
@@ -22,8 +24,6 @@ import {
 } from "@/modules/tasks/defaults";
 import { Task } from "@/modules/tasks/interfaces";
 import { Route } from "@/routes/projects/$projectId";
-import { Ellipsis, MessageSquare } from "lucide-react";
-import { MouseEvent } from "react";
 
 interface ColumnItem {
   task: Task;

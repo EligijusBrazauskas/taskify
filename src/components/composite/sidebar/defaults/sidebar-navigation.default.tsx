@@ -1,4 +1,3 @@
-import { MenuGroup } from "@/components/composite/sidebar/interfaces";
 import {
   FolderKanban,
   MessageSquare,
@@ -7,6 +6,7 @@ import {
   Tag,
   Ticket,
 } from "lucide-react";
+import { MenuGroup } from "@/components/composite/sidebar/interfaces";
 
 export const sidebarNavigationDefaults: MenuGroup[] = [
   {

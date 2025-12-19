@@ -18,7 +18,7 @@ export const Column = ({ status, tasks }: ColumnProps) => {
   const { projectId } = Route.useParams();
   const filteredTasks = tasks.filter(
     (task) =>
-      task.statusId === status.id && task.projectId === Number(projectId),
+      task.statusId === status.id && String(task.projectId) === projectId,
   );
 
   return (

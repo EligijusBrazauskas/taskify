@@ -1,5 +1,5 @@
-import { DropdownItem } from "@/modules/_shared/interfaces";
 import { Pin, Plus, Star } from "lucide-react";
+import { DropdownItem } from "@/modules/_shared/interfaces";
 
 export const actionDefaults: DropdownItem[] = [
   {

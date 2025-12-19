@@ -1,5 +1,5 @@
-import { tasksQueryOptions } from "@/modules/tasks/api/queries";
 import { createFileRoute } from "@tanstack/react-router";
+import { tasksQueryOptions } from "@/modules/tasks/api/queries";
 
 export const Route = createFileRoute("/tasks/")({
   loader: ({ context }) => {

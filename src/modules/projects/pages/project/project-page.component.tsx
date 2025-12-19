@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Divider, Flex } from "@/components/base";
 import { Dialog } from "@/components/ui/dialog";
 import { Tabs } from "@/components/ui/tabs";
@@ -18,7 +19,6 @@ import {
 import { useTasksSuspenseQuery } from "@/modules/tasks/api/queries";
 import { TaskModal } from "@/modules/tasks/components/task-modal";
 import { Route } from "@/routes/projects/$projectId";
-import { useEffect } from "react";
 
 export const ProjectPage = () => {
   const { toast } = useToast();
@@ -29,7 +29,9 @@ export const ProjectPage = () => {
     data: { data: tasks },
     isSuccess,
   } = useTasksSuspenseQuery();
-  const task = tasks.find(({ id }) => id === taskId);
+  const task = tasks.find(
+    (task) => task.id === taskId && String(task.projectId) === projectId,
+  );
 
   //TODO: must be a better way to get a project title for breadcrumb (but maybe cache helpes here)
   const {

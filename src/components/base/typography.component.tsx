@@ -1,6 +1,6 @@
+import { cva, VariantProps } from "class-variance-authority";
+import { createElement, HTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
-import { VariantProps, cva } from "class-variance-authority";
-import { HTMLAttributes, createElement } from "react";
 
 type HTMLHeadingTag = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 type HTMLTextTag = "span" | "p" | HTMLHeadingTag;

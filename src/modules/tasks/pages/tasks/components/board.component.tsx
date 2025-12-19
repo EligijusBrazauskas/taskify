@@ -1,9 +1,9 @@
+import { ScrollArea } from "@radix-ui/react-scroll-area";
+import { sortBy } from "lodash";
 import { ScrollBar } from "@/components/ui/scroll-area";
 import { useProjectStatusesQuery } from "@/modules/projects/api/queries";
 import { Task } from "@/modules/tasks/interfaces";
 import { Column } from "@/modules/tasks/pages/tasks/components";
-import { ScrollArea } from "@radix-ui/react-scroll-area";
-import { sortBy } from "lodash";
 
 interface BoardProps {
   tasks: Task[];

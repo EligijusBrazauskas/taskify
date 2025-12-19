@@ -1,4 +1,3 @@
-import { TaskType } from "@/modules/tasks/interfaces";
 import {
   ArrowUpRight,
   Bug,
@@ -12,6 +11,7 @@ import {
   Vote,
 } from "lucide-react";
 import { JSX } from "react";
+import { TaskType } from "@/modules/tasks/interfaces";
 
 export const taskTypeIconMap: Record<TaskType, JSX.Element> = {
   feature: <Feather />,

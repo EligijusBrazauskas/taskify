@@ -1,9 +1,9 @@
+import { ScrollArea } from "@radix-ui/react-scroll-area";
+import { sortBy } from "lodash";
 import { ScrollBar } from "@/components/ui/scroll-area";
 import { useProjectStatusesQuery } from "@/modules/projects/api/queries";
 import { Project } from "@/modules/projects/interfaces";
 import { Column } from "@/modules/projects/pages/projects/components";
-import { ScrollArea } from "@radix-ui/react-scroll-area";
-import { sortBy } from "lodash";
 
 interface BoardProps {
   projects: Project[];
