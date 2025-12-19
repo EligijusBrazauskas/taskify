@@ -1,8 +1,8 @@
 import { Outlet } from "@tanstack/react-router";
-import { Flex } from "@/components/base";
-import { SideBar } from "@/components/composite/sidebar";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { Toaster } from "@/components/ui/toaster";
+import { Flex } from "@/modules/_shared/components/base";
+import { SideBar } from "@/modules/_shared/components/sidebar";
 
 export const App = () => {
   // const { toast } = useToast();

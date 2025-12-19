@@ -1,4 +1,4 @@
-import { Flex } from "@/components/base";
+import { Flex } from "@/modules/_shared/components/base";
 import { Status } from "@/modules/_shared/interfaces";
 import {
   ColumnHeader,

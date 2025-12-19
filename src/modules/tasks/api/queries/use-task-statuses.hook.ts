@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { SuccessResponse } from "@/api/types";
 import { taskStatuses } from "@/mocks";
+import { SuccessResponse } from "@/modules/_shared/api/types";
 import { Status } from "@/modules/_shared/interfaces";
 
 export const useTaskStatusesQuery = () => {

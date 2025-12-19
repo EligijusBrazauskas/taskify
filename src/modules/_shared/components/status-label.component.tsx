@@ -1,5 +1,5 @@
-import { Box, Flex, Typography } from "@/components/base";
 import { cn } from "@/lib/utils";
+import { Box, Flex, Typography } from "@/modules/_shared/components/base";
 import { statusColorMap } from "@/modules/_shared/defaults/status-color-map.default";
 import { Status } from "@/modules/_shared/interfaces";
 

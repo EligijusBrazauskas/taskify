@@ -8,6 +8,7 @@ export interface Project {
   favorite: boolean;
   pinned: boolean;
   createDate: Date;
+  pinnedByUserId?: string;
   assigneeIds?: number[];
   description?: string;
   priority?: Priority;

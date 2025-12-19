@@ -1,4 +1,4 @@
-import { Filters } from "@/modules/_shared/components/filters.component";
+import { AvatarButton } from "@/modules/_shared/components/avatar-button.component";
 import { StatusLabel } from "@/modules/_shared/components/status-label.component";
 
-export { StatusLabel, Filters };
+export { StatusLabel, AvatarButton };

@@ -1,5 +1,5 @@
-import { Flex } from "@/components/base";
 import { DialogTitle } from "@/components/ui/dialog";
+import { Flex } from "@/modules/_shared/components/base";
 import {
   TaskModalDetailsTabs,
   TaskModalSummary,

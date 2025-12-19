@@ -1,8 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import clsx from "clsx";
 import { ChevronDown } from "lucide-react";
-import { Typography } from "@/components/base";
-import { MenuGroup } from "@/components/composite/sidebar/interfaces";
 import { Button } from "@/components/ui/button";
 import {
   Collapsible,
@@ -17,18 +15,20 @@ import {
   SidebarMenuSub,
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
+import { Typography } from "@/modules/_shared/components/base";
+import { MenuItem } from "@/modules/_shared/components/sidebar/interfaces";
 
 interface SideBarNavigationProps {
-  group: MenuGroup;
+  label: string;
+  items: MenuItem[];
   onClick?: () => void;
 }
 
 export const SideBarNavigation = ({
-  group,
+  label,
+  items,
   onClick,
 }: SideBarNavigationProps) => {
-  const { label, children } = group;
-
   return (
     <SidebarGroup>
       <SidebarMenu>
@@ -49,38 +49,33 @@ export const SideBarNavigation = ({
             <CollapsibleContent>
               <SidebarGroupContent>
                 <SidebarMenuSub>
-                  {children.map((item) => (
-                    <SidebarMenuSubItem
-                      key={item.id}
-                      className={clsx(
-                        "group/action rounded-md transition-all hover:bg-secondary-light",
-                      )}
-                    >
+                  {items.map((item) => (
+                    <SidebarMenuSubItem key={item.id} className="group/action">
                       {item.type === "link" ? (
-                        <Button
-                          asChild
-                          variant="link"
-                          className="w-full justify-start"
-                          onClick={onClick}
+                        <Link
+                          className={clsx(
+                            "flex min-h-7 w-full justify-start gap-2 rounded-md px-2 py-1 text-secondary transition-all hover:text-primary group-hover/action:bg-secondary-light [&_svg]:size-5 [&_svg]:shrink-0 [&_svg]:stroke-0.25",
+                            { "rounded-r-none": item.action },
+                          )}
+                          to={item.to?.to}
+                          params={item.to?.params}
+                          activeOptions={{
+                            exact: true,
+                          }}
+                          activeProps={{
+                            className: "bg-secondary-light",
+                          }}
                         >
-                          <Link
-                            to={item.to?.to}
-                            params={item.to?.params}
-                            activeOptions={{
-                              exact: true,
-                            }}
-                            activeProps={{
-                              className: "bg-secondary-light",
-                            }}
-                          >
-                            {item.icon}
-                            {item.label}
-                          </Link>
-                        </Button>
+                          {item.icon}
+                          {item.label}
+                        </Link>
                       ) : (
                         <Button
                           variant="link"
-                          className="w-full justify-start"
+                          className={clsx(
+                            "w-full justify-start transition-all group-hover/action:bg-secondary-light",
+                            { "rounded-r-none": item.action },
+                          )}
                           onClick={() => {
                             onClick?.();
                             item.onClick?.();
@@ -93,7 +88,7 @@ export const SideBarNavigation = ({
                       {item.action && (
                         <Button
                           variant="link"
-                          className="opacity-0 group-focus-within/action:opacity-100 group-hover/action:bg-secondary-light group-hover/action:opacity-100"
+                          className="rounded-l-none opacity-0 group-focus-within/action:opacity-100 group-hover/action:bg-secondary-light group-hover/action:opacity-100"
                           onClick={item.action.onClick}
                         >
                           {item.action.icon}

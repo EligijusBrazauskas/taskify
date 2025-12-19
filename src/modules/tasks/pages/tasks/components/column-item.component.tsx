@@ -1,7 +1,5 @@
 import { Ellipsis, MessageSquare } from "lucide-react";
 import { MouseEvent } from "react";
-import { Divider, Flex, Typography } from "@/components/base";
-import { AvatarButton } from "@/components/composite/shared";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -14,6 +12,8 @@ import {
 } from "@/components/ui/card";
 import { DialogTrigger } from "@/components/ui/dialog";
 import { taskComments } from "@/mocks";
+import { AvatarButton } from "@/modules/_shared/components";
+import { Divider, Flex, Typography } from "@/modules/_shared/components/base";
 import {
   priorityColorSchemeMap,
   priorityIconMap,

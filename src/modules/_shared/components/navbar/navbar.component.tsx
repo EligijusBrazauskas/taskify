@@ -1,7 +1,6 @@
 import { ReactNode } from "react";
-import { Divider } from "@/components/base";
-import { Flex } from "@/components/base/flex.component";
-import { SideBarTrigger } from "@/components/composite/sidebar";
+import { Divider, Flex } from "@/modules/_shared/components/base";
+import { SideBarTrigger } from "@/modules/_shared/components/sidebar";
 
 interface NavBarProps {
   BreadCrumbs?: ReactNode;

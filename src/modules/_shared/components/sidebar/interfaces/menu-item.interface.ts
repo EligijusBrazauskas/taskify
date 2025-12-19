@@ -1,19 +1,16 @@
 import { ToOptions } from "@tanstack/react-router";
 import { JSX } from "react";
 
-export interface MenuItemRecord {
-  id: number | string;
-  label: string;
-}
-
-export interface MenuItemBase extends MenuItemRecord {
-  icon?: JSX.Element;
-  action?: MenuItemChildrenAction;
-}
-
-export interface MenuItemChildrenAction {
+export interface MenuItemAction {
   icon?: JSX.Element;
   onClick?: () => void;
+}
+
+export interface MenuItemBase {
+  id: number | string;
+  label: string;
+  icon?: JSX.Element;
+  action?: MenuItemAction;
 }
 
 export interface MenuButton extends MenuItemBase {
@@ -27,8 +24,3 @@ export interface MenuLink extends MenuItemBase {
 }
 
 export type MenuItem = MenuButton | MenuLink;
-
-export interface MenuGroup {
-  label: string;
-  children: MenuItem[];
-}

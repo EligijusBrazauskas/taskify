@@ -1,5 +1,5 @@
-import { Divider, Flex } from "@/components/base";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Divider, Flex } from "@/modules/_shared/components/base";
 
 export const TaskModalDetailsTabs = () => (
   <Tabs
