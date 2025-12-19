@@ -1,4 +1,4 @@
-import { ThemeConfig } from "@/types/tailwind.type";
+import { ThemeConfig } from "@/modules/_shared/types/utils/tailwind.type";
 
 export const typographyTheme: ThemeConfig = {
   fontFamily: {

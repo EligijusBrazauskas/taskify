@@ -1,6 +1,6 @@
 import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
-import { SuccessResponse } from "@/api/types";
 import { projects } from "@/mocks";
+import { SuccessResponse } from "@/modules/_shared/api/types";
 import { Project } from "@/modules/projects/interfaces";
 
 //TODO: Remove after API is ready

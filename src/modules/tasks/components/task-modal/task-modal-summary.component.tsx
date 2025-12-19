@@ -6,11 +6,10 @@ import {
   NotepadText,
   TagIcon,
 } from "lucide-react";
-import { Flex, Typography } from "@/components/base";
-import { AvatarButton } from "@/components/composite/shared";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardDescription } from "@/components/ui/card";
-import { StatusLabel } from "@/modules/_shared/components";
+import { AvatarButton, StatusLabel } from "@/modules/_shared/components";
+import { Flex, Typography } from "@/modules/_shared/components/base";
 import {
   priorityColorSchemeMap,
   priorityIconMap,

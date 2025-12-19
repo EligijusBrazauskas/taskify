@@ -1,4 +1,4 @@
-import { Flex } from "@/components/base";
+import { Flex } from "@/modules/_shared/components/base";
 import { Status } from "@/modules/_shared/interfaces";
 import { Task } from "@/modules/tasks/interfaces";
 import {
@@ -12,10 +12,6 @@ interface ColumnProps {
 }
 
 export const Column = ({ status, tasks }: ColumnProps) => {
-  // const { projectId } = useParams({
-  //   from: "/projects/$projectId/",
-  // });
-
   //TODO: for now filtering all projects to get specific ones, implement requests to get projects by status
   const filteredTasks = tasks.filter((task) => task.statusId === status.id);
 

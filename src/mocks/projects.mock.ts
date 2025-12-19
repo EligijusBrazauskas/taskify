@@ -33,6 +33,6 @@ export const projects: Project[] = [
     dueDate: new Date(),
     priority: "low",
     favorite: true,
-    pinned: false,
+    pinned: true,
   },
 ];

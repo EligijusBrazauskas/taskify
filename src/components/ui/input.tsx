@@ -1,8 +1,7 @@
 import * as React from "react";
-
-import { Flex } from "@/components/base";
-import { cn } from "@/lib/utils";
 import { ReactNode } from "react";
+import { cn } from "@/lib/utils";
+import { Flex } from "@/modules/_shared/components/base";
 
 interface InputProps extends Omit<React.ComponentProps<"input">, "prefix"> {
   prefix?: ReactNode;

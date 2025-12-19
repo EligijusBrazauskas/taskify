@@ -1,7 +1,7 @@
 import { EyeOff, Plus } from "lucide-react";
-import { Flex } from "@/components/base";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Flex } from "@/modules/_shared/components/base";
 import { StatusLabel } from "@/modules/_shared/components/status-label.component";
 import { Status } from "@/modules/_shared/interfaces";
 import { Project } from "@/modules/projects/interfaces";

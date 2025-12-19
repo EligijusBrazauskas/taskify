@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { SuccessResponse } from "@/api/types";
 import { projectStatuses } from "@/mocks";
+import { SuccessResponse } from "@/modules/_shared/api/types";
 import { Status } from "@/modules/_shared/interfaces";
 
 //TODO: Remove after API is ready

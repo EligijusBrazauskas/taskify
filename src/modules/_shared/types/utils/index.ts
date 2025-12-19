@@ -1,5 +1,3 @@
 import { ThemeConfig } from "@/modules/_shared/types/utils/tailwind.type";
 
-export const spacingTheme: ThemeConfig["spacing"] = {
-  0.25: "1.5px",
-};
+export type { ThemeConfig };

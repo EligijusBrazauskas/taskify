@@ -1,5 +1,5 @@
-import { Divider } from "@/components/base";
 import { DialogContent } from "@/components/ui/dialog";
+import { Divider } from "@/modules/_shared/components/base";
 import {
   TaskModalDetails,
   TaskModalHeader,

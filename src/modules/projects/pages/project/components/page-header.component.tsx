@@ -1,9 +1,9 @@
 import { useParams } from "@tanstack/react-router";
 import { BookOpenText } from "lucide-react";
-import { Flex, Typography } from "@/components/base";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { projects } from "@/mocks";
+import { Flex, Typography } from "@/modules/_shared/components/base";
 import { acronym } from "@/modules/_shared/helpers";
 
 export const PageHeader = () => {

@@ -1,8 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Ellipsis } from "lucide-react";
 import { MouseEvent } from "react";
-import { Divider, Flex, Typography } from "@/components/base";
-import { AvatarButton } from "@/components/composite/shared";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -13,6 +11,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { AvatarButton } from "@/modules/_shared/components";
+import { Divider, Flex, Typography } from "@/modules/_shared/components/base";
 import {
   priorityColorSchemeMap,
   priorityIconMap,

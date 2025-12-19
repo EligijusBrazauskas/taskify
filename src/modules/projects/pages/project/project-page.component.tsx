@@ -1,16 +1,20 @@
+import { Plus } from "lucide-react";
 import { useEffect } from "react";
-import { Divider, Flex } from "@/components/base";
+import { Button } from "@/components/ui/button";
 import { Dialog } from "@/components/ui/dialog";
 import { Tabs } from "@/components/ui/tabs";
-import { useToast } from "@/hooks";
-import { Filters } from "@/modules/_shared/components";
+import { Divider, Flex, Typography } from "@/modules/_shared/components/base";
+import { Filters } from "@/modules/_shared/components/filters";
 import {
   NavBar,
   NavBarActions,
   NavBarBreadcrumbs,
+} from "@/modules/_shared/components/navbar";
+import {
   projectActions,
   projectBreadcrumbs,
-} from "@/modules/_shared/components/navbar";
+} from "@/modules/_shared/components/navbar/defaults";
+import { useContainerQuery, useToast } from "@/modules/_shared/hooks";
 import { useProjectsSuspenseQuery } from "@/modules/projects/api/queries";
 import {
   Content,
@@ -21,6 +25,7 @@ import { TaskModal } from "@/modules/tasks/components/task-modal";
 import { Route } from "@/routes/projects/$projectId";
 
 export const ProjectPage = () => {
+  const [isMd, is3Xl] = useContainerQuery(["md", "3xl"]);
   const { toast } = useToast();
   const navigate = Route.useNavigate();
   const { taskId } = Route.useSearch();
@@ -79,7 +84,16 @@ export const ProjectPage = () => {
         defaultValue="board"
         className="flex h-full flex-col overflow-hidden"
       >
-        <Filters />
+        <Filters
+          Action={
+            isMd && (
+              <Button>
+                <Plus />
+                {is3Xl && <Typography>New Task</Typography>}
+              </Button>
+            )
+          }
+        />
         <Dialog open={!!task} onOpenChange={handleOnOpenChange}>
           <Content tasks={tasks} />
           <TaskModal task={task} />

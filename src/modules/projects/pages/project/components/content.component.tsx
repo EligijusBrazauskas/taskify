@@ -1,5 +1,5 @@
-import { Flex } from "@/components/base";
 import { TabsContent } from "@/components/ui/tabs";
+import { Flex } from "@/modules/_shared/components/base";
 import { Board } from "@/modules/projects/pages/project/components";
 import { Task } from "@/modules/tasks/interfaces";
 

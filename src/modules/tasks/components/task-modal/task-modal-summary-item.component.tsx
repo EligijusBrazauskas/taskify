@@ -1,5 +1,5 @@
 import { HTMLAttributes, PropsWithChildren, ReactNode } from "react";
-import { Flex, Typography } from "@/components/base";
+import { Flex, Typography } from "@/modules/_shared/components/base";
 
 interface SummaryItemProps
   extends PropsWithChildren,
