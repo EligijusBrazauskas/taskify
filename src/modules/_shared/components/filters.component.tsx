@@ -1,8 +1,3 @@
-import { Divider, Flex, Typography } from "@/components/base";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { useContainerQuery } from "@/hooks";
 import { useMatchRoute } from "@tanstack/react-router";
 import {
   ChartGantt,
@@ -12,6 +7,11 @@ import {
   Search,
   SquareKanban,
 } from "lucide-react";
+import { Divider, Flex, Typography } from "@/components/base";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useContainerQuery } from "@/hooks";
 
 export const Filters = () => {
   const [isMd, isXl, is3Xl] = useContainerQuery(["md", "xl", "3xl"]);

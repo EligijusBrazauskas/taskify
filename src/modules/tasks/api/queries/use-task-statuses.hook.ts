@@ -1,7 +1,7 @@
+import { useQuery } from "@tanstack/react-query";
 import { SuccessResponse } from "@/api/types";
 import { taskStatuses } from "@/mocks";
 import { Status } from "@/modules/_shared/interfaces";
-import { useQuery } from "@tanstack/react-query";
 
 export const useTaskStatusesQuery = () => {
   //TODO: Remove after API is ready

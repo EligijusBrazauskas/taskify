@@ -1,3 +1,4 @@
+import { ChevronsUpDown, LogOut, Settings } from "lucide-react";
 import { Flex, Typography } from "@/components/base";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -11,7 +12,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useSidebar } from "@/components/ui/sidebar";
 import { useBreakpoint } from "@/hooks";
-import { ChevronsUpDown, LogOut, Settings } from "lucide-react";
 
 export const SideBarUserButton = () => {
   const { state } = useSidebar();

@@ -1,4 +1,3 @@
-import { Priority } from "@/modules/_shared/types";
 import {
   CircleDashed,
   CircleDot,
@@ -7,6 +6,7 @@ import {
   CircleEqual,
 } from "lucide-react";
 import { JSX } from "react";
+import { Priority } from "@/modules/_shared/types";
 
 export const priorityIconMap: Record<Priority, JSX.Element> = {
   lowest: <CircleDashed />,

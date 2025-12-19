@@ -1,38 +1,51 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.0.6/schema.json",
   "vcs": {
     "enabled": false,
     "clientKind": "git",
     "useIgnoreFile": false
   },
   "files": {
-    "include": [
+    "includes": [
       "**/*.css",
       "**/*.js",
       "**/*.jsx",
       "**/*.ts",
       "**/*.tsx",
       "**/*.json",
-      "src/**/*.ts",
-      "src/**/*.tsx"
+      "**/src/**/*.ts",
+      "**/src/**/*.tsx",
+      "!**/src/main.tsx",
+      "!**/src/components/ui",
+      "!**/src/routeTree.gen.ts"
     ],
-    "ignoreUnknown": false,
-    "ignore": ["src/main.tsx", "src/routeTree.gen.ts"]
+    "ignoreUnknown": false
   },
   "formatter": {
     "enabled": true,
     "indentStyle": "space",
     "indentWidth": 2
   },
-  "organizeImports": {
-    "enabled": true
-  },
+  "assist": { "actions": { "source": { "organizeImports": "on" } } },
   "linter": {
+    "domains": {
+      "react": "all"
+    },
     "enabled": true,
     "rules": {
       "recommended": true,
       "style": {
-        "useImportType": "off"
+        "useImportType": "off",
+        "noParameterAssign": "error",
+        "useAsConstAssertion": "error",
+        "useDefaultParameterLast": "error",
+        "useEnumInitializers": "error",
+        "useSelfClosingElements": "error",
+        "useSingleVarDeclarator": "error",
+        "noUnusedTemplateLiteral": "error",
+        "useNumberNamespace": "error",
+        "noInferrableTypes": "error",
+        "noUselessElse": "error"
       },
       "correctness": {
         "noUnusedVariables": "warn",
@@ -40,13 +53,14 @@
         "useExhaustiveDependencies": "warn"
       },
       "suspicious": {
-        "noConsoleLog": "error",
-        "noArrayIndexKey": "off"
+        "noArrayIndexKey": "off",
+        "noConsole": { "level": "error", "options": { "allow": ["log"] } }
       },
       "a11y": {
         "useFocusableInteractive": "off"
       },
       "nursery": {
+        "noNestedComponentDefinitions": "error",
         "useSortedClasses": {
           "level": "error",
           "fix": "safe",

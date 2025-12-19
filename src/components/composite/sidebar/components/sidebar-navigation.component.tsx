@@ -1,3 +1,6 @@
+import { Link } from "@tanstack/react-router";
+import clsx from "clsx";
+import { ChevronDown } from "lucide-react";
 import { Typography } from "@/components/base";
 import { MenuGroup } from "@/components/composite/sidebar/interfaces";
 import { Button } from "@/components/ui/button";
@@ -14,9 +17,6 @@ import {
   SidebarMenuSub,
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
-import { Link } from "@tanstack/react-router";
-import clsx from "clsx";
-import { ChevronDown } from "lucide-react";
 
 interface SideBarNavigationProps {
   group: MenuGroup;

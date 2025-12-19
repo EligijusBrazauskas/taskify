@@ -1,3 +1,5 @@
+import { Ellipsis } from "lucide-react";
+import { Fragment } from "react/jsx-runtime";
 import { Divider, Flex, Typography } from "@/components/base";
 import { Button } from "@/components/ui/button";
 import {
@@ -8,8 +10,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useBreakpoint, useContainerQuery } from "@/hooks";
 import { DropdownItem } from "@/modules/_shared/interfaces";
-import { Ellipsis } from "lucide-react";
-import { Fragment } from "react/jsx-runtime";
 
 interface NavBarActionsProps {
   actions: DropdownItem[];

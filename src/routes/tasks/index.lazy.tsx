@@ -1,6 +1,6 @@
-import { TasksPage } from "@/modules/tasks/pages/tasks";
 import { createLazyFileRoute } from "@tanstack/react-router";
 import { Suspense } from "react";
+import { TasksPage } from "@/modules/tasks/pages/tasks";
 
 export const Route = createLazyFileRoute("/tasks/")({
   component: () => (

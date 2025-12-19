@@ -1,3 +1,11 @@
+import { format } from "date-fns";
+import {
+  Calendar,
+  CircleDot,
+  CircleUserRound,
+  NotepadText,
+  TagIcon,
+} from "lucide-react";
 import { Flex, Typography } from "@/components/base";
 import { AvatarButton } from "@/components/composite/shared";
 import { Badge } from "@/components/ui/badge";
@@ -14,14 +22,6 @@ import {
   taskTypeIconMap,
 } from "@/modules/tasks/defaults";
 import { Task } from "@/modules/tasks/interfaces";
-import { format } from "date-fns";
-import {
-  Calendar,
-  CircleDot,
-  CircleUserRound,
-  NotepadText,
-  TagIcon,
-} from "lucide-react";
 
 interface TaskModalSummaryProps {
   task: Task;

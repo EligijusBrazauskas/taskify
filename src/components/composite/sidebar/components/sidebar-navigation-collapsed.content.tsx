@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { MenuGroup } from "@/components/composite/sidebar/interfaces";
 import { Button } from "@/components/ui/button";
 import {
@@ -5,7 +6,6 @@ import {
   SidebarMenu,
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
-import { Link } from "@tanstack/react-router";
 
 interface SideBarNavigationCollapsedProps {
   group: MenuGroup;

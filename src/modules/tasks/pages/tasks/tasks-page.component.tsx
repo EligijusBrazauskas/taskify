@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Divider, Flex } from "@/components/base";
 import { Dialog, DialogOverlay } from "@/components/ui/dialog";
 import { Tabs } from "@/components/ui/tabs";
@@ -14,7 +15,6 @@ import { useTasksSuspenseQuery } from "@/modules/tasks/api/queries";
 import { TaskModal } from "@/modules/tasks/components/task-modal";
 import { Content } from "@/modules/tasks/pages/tasks/components";
 import { Route } from "@/routes/tasks";
-import { useEffect } from "react";
 
 export const TasksPage = () => {
   const { toast } = useToast();

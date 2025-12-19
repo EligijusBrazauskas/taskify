@@ -1,6 +1,6 @@
-import { ProjectsPage } from "@/modules/projects/pages/projects";
 import { createLazyFileRoute } from "@tanstack/react-router";
 import { Suspense } from "react";
+import { ProjectsPage } from "@/modules/projects/pages/projects";
 
 export const Route = createLazyFileRoute("/projects/")({
   component: () => (

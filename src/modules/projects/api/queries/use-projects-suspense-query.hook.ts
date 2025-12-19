@@ -1,7 +1,7 @@
+import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 import { SuccessResponse } from "@/api/types";
 import { projects } from "@/mocks";
 import { Project } from "@/modules/projects/interfaces";
-import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 
 //TODO: Remove after API is ready
 const mockQueryFn = async (mode = "resolve"): SuccessResponse<Project[]> => {

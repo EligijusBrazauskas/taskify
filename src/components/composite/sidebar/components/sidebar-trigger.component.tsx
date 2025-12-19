@@ -1,8 +1,8 @@
+import clsx from "clsx";
+import { PanelLeftOpen } from "lucide-react";
 import { Button, ButtonProps } from "@/components/ui/button";
 import { useSidebar } from "@/components/ui/sidebar";
 import { useBreakpoint } from "@/hooks";
-import clsx from "clsx";
-import { PanelLeftOpen } from "lucide-react";
 
 export const SideBarTrigger = ({ children, ...rest }: ButtonProps) => {
   const { open, toggleSidebar } = useSidebar();

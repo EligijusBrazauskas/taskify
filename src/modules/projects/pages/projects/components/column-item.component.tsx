@@ -1,3 +1,6 @@
+import { Link } from "@tanstack/react-router";
+import { Ellipsis } from "lucide-react";
+import { MouseEvent } from "react";
 import { Divider, Flex, Typography } from "@/components/base";
 import { AvatarButton } from "@/components/composite/shared";
 import { Badge } from "@/components/ui/badge";
@@ -15,9 +18,6 @@ import {
   priorityIconMap,
 } from "@/modules/_shared/defaults";
 import { Project } from "@/modules/projects/interfaces";
-import { Link } from "@tanstack/react-router";
-import { Ellipsis } from "lucide-react";
-import { MouseEvent } from "react";
 
 interface ColumnItem {
   project: Project;

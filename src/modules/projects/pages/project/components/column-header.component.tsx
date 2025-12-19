@@ -1,10 +1,10 @@
+import { EyeOff, Plus } from "lucide-react";
 import { Flex } from "@/components/base";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { StatusLabel } from "@/modules/_shared/components/status-label.component";
 import { Status } from "@/modules/_shared/interfaces";
 import { Task } from "@/modules/tasks/interfaces";
-import { EyeOff, Plus } from "lucide-react";
 
 interface ColumnHeader {
   status: Status;

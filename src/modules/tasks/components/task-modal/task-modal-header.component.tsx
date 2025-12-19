@@ -1,9 +1,9 @@
+import { Edit, Ellipsis, Maximize2 } from "lucide-react";
 import { Divider, Flex } from "@/components/base";
 import { Button } from "@/components/ui/button";
 import { DialogHeader } from "@/components/ui/dialog";
 import { NavBarBreadcrumbs } from "@/modules/_shared/components/navbar";
 import { taskBreadcrumbs } from "@/modules/_shared/components/navbar/defaults";
-import { Edit, Ellipsis, Maximize2 } from "lucide-react";
 
 //TODO: Add modal to project overview
 export const TaskModalHeader = () => (

@@ -1,3 +1,5 @@
+import { Link } from "@tanstack/react-router";
+import { Fragment } from "react/jsx-runtime";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -6,8 +8,6 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import { Breadcrumb as IBreadcrumb } from "@/modules/_shared/components/navbar/interfaces";
-import { Link } from "@tanstack/react-router";
-import { Fragment } from "react/jsx-runtime";
 
 interface NavBarBreadcrumbProps {
   breadcrumbs: IBreadcrumb[];
