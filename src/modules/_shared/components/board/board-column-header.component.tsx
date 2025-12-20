@@ -4,14 +4,16 @@ import { Button } from "@/components/ui/button";
 import { Flex } from "@/modules/_shared/components/base";
 import { StatusLabel } from "@/modules/_shared/components/status-label.component";
 import { Status } from "@/modules/_shared/interfaces";
-import { Task } from "@/modules/tasks/interfaces";
 
-interface ColumnHeader {
+interface BoardColumnHeaderProps {
   status: Status;
-  tasks: Task[];
+  count?: number;
 }
 
-export const ColumnHeader = ({ status, tasks }: ColumnHeader) => (
+export const BoardColumnHeader = ({
+  status,
+  count,
+}: BoardColumnHeaderProps) => (
   <Flex className="group cursor-grab items-center justify-between rounded-md bg-secondary-background px-2 py-1 text-sm transition-all duration-200">
     <Flex className="items-center gap-2 overflow-hidden p-0.5">
       <Button
@@ -21,9 +23,9 @@ export const ColumnHeader = ({ status, tasks }: ColumnHeader) => (
       >
         <StatusLabel status={status} />
       </Button>
-      {tasks.length && (
+      {count && (
         <Badge colorScheme="violet" className="self-center">
-          {tasks.length}
+          {count}
         </Badge>
       )}
     </Flex>
