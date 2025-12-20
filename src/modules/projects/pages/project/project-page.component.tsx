@@ -1,9 +1,16 @@
+import { sortBy } from "lodash";
 import { Plus } from "lucide-react";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Dialog } from "@/components/ui/dialog";
-import { Tabs } from "@/components/ui/tabs";
+import { Dialog, DialogTrigger } from "@/components/ui/dialog";
+import { Tabs, TabsContent } from "@/components/ui/tabs";
 import { Divider, Flex, Typography } from "@/modules/_shared/components/base";
+import {
+  Board,
+  BoardColumn,
+  BoardColumnHeader,
+  BoardColumnItem,
+} from "@/modules/_shared/components/board";
 import { Filters } from "@/modules/_shared/components/filters";
 import {
   NavBar,
@@ -16,11 +23,11 @@ import {
 } from "@/modules/_shared/components/navbar/defaults";
 import { useContainerQuery, useToast } from "@/modules/_shared/hooks";
 import { useProjectsSuspenseQuery } from "@/modules/projects/api/queries";
+import { PageHeader } from "@/modules/projects/pages/project/components";
 import {
-  Content,
-  PageHeader,
-} from "@/modules/projects/pages/project/components";
-import { useTasksSuspenseQuery } from "@/modules/tasks/api/queries";
+  useTaskStatusesQuery,
+  useTasksSuspenseQuery,
+} from "@/modules/tasks/api/queries";
 import { TaskModal } from "@/modules/tasks/components/task-modal";
 import { Route } from "@/routes/projects/$projectId";
 
@@ -37,11 +44,12 @@ export const ProjectPage = () => {
   const task = tasks.find(
     (task) => task.id === taskId && String(task.projectId) === projectId,
   );
-
   //TODO: must be a better way to get a project title for breadcrumb (but maybe cache helpes here)
   const {
     data: { data: projects },
   } = useProjectsSuspenseQuery();
+  const { data: taskStatuses } = useTaskStatusesQuery();
+  const sortedStatuses = sortBy(taskStatuses, "order");
 
   const project = projects.find((project) => String(project.id) === projectId);
 
@@ -63,6 +71,12 @@ export const ProjectPage = () => {
         search: (previous) => ({ ...previous, taskId: undefined }),
       });
     }
+  };
+
+  const handleModalOnClick = (taskId: number) => {
+    navigate({
+      search: (previous) => ({ ...previous, taskId: taskId }),
+    });
   };
 
   return (
@@ -95,7 +109,45 @@ export const ProjectPage = () => {
           }
         />
         <Dialog open={!!task} onOpenChange={handleOnOpenChange}>
-          <Content tasks={tasks} />
+          <Flex className="h-full overflow-hidden">
+            <TabsContent value="board" className="overflow-hidden">
+              <Board>
+                {sortedStatuses.map((status) => {
+                  const filteredTasks = tasks.filter(
+                    (task) =>
+                      task.statusId === status.id &&
+                      String(task.projectId) === projectId,
+                  );
+
+                  return (
+                    <BoardColumn
+                      key={status.id}
+                      Header={<BoardColumnHeader status={status} />}
+                      Content={filteredTasks.map((task) => (
+                        <DialogTrigger
+                          className="text-left"
+                          key={task.id}
+                          onClick={() => handleModalOnClick(task.id)}
+                        >
+                          <BoardColumnItem
+                            title={task.title}
+                            description={task.description}
+                            priority={task.priority}
+                          />
+                        </DialogTrigger>
+                      ))}
+                    />
+                  );
+                })}
+              </Board>
+            </TabsContent>
+            <TabsContent value="list">
+              <Flex>List</Flex>
+            </TabsContent>
+            <TabsContent value="timeline">
+              <Flex>Timeline</Flex>
+            </TabsContent>
+          </Flex>
           <TaskModal task={task} />
         </Dialog>
       </Tabs>

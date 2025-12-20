@@ -1,9 +1,16 @@
+import { sortBy } from "lodash";
 import { Plus } from "lucide-react";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogOverlay } from "@/components/ui/dialog";
-import { Tabs } from "@/components/ui/tabs";
+import { Dialog, DialogOverlay, DialogTrigger } from "@/components/ui/dialog";
+import { Tabs, TabsContent } from "@/components/ui/tabs";
 import { Divider, Flex, Typography } from "@/modules/_shared/components/base";
+import {
+  Board,
+  BoardColumn,
+  BoardColumnHeader,
+  BoardColumnItem,
+} from "@/modules/_shared/components/board";
 import { Filters } from "@/modules/_shared/components/filters";
 import {
   NavBar,
@@ -15,9 +22,9 @@ import {
   tasksBreadcrumbs,
 } from "@/modules/_shared/components/navbar/defaults";
 import { useContainerQuery, useToast } from "@/modules/_shared/hooks";
+import { useProjectStatusesQuery } from "@/modules/projects/api/queries";
 import { useTasksSuspenseQuery } from "@/modules/tasks/api/queries";
 import { TaskModal } from "@/modules/tasks/components/task-modal";
-import { Content } from "@/modules/tasks/pages/tasks/components";
 import { Route } from "@/routes/tasks";
 
 export const TasksPage = () => {
@@ -29,6 +36,8 @@ export const TasksPage = () => {
     data: { data: tasks },
     isSuccess,
   } = useTasksSuspenseQuery();
+  const { data: projectStatuses } = useProjectStatusesQuery();
+  const sortedStatuses = sortBy(projectStatuses, "order");
 
   const task = tasks.find(({ id }) => id === taskId);
 
@@ -50,6 +59,12 @@ export const TasksPage = () => {
         search: (previous) => ({ ...previous, taskId: undefined }),
       });
     }
+  };
+
+  const handleModalOnClick = (taskId: number) => {
+    navigate({
+      search: (previous) => ({ ...previous, taskId: taskId }),
+    });
   };
 
   return (
@@ -75,7 +90,43 @@ export const TasksPage = () => {
         />
         <Dialog open={!!task} onOpenChange={handleOnOpenChange}>
           <DialogOverlay />
-          <Content tasks={tasks} />
+          <Flex className="h-full overflow-hidden">
+            <TabsContent value="board" className="overflow-hidden">
+              <Board>
+                {sortedStatuses.map((status) => {
+                  const filteredTasks = tasks.filter(
+                    (task) => task.statusId === status.id,
+                  );
+
+                  return (
+                    <BoardColumn
+                      key={status.id}
+                      Header={<BoardColumnHeader status={status} />}
+                      Content={filteredTasks.map((task) => (
+                        <DialogTrigger
+                          className="text-left"
+                          key={task.id}
+                          onClick={() => handleModalOnClick(task.id)}
+                        >
+                          <BoardColumnItem
+                            title={task.title}
+                            description={task.description}
+                            priority={task.priority}
+                          />
+                        </DialogTrigger>
+                      ))}
+                    />
+                  );
+                })}
+              </Board>
+            </TabsContent>
+            <TabsContent value="list">
+              <Flex>List</Flex>
+            </TabsContent>
+            <TabsContent value="timeline">
+              <Flex>Timeline</Flex>
+            </TabsContent>
+          </Flex>
           <TaskModal task={task} />
         </Dialog>
       </Tabs>
