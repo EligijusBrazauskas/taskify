@@ -1,6 +1,6 @@
 import { sortBy } from "lodash";
 import { Plus } from "lucide-react";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogOverlay, DialogTrigger } from "@/components/ui/dialog";
 import { Tabs, TabsContent } from "@/components/ui/tabs";
@@ -33,6 +33,7 @@ import {
 import { Route } from "@/routes/tasks";
 
 export const TasksPage = () => {
+  const ref = useRef(null);
   const [isMd, is3Xl] = useContainerQuery(["md", "3xl"]);
   const { toast } = useToast();
 
@@ -74,6 +75,8 @@ export const TasksPage = () => {
     });
   };
 
+  console.log(ref);
+
   return (
     <Flex className="h-full w-full flex-col overflow-hidden">
       <NavBar
@@ -98,7 +101,7 @@ export const TasksPage = () => {
         <Dialog open={!!task} onOpenChange={handleOnOpenChange}>
           <DialogOverlay />
           <Flex className="h-full overflow-hidden">
-            <TabsContent value="board" className="overflow-hidden">
+            <TabsContent value="board" className="w-full">
               <Board>
                 {sortedStatuses.map((status) => {
                   const filteredTasks = tasks.filter(
@@ -116,6 +119,7 @@ export const TasksPage = () => {
                       }
                       Content={filteredTasks.map((task) => (
                         <DialogTrigger
+                          ref={ref}
                           asChild
                           className="text-left"
                           key={task.id}

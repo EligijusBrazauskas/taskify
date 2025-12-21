@@ -11,7 +11,7 @@ interface FiltersProps {
 }
 
 export const Filters = ({ Action }: FiltersProps) => {
-  const [isXl, is3Xl] = useContainerQuery(["md", "xl", "3xl"]);
+  const [isXl, is3Xl] = useContainerQuery(["isXl", "3xl"]);
 
   return (
     <>
