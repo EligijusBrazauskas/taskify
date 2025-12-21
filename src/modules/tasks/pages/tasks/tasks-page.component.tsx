@@ -18,28 +18,35 @@ import {
   NavBarBreadcrumbs,
 } from "@/modules/_shared/components/navbar";
 import {
+  taskBreadcrumbs,
   tasksActions,
   tasksBreadcrumbs,
 } from "@/modules/_shared/components/navbar/defaults";
 import { useContainerQuery, useToast } from "@/modules/_shared/hooks";
 import { useProjectStatusesQuery } from "@/modules/projects/api/queries";
 import { useTasksSuspenseQuery } from "@/modules/tasks/api/queries";
-import { TaskModal } from "@/modules/tasks/components/task-modal";
+import {
+  TaskModal,
+  TaskModalDetails,
+  TaskModalHeader,
+} from "@/modules/tasks/components/task-modal";
 import { Route } from "@/routes/tasks";
 
 export const TasksPage = () => {
   const [isMd, is3Xl] = useContainerQuery(["md", "3xl"]);
   const { toast } = useToast();
+
   const navigate = Route.useNavigate();
   const { taskId } = Route.useSearch();
+
   const {
     data: { data: tasks },
     isSuccess,
   } = useTasksSuspenseQuery();
   const { data: projectStatuses } = useProjectStatusesQuery();
-  const sortedStatuses = sortBy(projectStatuses, "order");
 
-  const task = tasks.find(({ id }) => id === taskId);
+  const sortedStatuses = sortBy(projectStatuses, "order");
+  const task = tasks.find(({ id }) => id === String(taskId));
 
   useEffect(() => {
     if (isSuccess && taskId && !task) {
@@ -61,9 +68,9 @@ export const TasksPage = () => {
     }
   };
 
-  const handleModalOnClick = (taskId: number) => {
+  const handleModalOnClick = (taskId: string) => {
     navigate({
-      search: (previous) => ({ ...previous, taskId: taskId }),
+      search: (previous) => ({ ...previous, taskId: Number(taskId) }),
     });
   };
 
@@ -101,9 +108,15 @@ export const TasksPage = () => {
                   return (
                     <BoardColumn
                       key={status.id}
-                      Header={<BoardColumnHeader status={status} />}
+                      Header={
+                        <BoardColumnHeader
+                          status={status}
+                          count={filteredTasks.length}
+                        />
+                      }
                       Content={filteredTasks.map((task) => (
                         <DialogTrigger
+                          asChild
                           className="text-left"
                           key={task.id}
                           onClick={() => handleModalOnClick(task.id)}
@@ -127,7 +140,15 @@ export const TasksPage = () => {
               <Flex>Timeline</Flex>
             </TabsContent>
           </Flex>
-          <TaskModal task={task} />
+          <TaskModal
+            Header={
+              <TaskModalHeader
+                breadcrumbs={taskBreadcrumbs(`#${taskId}`, String(taskId))}
+              />
+            }
+            Details={task && <TaskModalDetails task={task} />}
+            task={task}
+          />
         </Dialog>
       </Tabs>
     </Flex>

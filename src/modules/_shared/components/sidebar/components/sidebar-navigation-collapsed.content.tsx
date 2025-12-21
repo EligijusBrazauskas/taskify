@@ -17,24 +17,20 @@ export const SideBarNavigationCollapsed = ({
   <SidebarGroup>
     <SidebarMenu>
       {items.map((item) => (
-        <SidebarMenuSubItem key={item.id} className="group/action">
+        <SidebarMenuSubItem
+          key={item.id}
+          className="group/action rounded-md transition-all hover:bg-secondary-light has-[a[data-status=active]]:bg-secondary-light"
+        >
           {item.type === "link" ? (
             <Link
               to={item.to?.to}
               params={item.to?.params}
-              className="flex items-center rounded-md px-2 py-1 text-secondary transition-all hover:bg-secondary-light hover:text-primary [&_svg]:size-5 [&_svg]:shrink-0 [&_svg]:stroke-0.25"
-              activeProps={{
-                className: "bg-secondary-light",
-              }}
+              className="flex w-full justify-center py-1 text-secondary hover:text-primary [&_svg]:size-5 [&_svg]:shrink-0 [&_svg]:stroke-0.25"
             >
               {item.icon}
             </Link>
           ) : (
-            <Button
-              variant="ghost"
-              className="w-full transition-all hover:bg-secondary-light"
-              onClick={item.onClick}
-            >
+            <Button variant="ghost" className="w-full" onClick={item.onClick}>
               {item.icon}
             </Button>
           )}

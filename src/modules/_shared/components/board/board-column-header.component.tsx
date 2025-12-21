@@ -23,7 +23,7 @@ export const BoardColumnHeader = ({
       >
         <StatusLabel status={status} />
       </Button>
-      {count && (
+      {!!count && (
         <Badge colorScheme="violet" className="self-center">
           {count}
         </Badge>
