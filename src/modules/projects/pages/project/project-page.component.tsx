@@ -169,7 +169,7 @@ export const ProjectPage = () => {
                 ]}
               />
             }
-            Details={task && <TaskModalDetails task={task} />}
+            Content={task && <TaskModalDetails task={task} />}
             task={task}
           />
         </Dialog>
