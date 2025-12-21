@@ -50,20 +50,19 @@ export const SideBarNavigation = ({
               <SidebarGroupContent>
                 <SidebarMenuSub>
                   {items.map((item) => (
-                    <SidebarMenuSubItem key={item.id} className="group/action">
+                    <SidebarMenuSubItem
+                      key={item.id}
+                      className="group/action rounded-md transition-all hover:bg-secondary-light has-[a[data-status=active]]:bg-secondary-light"
+                    >
                       {item.type === "link" ? (
                         <Link
                           className={clsx(
-                            "flex min-h-7 w-full justify-start gap-2 rounded-md px-2 py-1 text-secondary transition-all hover:text-primary group-hover/action:bg-secondary-light [&_svg]:size-5 [&_svg]:shrink-0 [&_svg]:stroke-0.25",
-                            { "rounded-r-none": item.action },
+                            "flex min-h-7 w-full justify-start gap-2 px-2 py-1 text-secondary hover:text-primary [&_svg]:size-5 [&_svg]:shrink-0 [&_svg]:stroke-0.25",
                           )}
                           to={item.to?.to}
                           params={item.to?.params}
                           activeOptions={{
                             exact: true,
-                          }}
-                          activeProps={{
-                            className: "bg-secondary-light",
                           }}
                         >
                           {item.icon}
@@ -72,10 +71,7 @@ export const SideBarNavigation = ({
                       ) : (
                         <Button
                           variant="link"
-                          className={clsx(
-                            "w-full justify-start transition-all group-hover/action:bg-secondary-light",
-                            { "rounded-r-none": item.action },
-                          )}
+                          className={clsx("w-full justify-start")}
                           onClick={() => {
                             onClick?.();
                             item.onClick?.();
@@ -88,7 +84,7 @@ export const SideBarNavigation = ({
                       {item.action && (
                         <Button
                           variant="link"
-                          className="rounded-l-none opacity-0 group-focus-within/action:opacity-100 group-hover/action:bg-secondary-light group-hover/action:opacity-100"
+                          className="opacity-0 group-focus-within/action:opacity-100 group-hover/action:opacity-100"
                           onClick={item.action.onClick}
                         >
                           {item.action.icon}

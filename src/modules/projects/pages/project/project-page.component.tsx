@@ -20,6 +20,7 @@ import {
 import {
   projectActions,
   projectBreadcrumbs,
+  taskBreadcrumb,
 } from "@/modules/_shared/components/navbar/defaults";
 import { useContainerQuery, useToast } from "@/modules/_shared/hooks";
 import { useProjectsSuspenseQuery } from "@/modules/projects/api/queries";
@@ -28,29 +29,34 @@ import {
   useTaskStatusesQuery,
   useTasksSuspenseQuery,
 } from "@/modules/tasks/api/queries";
-import { TaskModal } from "@/modules/tasks/components/task-modal";
+import {
+  TaskModal,
+  TaskModalDetails,
+  TaskModalHeader,
+} from "@/modules/tasks/components/task-modal";
 import { Route } from "@/routes/projects/$projectId";
 
 export const ProjectPage = () => {
   const [isMd, is3Xl] = useContainerQuery(["md", "3xl"]);
   const { toast } = useToast();
+
   const navigate = Route.useNavigate();
   const { taskId } = Route.useSearch();
   const { projectId } = Route.useParams();
+
   const {
     data: { data: tasks },
     isSuccess,
   } = useTasksSuspenseQuery();
-  const task = tasks.find(
-    (task) => task.id === taskId && String(task.projectId) === projectId,
-  );
-  //TODO: must be a better way to get a project title for breadcrumb (but maybe cache helpes here)
   const {
     data: { data: projects },
   } = useProjectsSuspenseQuery();
   const { data: taskStatuses } = useTaskStatusesQuery();
-  const sortedStatuses = sortBy(taskStatuses, "order");
 
+  const task = tasks.find(
+    (task) => task.id === String(taskId) && task.projectId === projectId,
+  );
+  const sortedStatuses = sortBy(taskStatuses, "order");
   const project = projects.find((project) => String(project.id) === projectId);
 
   useEffect(() => {
@@ -73,9 +79,9 @@ export const ProjectPage = () => {
     }
   };
 
-  const handleModalOnClick = (taskId: number) => {
+  const handleModalOnClick = (taskId: string) => {
     navigate({
-      search: (previous) => ({ ...previous, taskId: taskId }),
+      search: (previous) => ({ ...previous, taskId: Number(taskId) }),
     });
   };
 
@@ -122,9 +128,15 @@ export const ProjectPage = () => {
                   return (
                     <BoardColumn
                       key={status.id}
-                      Header={<BoardColumnHeader status={status} />}
+                      Header={
+                        <BoardColumnHeader
+                          status={status}
+                          count={filteredTasks.length}
+                        />
+                      }
                       Content={filteredTasks.map((task) => (
                         <DialogTrigger
+                          asChild
                           className="text-left"
                           key={task.id}
                           onClick={() => handleModalOnClick(task.id)}
@@ -148,7 +160,18 @@ export const ProjectPage = () => {
               <Flex>Timeline</Flex>
             </TabsContent>
           </Flex>
-          <TaskModal task={task} />
+          <TaskModal
+            Header={
+              <TaskModalHeader
+                breadcrumbs={[
+                  ...projectBreadcrumbs(project?.title ?? "Project", projectId),
+                  ...taskBreadcrumb(`#${taskId}`, String(taskId)),
+                ]}
+              />
+            }
+            Details={task && <TaskModalDetails task={task} />}
+            task={task}
+          />
         </Dialog>
       </Tabs>
     </Flex>

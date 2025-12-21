@@ -3,10 +3,13 @@ import { Button } from "@/components/ui/button";
 import { DialogHeader } from "@/components/ui/dialog";
 import { Divider, Flex } from "@/modules/_shared/components/base";
 import { NavBarBreadcrumbs } from "@/modules/_shared/components/navbar";
-import { taskBreadcrumbs } from "@/modules/_shared/components/navbar/defaults";
+import { Breadcrumb } from "@/modules/_shared/components/navbar/interfaces";
 
-//TODO: Add modal to project overview
-export const TaskModalHeader = () => (
+interface TaskModalHeaderProps {
+  breadcrumbs: Breadcrumb[];
+}
+
+export const TaskModalHeader = ({ breadcrumbs }: TaskModalHeaderProps) => (
   <DialogHeader className="p-2">
     <Flex className="mr-2 w-full justify-between">
       <Flex className="gap-2">
@@ -17,7 +20,7 @@ export const TaskModalHeader = () => (
           <Edit />
         </Button>
         <Divider />
-        <NavBarBreadcrumbs breadcrumbs={taskBreadcrumbs("TEST", "TEST")} />
+        <NavBarBreadcrumbs breadcrumbs={breadcrumbs} />
       </Flex>
       <Button variant="ghost">
         <Ellipsis />

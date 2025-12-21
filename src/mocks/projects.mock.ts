@@ -2,9 +2,9 @@ import { Project } from "@/modules/projects/interfaces";
 
 export const projects: Project[] = [
   {
-    id: 1,
-    ownerId: 1,
-    statusId: 1,
+    id: "1",
+    ownerId: "1",
+    statusId: "1",
     title: "Project 1",
     description: "This is my project",
     createDate: new Date(),
@@ -14,9 +14,9 @@ export const projects: Project[] = [
     pinned: true,
   },
   {
-    id: 2,
-    ownerId: 1,
-    statusId: 2,
+    id: "2",
+    ownerId: "1",
+    statusId: "2",
     title: "Project 2",
     createDate: new Date(),
     dueDate: new Date(),
@@ -25,9 +25,9 @@ export const projects: Project[] = [
     pinned: false,
   },
   {
-    id: 3,
-    ownerId: 1,
-    statusId: 3,
+    id: "3",
+    ownerId: "1",
+    statusId: "3",
     title: "Project 3",
     createDate: new Date(),
     dueDate: new Date(),

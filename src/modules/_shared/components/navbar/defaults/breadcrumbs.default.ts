@@ -9,15 +9,22 @@ export const projectsBreadcrumbs: Breadcrumb[] = [
   },
 ];
 
+export const projectBreadcrumb = (
+  label: string,
+  projectId: string,
+): Breadcrumb[] => [
+  {
+    label,
+    to: { to: "/projects/$projectId", params: { projectId } },
+  },
+];
+
 export const projectBreadcrumbs = (
   label: string,
   projectId: string,
 ): Breadcrumb[] => [
   ...projectsBreadcrumbs,
-  {
-    label,
-    to: { to: "/projects/$projectId", params: { projectId } },
-  },
+  ...projectBreadcrumb(label, projectId),
 ];
 
 export const tasksBreadcrumbs: Breadcrumb[] = [
@@ -29,13 +36,14 @@ export const tasksBreadcrumbs: Breadcrumb[] = [
   },
 ];
 
-export const taskBreadcrumbs = (
-  label: string,
-  taskId: string,
-): Breadcrumb[] => [
-  ...tasksBreadcrumbs,
+export const taskBreadcrumb = (label: string, taskId: string): Breadcrumb[] => [
   {
     label,
     to: { to: "/tasks/$taskId", params: { taskId } },
   },
 ];
+
+export const taskBreadcrumbs = (
+  label: string,
+  taskId: string,
+): Breadcrumb[] => [...tasksBreadcrumbs, ...taskBreadcrumb(label, taskId)];

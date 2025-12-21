@@ -28,11 +28,13 @@ import {
 
 export const ProjectsPage = () => {
   const [isMd, is3Xl] = useContainerQuery(["md", "3xl"]);
+
   //TODO: add user specific created projects when user login is ready
   const {
     data: { data: projects },
   } = useProjectsSuspenseQuery();
   const { data: projectStatuses } = useProjectStatusesQuery();
+
   const sortedStatuses = sortBy(projectStatuses, "order");
 
   return (
@@ -67,7 +69,12 @@ export const ProjectsPage = () => {
                 return (
                   <BoardColumn
                     key={status.id}
-                    Header={<BoardColumnHeader status={status} />}
+                    Header={
+                      <BoardColumnHeader
+                        status={status}
+                        count={filteredProjects.length}
+                      />
+                    }
                     Content={filteredProjects.map((project) => (
                       <Link
                         key={project.id}

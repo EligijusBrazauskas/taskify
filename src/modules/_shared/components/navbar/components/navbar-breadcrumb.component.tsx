@@ -20,7 +20,11 @@ export const NavBarBreadcrumbs = ({ breadcrumbs }: NavBarBreadcrumbProps) => (
         <Fragment key={index}>
           <BreadcrumbItem>
             <BreadcrumbLink asChild>
-              <Link to={to?.to} className="first-letter:uppercase">
+              <Link
+                to={to?.to}
+                params={to?.params}
+                className="first-letter:uppercase"
+              >
                 {label}
               </Link>
             </BreadcrumbLink>

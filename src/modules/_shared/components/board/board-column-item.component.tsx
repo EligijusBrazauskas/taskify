@@ -1,5 +1,5 @@
 import { Ellipsis } from "lucide-react";
-import { MouseEvent } from "react";
+import { forwardRef, HTMLAttributes, MouseEvent } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -10,6 +10,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
 import { AvatarButton } from "@/modules/_shared/components";
 import { Divider, Flex, Typography } from "@/modules/_shared/components/base";
 import {
@@ -18,7 +19,7 @@ import {
 } from "@/modules/_shared/defaults";
 import { Priority } from "@/modules/_shared/types";
 
-interface BoardColumnItemProps {
+interface BoardColumnItemProps extends HTMLAttributes<HTMLDivElement> {
   title: string;
   priority?: Priority;
   description?: string;
@@ -26,67 +27,82 @@ interface BoardColumnItemProps {
   onAvatarClick?: () => void;
 }
 
-export const BoardColumnItem = ({
-  title,
-  description,
-  priority,
-  onMoreClick,
-  onAvatarClick,
-}: BoardColumnItemProps) => {
-  const handleOnMoreClick = (event: MouseEvent<HTMLButtonElement>) => {
-    event.stopPropagation();
+export const BoardColumnItem = forwardRef<HTMLDivElement, BoardColumnItemProps>(
+  (
+    {
+      title,
+      description,
+      priority,
+      onMoreClick,
+      onAvatarClick,
+      className,
+      ...rest
+    },
+    ref,
+  ) => {
+    const handleOnMoreClick = (event: MouseEvent<HTMLButtonElement>) => {
+      event.stopPropagation();
 
-    onMoreClick?.();
-  };
+      onMoreClick?.();
+    };
 
-  const handleOnAvatarClick = (event: MouseEvent<HTMLButtonElement>) => {
-    event.stopPropagation();
+    const handleOnAvatarClick = (event: MouseEvent<HTMLButtonElement>) => {
+      event.stopPropagation();
 
-    onAvatarClick?.();
-  };
+      onAvatarClick?.();
+    };
 
-  return (
-    <Card className="cursor-pointer transition-all duration-200 hover:bg-secondary-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
-      <CardHeader>
-        <Flex className="w-full justify-between">
-          <Flex className="flex-wrap gap-2">
-            {priority && (
-              <Badge
-                colorScheme={priorityColorSchemeMap[priority]}
-                className="self-center"
-              >
-                {priorityIconMap[priority]}
-                <Typography className="first-letter:uppercase">
-                  {priority}
-                </Typography>
-              </Badge>
-            )}
-          </Flex>
-          <Button
-            variant="ghost"
-            className="self-start hover:bg-secondary-light"
-            onClick={handleOnMoreClick}
-          >
-            <Ellipsis />
-          </Button>
-        </Flex>
-      </CardHeader>
-      <CardContent>
-        <CardTitle>
-          <Typography className="line-clamp-2">{title}</Typography>
-        </CardTitle>
-        {description && (
-          <CardDescription>
-            <Typography className="line-clamp-3">{description}</Typography>
-          </CardDescription>
+    return (
+      <Card
+        ref={ref}
+        tabIndex={0}
+        className={cn(
+          "cursor-pointer transition-all duration-200 hover:bg-secondary-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+          className,
         )}
-      </CardContent>
-      <Divider orientation="horizontal" className="my-2" />
-      <CardFooter>
-        <Flex className="w-full justify-between">
-          <AvatarButton onClick={handleOnAvatarClick} />
-        </Flex>
-      </CardFooter>
-    </Card>
-  );
-};
+        {...rest}
+      >
+        <CardHeader>
+          <Flex className="w-full justify-between">
+            <Flex className="flex-wrap gap-2">
+              {priority && (
+                <Badge
+                  colorScheme={priorityColorSchemeMap[priority]}
+                  className="self-center"
+                >
+                  {priorityIconMap[priority]}
+                  <Typography className="first-letter:uppercase">
+                    {priority}
+                  </Typography>
+                </Badge>
+              )}
+            </Flex>
+            <Button
+              variant="ghost"
+              className="self-start hover:bg-secondary-light"
+              onClick={handleOnMoreClick}
+            >
+              <Ellipsis />
+            </Button>
+          </Flex>
+        </CardHeader>
+        <CardContent>
+          <CardTitle>
+            <Typography className="line-clamp-2">{title}</Typography>
+          </CardTitle>
+          {description && (
+            <CardDescription>
+              <Typography className="line-clamp-3">{description}</Typography>
+            </CardDescription>
+          )}
+        </CardContent>
+        <Divider orientation="horizontal" className="my-2" />
+        <CardFooter>
+          <Flex className="w-full justify-between">
+            <AvatarButton onClick={handleOnAvatarClick} />
+          </Flex>
+        </CardFooter>
+      </Card>
+    );
+  },
+);

@@ -1,7 +1,7 @@
 export interface TaskComment {
-  id: number;
-  ownerId: number;
-  taskId: number;
+  id: string;
+  ownerId: string;
+  taskId: string;
   content: string;
   createDate: Date;
   updateDate?: Date;

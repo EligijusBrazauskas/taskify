@@ -7,7 +7,7 @@ export type StatusColor =
   | "green";
 
 export interface Status {
-  id: number;
+  id: string;
   label: string;
   order: number;
   color?: StatusColor;
