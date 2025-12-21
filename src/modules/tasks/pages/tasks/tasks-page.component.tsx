@@ -75,8 +75,6 @@ export const TasksPage = () => {
     });
   };
 
-  console.log(ref);
-
   return (
     <Flex className="h-full w-full flex-col overflow-hidden">
       <NavBar
@@ -119,11 +117,12 @@ export const TasksPage = () => {
                       }
                       Content={filteredTasks.map((task) => (
                         <DialogTrigger
-                          ref={ref}
                           asChild
                           className="text-left"
                           key={task.id}
-                          onClick={() => handleModalOnClick(task.id)}
+                          onClick={() => {
+                            handleModalOnClick(task.id);
+                          }}
                         >
                           <BoardColumnItem
                             title={task.title}
@@ -150,7 +149,7 @@ export const TasksPage = () => {
                 breadcrumbs={taskBreadcrumbs(`#${taskId}`, String(taskId))}
               />
             }
-            Details={task && <TaskModalDetails task={task} />}
+            Content={task && <TaskModalDetails task={task} />}
             task={task}
           />
         </Dialog>

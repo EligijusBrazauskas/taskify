@@ -6,9 +6,46 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Flex } from "@/modules/_shared/components/base";
 
-const Dialog = DialogPrimitive.Root;
+const DialogContextExtended = React.createContext<{
+  triggerRef: React.RefObject<HTMLButtonElement | null>;
+}>({ triggerRef: { current: null } });
 
-const DialogTrigger = DialogPrimitive.Trigger;
+const DialogContextExtendedProvider = ({
+  children,
+}: React.PropsWithChildren) => {
+  const triggerRef = React.useRef(null);
+
+  return (
+    <DialogContextExtended.Provider value={{ triggerRef }}>
+      {children}
+    </DialogContextExtended.Provider>
+  );
+};
+
+const Dialog = (props: React.ComponentProps<typeof DialogPrimitive.Root>) => (
+  <DialogContextExtendedProvider>
+    <DialogPrimitive.Root {...props} />
+  </DialogContextExtendedProvider>
+);
+
+const DialogTrigger = React.forwardRef<
+  React.ElementRef<typeof DialogPrimitive.Trigger>,
+  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Trigger>
+>(({ onClick, ...rest }, ref) => {
+  const { triggerRef } = React.useContext(DialogContextExtended);
+
+  return (
+    <DialogPrimitive.Trigger
+      ref={ref}
+      onClick={(event) => {
+        triggerRef.current = event.currentTarget;
+
+        onClick?.(event);
+      }}
+      {...rest}
+    />
+  );
+});
 
 const DialogPortal = DialogPrimitive.Portal;
 
@@ -37,25 +74,37 @@ DialogOverlay.displayName = DialogPrimitive.Overlay.displayName;
 const DialogContent = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
->(({ className, children, ...props }, ref) => (
-  <DialogPortal>
-    <DialogOverlay />
-    <DialogPrimitive.Content
-      ref={ref}
-      className={cn(
-        "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] -translate-y-1/2 fixed top-1/2 right-1/2 z-50 flex w-full max-w-lg translate-x-1/2 flex-col gap-2 rounded-lg border bg-background px-6 py-4 duration-200 data-[state=closed]:animate-out data-[state=open]:animate-in",
-        className,
-      )}
-      {...props}
-    >
-      <VisuallyHidden>
-        <DialogTitle />
-        <DialogDescription />
-      </VisuallyHidden>
-      {children}
-    </DialogPrimitive.Content>
-  </DialogPortal>
-));
+>(({ className, children, onCloseAutoFocus, ...props }, ref) => {
+  const { triggerRef } = React.useContext(DialogContextExtended);
+
+  return (
+    <DialogPortal>
+      <DialogOverlay />
+      <DialogPrimitive.Content
+        ref={ref}
+        className={cn(
+          "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] -translate-y-1/2 fixed top-1/2 right-1/2 z-50 flex w-full max-w-lg translate-x-1/2 flex-col gap-2 rounded-lg border bg-background px-6 py-4 duration-200 data-[state=closed]:animate-out data-[state=open]:animate-in",
+          className,
+        )}
+        onCloseAutoFocus={(event) => {
+          if (triggerRef.current) {
+            event.preventDefault();
+            triggerRef.current.focus();
+          }
+
+          onCloseAutoFocus?.(event);
+        }}
+        {...props}
+      >
+        <VisuallyHidden>
+          <DialogTitle />
+          <DialogDescription />
+        </VisuallyHidden>
+        {children}
+      </DialogPrimitive.Content>
+    </DialogPortal>
+  );
+});
 DialogContent.displayName = DialogPrimitive.Content.displayName;
 
 const DialogHeader = ({
