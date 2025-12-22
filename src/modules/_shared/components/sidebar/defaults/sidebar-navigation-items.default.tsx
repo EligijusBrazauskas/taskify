@@ -1,11 +1,4 @@
-import {
-  FolderKanban,
-  MessageSquare,
-  Search,
-  SquareUserRound,
-  Tag,
-  Ticket,
-} from "lucide-react";
+import { FolderKanban, Search, SquareUserRound, Ticket } from "lucide-react";
 import { MenuItem } from "@/modules/_shared/components/sidebar/interfaces";
 
 export const sidebarNavigationItems: MenuItem[] = [
@@ -34,22 +27,22 @@ export const sidebarNavigationItems: MenuItem[] = [
       to: "/tasks",
     },
   },
-  {
-    id: 4,
-    type: "link",
-    label: "Tags",
-    icon: <Tag />,
-  },
+  // {
+  //   id: 4,
+  //   type: "link",
+  //   label: "Tags",
+  //   icon: <Tag />,
+  // },
   {
     id: 5,
     type: "link",
     label: "Activity",
     icon: <SquareUserRound />,
   },
-  {
-    id: 6,
-    type: "link",
-    label: "Comments",
-    icon: <MessageSquare />,
-  },
+  // {
+  //   id: 6,
+  //   type: "link",
+  //   label: "Comments",
+  //   icon: <MessageSquare />,
+  // },
 ];

@@ -1,4 +1,4 @@
-import { Ellipsis } from "lucide-react";
+import { Ellipsis, MessageSquare, Paperclip } from "lucide-react";
 import { forwardRef, HTMLAttributes, MouseEvent } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -18,13 +18,23 @@ import {
   priorityIconMap,
 } from "@/modules/_shared/defaults";
 import { Priority } from "@/modules/_shared/types";
+import {
+  taskTypeColorSchemeMap,
+  taskTypeIconMap,
+} from "@/modules/tasks/defaults";
+import { TaskType } from "@/modules/tasks/interfaces";
 
 interface BoardColumnItemProps extends HTMLAttributes<HTMLDivElement> {
   title: string;
+  type?: TaskType;
   priority?: Priority;
   description?: string;
+  commentsCount?: number;
+  attachmentsCount?: number;
   onMoreClick?: () => void;
   onAvatarClick?: () => void;
+  onCommentsClick?: () => void;
+  onAttachmentsClick?: () => void;
 }
 
 export const BoardColumnItem = forwardRef<HTMLDivElement, BoardColumnItemProps>(
@@ -33,8 +43,13 @@ export const BoardColumnItem = forwardRef<HTMLDivElement, BoardColumnItemProps>(
       title,
       description,
       priority,
+      type,
+      commentsCount,
+      attachmentsCount,
       onMoreClick,
       onAvatarClick,
+      onCommentsClick,
+      onAttachmentsClick,
       className,
       ...rest
     },
@@ -52,6 +67,18 @@ export const BoardColumnItem = forwardRef<HTMLDivElement, BoardColumnItemProps>(
       onAvatarClick?.();
     };
 
+    const handleOnCommentsClick = (event: MouseEvent<HTMLButtonElement>) => {
+      event.stopPropagation();
+
+      onCommentsClick?.();
+    };
+
+    const handleOnAttachmentsClick = (event: MouseEvent<HTMLButtonElement>) => {
+      event.stopPropagation();
+
+      onAttachmentsClick?.();
+    };
+
     return (
       <Card
         ref={ref}
@@ -65,6 +92,17 @@ export const BoardColumnItem = forwardRef<HTMLDivElement, BoardColumnItemProps>(
         <CardHeader>
           <Flex className="w-full justify-between">
             <Flex className="flex-wrap gap-2">
+              {type && (
+                <Badge
+                  colorScheme={taskTypeColorSchemeMap[type]}
+                  className="self-center"
+                >
+                  {taskTypeIconMap[type]}
+                  <Typography className="first-letter:uppercase">
+                    {type}
+                  </Typography>
+                </Badge>
+              )}
               {priority && (
                 <Badge
                   colorScheme={priorityColorSchemeMap[priority]}
@@ -79,7 +117,7 @@ export const BoardColumnItem = forwardRef<HTMLDivElement, BoardColumnItemProps>(
             </Flex>
             <Button
               variant="ghost"
-              className="self-start hover:bg-secondary-light"
+              className="hover:bg-secondary-light"
               onClick={handleOnMoreClick}
             >
               <Ellipsis />
@@ -97,9 +135,29 @@ export const BoardColumnItem = forwardRef<HTMLDivElement, BoardColumnItemProps>(
           )}
         </CardContent>
         <Divider orientation="horizontal" className="my-2" />
-        <CardFooter>
-          <Flex className="w-full justify-between">
-            <AvatarButton onClick={handleOnAvatarClick} />
+        <CardFooter className="flex justify-between">
+          <AvatarButton onClick={handleOnAvatarClick} />
+          <Flex className="gap-2">
+            {!!attachmentsCount && (
+              <Button
+                variant="ghost"
+                className="gap-1 px-1 hover:bg-secondary-light"
+                onClick={handleOnAttachmentsClick}
+              >
+                <Paperclip />
+                {attachmentsCount}
+              </Button>
+            )}
+            {!!commentsCount && (
+              <Button
+                variant="ghost"
+                className="gap-1 px-1 hover:bg-secondary-light"
+                onClick={handleOnCommentsClick}
+              >
+                <MessageSquare />
+                {commentsCount}
+              </Button>
+            )}
           </Flex>
         </CardFooter>
       </Card>

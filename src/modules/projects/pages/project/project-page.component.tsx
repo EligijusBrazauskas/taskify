@@ -145,6 +145,7 @@ export const ProjectPage = () => {
                             title={task.title}
                             description={task.description}
                             priority={task.priority}
+                            type={task.type}
                           />
                         </DialogTrigger>
                       ))}
