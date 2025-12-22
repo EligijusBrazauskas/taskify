@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { taskComments } from "@/mocks";
+import { taskCommentsWithAuthors } from "@/mocks";
 import { SuccessResponse } from "@/modules/_shared/api/types";
 import { TaskComment } from "@/modules/tasks/interfaces";
 
@@ -8,7 +8,9 @@ export const useTaskCommentsQuery = () => {
   const mockQueryFn = (mode = "resolve"): SuccessResponse<TaskComment[]> => {
     return new Promise((resolve, reject) => {
       if (mode === "resolve") {
-        resolve({ data: taskComments });
+        resolve({
+          data: taskCommentsWithAuthors,
+        });
       }
 
       if (mode === "reject") {

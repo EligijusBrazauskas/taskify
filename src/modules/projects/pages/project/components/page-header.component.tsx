@@ -15,7 +15,7 @@ export const PageHeader = () => {
       <Flex className=" gap-2">
         <Avatar className="size-8 rounded-sm">
           <AvatarFallback className="rounded-sm bg-orange-700/80 font-semibold text-white">
-            {acronym(project?.title)}
+            {acronym([project?.title])}
           </AvatarFallback>
         </Avatar>
         <Typography size="2xl" className="text-nowrap">
@@ -23,7 +23,7 @@ export const PageHeader = () => {
         </Typography>
       </Flex>
       <Button variant="outline">
-        <BookOpenText />
+        <BookOpenText size={18} />
         Overview
       </Button>
     </Flex>

@@ -1,8 +1,5 @@
-export const acronym = (text?: string): string => {
-  return text
-    ? text
-        .split(" ")
-        .map((word) => word.charAt(0).toUpperCase())
-        .join("")
-    : "P";
-};
+export const acronym = (strings: (string | undefined | null)[]): string =>
+  strings
+    .filter(Boolean)
+    .map((string) => string?.charAt(0))
+    .join("");

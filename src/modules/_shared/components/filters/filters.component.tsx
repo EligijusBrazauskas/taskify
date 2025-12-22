@@ -18,10 +18,12 @@ export const Filters = ({ Action }: FiltersProps) => {
       <Flex className="my-2 justify-between gap-2 px-6">
         <FiltersTabs />
         <Flex className="gap-2">
-          {isXl && <Input prefix={<Search />} placeholder="Search..." />}
+          {isXl && (
+            <Input prefix={<Search size={18} />} placeholder="Search..." />
+          )}
           {isXl && <Divider />}
           <Button variant="outline">
-            <ListFilterPlus />
+            <ListFilterPlus size={18} />
             {is3Xl && <Typography>Filter</Typography>}
           </Button>
           {Action}

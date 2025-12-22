@@ -18,9 +18,9 @@ export const pinnedProjects = (projects: Project[]): MenuItem[] => [
             to: "/projects/$projectId",
             params: { projectId: String(project.id) },
           },
-          icon: <FolderOpen />,
+          icon: <FolderOpen size={18} />,
           action: {
-            icon: <PinOff />,
+            icon: <PinOff size={18} />,
             onClick: () => console.log("unpin"),
           },
         }) satisfies MenuLink,
@@ -29,7 +29,7 @@ export const pinnedProjects = (projects: Project[]): MenuItem[] => [
     id: "new-project",
     type: "button",
     label: "New Project",
-    icon: <Plus />,
+    icon: <Plus size={18} />,
     onClick: () => console.log("add new project"),
   },
 ];

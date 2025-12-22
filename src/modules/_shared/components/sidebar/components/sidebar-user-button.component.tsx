@@ -43,7 +43,7 @@ export const SideBarUserButton = () => {
               </Typography>
             </Flex>
           </Flex>
-          <ChevronsUpDown />
+          <ChevronsUpDown size={16} />
         </Button>
       );
     }
@@ -62,11 +62,11 @@ export const SideBarUserButton = () => {
         <DropdownMenuLabel>Profile</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
-          <Settings />
+          <Settings size={18} />
           <Typography>Settings</Typography>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <LogOut />
+          <LogOut size={18} />
           <Typography>Log Out</Typography>
         </DropdownMenuItem>
       </DropdownMenuContent>

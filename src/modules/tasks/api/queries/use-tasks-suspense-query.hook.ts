@@ -1,5 +1,5 @@
 import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
-import { tasks } from "@/mocks";
+import { tasksWithAssignees } from "@/mocks";
 import { SuccessResponse } from "@/modules/_shared/api/types";
 import { Task } from "@/modules/tasks/interfaces";
 
@@ -7,7 +7,7 @@ import { Task } from "@/modules/tasks/interfaces";
 const mockQueryFn = (mode = "resolve"): SuccessResponse<Task[]> => {
   return new Promise((resolve, reject) => {
     if (mode === "resolve") {
-      resolve({ data: tasks });
+      resolve({ data: tasksWithAssignees });
     }
 
     if (mode === "reject") {

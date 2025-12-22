@@ -24,7 +24,7 @@ export const NavBarActions = ({ actions }: NavBarActionsProps) => {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost">
-            <Ellipsis />
+            <Ellipsis size={18} />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>

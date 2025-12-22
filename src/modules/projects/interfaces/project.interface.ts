@@ -1,3 +1,4 @@
+import { User } from "@/modules/_shared/interfaces";
 import { Priority } from "@/modules/_shared/types/priority.type";
 
 export interface Project {
@@ -14,4 +15,5 @@ export interface Project {
   priority?: Priority;
   dueDate?: Date;
   endDate?: Date;
+  owner?: User;
 }

@@ -43,7 +43,10 @@ export const SideBarNavigation = ({
                 className="w-full justify-between hover:bg-secondary-light"
               >
                 <Typography size="xs">{label}</Typography>
-                <ChevronDown className="chevron transition-transform" />
+                <ChevronDown
+                  className="chevron transition-transform"
+                  size={18}
+                />
               </Button>
             </CollapsibleTrigger>
             <CollapsibleContent>
@@ -57,7 +60,7 @@ export const SideBarNavigation = ({
                       {item.type === "link" ? (
                         <Link
                           className={clsx(
-                            "flex min-h-7 w-full justify-start gap-2 px-2 py-1 text-secondary hover:text-primary [&_svg]:size-5 [&_svg]:shrink-0 [&_svg]:stroke-0.25",
+                            "flex min-h-7 w-full justify-start gap-2 px-2 py-1 text-secondary hover:text-primary",
                           )}
                           to={item.to?.to}
                           params={item.to?.params}

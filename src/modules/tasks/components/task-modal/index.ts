@@ -1,4 +1,4 @@
-import { TaskModal } from "@/modules/tasks/components/task-modal/task-modal.component";
+import { TaskModalContent } from "@/modules/tasks/components/task-modal/task-modal.component";
 import { TaskModalDetails } from "@/modules/tasks/components/task-modal/task-modal-details.component";
 import { TaskModalDetailsTabs } from "@/modules/tasks/components/task-modal/task-modal-details-tabs.component";
 import { TaskModalHeader } from "@/modules/tasks/components/task-modal/task-modal-header.component";
@@ -6,7 +6,7 @@ import { TaskModalSummary } from "@/modules/tasks/components/task-modal/task-mod
 import { TaskModalSummaryItem } from "@/modules/tasks/components/task-modal/task-modal-summary-item.component";
 
 export {
-  TaskModal,
+  TaskModalContent,
   TaskModalHeader,
   TaskModalDetails,
   TaskModalSummary,

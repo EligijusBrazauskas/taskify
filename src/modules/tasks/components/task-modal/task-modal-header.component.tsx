@@ -14,16 +14,16 @@ export const TaskModalHeader = ({ breadcrumbs }: TaskModalHeaderProps) => (
     <Flex className="mr-2 w-full justify-between">
       <Flex className="gap-2">
         <Button variant="ghost" className="self-center">
-          <Maximize2 />
+          <Maximize2 size={18} />
         </Button>
         <Button variant="ghost">
-          <Edit />
+          <Edit size={18} />
         </Button>
         <Divider />
         <NavBarBreadcrumbs breadcrumbs={breadcrumbs} />
       </Flex>
       <Button variant="ghost">
-        <Ellipsis />
+        <Ellipsis size={18} />
       </Button>
     </Flex>
   </DialogHeader>
