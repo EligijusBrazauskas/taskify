@@ -1,6 +1,6 @@
 import { sortBy } from "lodash";
 import { Plus } from "lucide-react";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogOverlay, DialogTrigger } from "@/components/ui/dialog";
 import { Tabs, TabsContent } from "@/components/ui/tabs";
@@ -24,7 +24,11 @@ import {
 } from "@/modules/_shared/components/navbar/defaults";
 import { useContainerQuery, useToast } from "@/modules/_shared/hooks";
 import { useProjectStatusesQuery } from "@/modules/projects/api/queries";
-import { useTasksSuspenseQuery } from "@/modules/tasks/api/queries";
+import {
+  useTaskAttachmentsQuery,
+  useTaskCommentsQuery,
+  useTasksSuspenseQuery,
+} from "@/modules/tasks/api/queries";
 import {
   TaskModal,
   TaskModalDetails,
@@ -33,7 +37,6 @@ import {
 import { Route } from "@/routes/tasks";
 
 export const TasksPage = () => {
-  const ref = useRef(null);
   const [isMd, is3Xl] = useContainerQuery(["md", "3xl"]);
   const { toast } = useToast();
 
@@ -45,6 +48,8 @@ export const TasksPage = () => {
     isSuccess,
   } = useTasksSuspenseQuery();
   const { data: projectStatuses } = useProjectStatusesQuery();
+  const { data: taskComments } = useTaskCommentsQuery();
+  const { data: taskAttachments } = useTaskAttachmentsQuery();
 
   const sortedStatuses = sortBy(projectStatuses, "order");
   const task = tasks.find(({ id }) => id === String(taskId));
@@ -115,22 +120,35 @@ export const TasksPage = () => {
                           count={filteredTasks.length}
                         />
                       }
-                      Content={filteredTasks.map((task) => (
-                        <DialogTrigger
-                          asChild
-                          className="text-left"
-                          key={task.id}
-                          onClick={() => {
-                            handleModalOnClick(task.id);
-                          }}
-                        >
-                          <BoardColumnItem
-                            title={task.title}
-                            description={task.description}
-                            priority={task.priority}
-                          />
-                        </DialogTrigger>
-                      ))}
+                      Content={filteredTasks.map((task) => {
+                        const filteredComments = taskComments.filter(
+                          (comment) => comment.taskId === task?.id,
+                        );
+
+                        const filteredAttachments = taskAttachments.filter(
+                          (attachment) => attachment.taskId === task?.id,
+                        );
+
+                        return (
+                          <DialogTrigger
+                            asChild
+                            className="text-left"
+                            key={task.id}
+                            onClick={() => {
+                              handleModalOnClick(task.id);
+                            }}
+                          >
+                            <BoardColumnItem
+                              title={task.title}
+                              description={task.description}
+                              priority={task.priority}
+                              type={task.type}
+                              commentsCount={filteredComments.length}
+                              attachmentsCount={filteredAttachments.length}
+                            />
+                          </DialogTrigger>
+                        );
+                      })}
                     />
                   );
                 })}
