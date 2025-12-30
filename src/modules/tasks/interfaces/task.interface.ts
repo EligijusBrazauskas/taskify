@@ -1,3 +1,4 @@
+import { User } from "@/modules/_shared/interfaces";
 import { Priority } from "@/modules/_shared/types";
 import { TaskType } from "@/modules/tasks/interfaces/type.type";
 
@@ -12,4 +13,5 @@ export interface Task {
   dueDate?: Date;
   priority?: Priority;
   type?: TaskType;
+  assignee?: User;
 }

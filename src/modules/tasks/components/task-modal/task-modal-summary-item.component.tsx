@@ -15,7 +15,7 @@ export const TaskModalSummaryItem = ({
   ...rest
 }: SummaryItemProps) => (
   <Flex className="flex-wrap justify-between gap-2" {...rest}>
-    <Flex className="items-center justify-center gap-2 text-secondary [&_svg]:shrink-0">
+    <Flex className="items-center justify-center gap-2 text-secondary">
       {icon}
       {label && <Typography>{label}</Typography>}
     </Flex>

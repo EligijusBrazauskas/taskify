@@ -1,9 +1,11 @@
 import { sortBy } from "lodash";
-import { Plus } from "lucide-react";
+import { Ellipsis, Plus } from "lucide-react";
 import { useEffect } from "react";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Tabs, TabsContent } from "@/components/ui/tabs";
+import { Avatar } from "@/modules/_shared/components";
 import { Divider, Flex, Typography } from "@/modules/_shared/components/base";
 import {
   Board,
@@ -22,17 +24,22 @@ import {
   projectBreadcrumbs,
   taskBreadcrumb,
 } from "@/modules/_shared/components/navbar/defaults";
+import { acronym, joinStrings } from "@/modules/_shared/helpers";
 import { useContainerQuery, useToast } from "@/modules/_shared/hooks";
 import { useProjectsSuspenseQuery } from "@/modules/projects/api/queries";
 import { PageHeader } from "@/modules/projects/pages/project/components";
 import {
+  useTaskAttachmentsQuery,
+  useTaskCommentsQuery,
   useTaskStatusesQuery,
   useTasksSuspenseQuery,
 } from "@/modules/tasks/api/queries";
 import {
-  TaskModal,
+  TaskModalContent,
   TaskModalDetails,
+  TaskModalDetailsTabs,
   TaskModalHeader,
+  TaskModalSummary,
 } from "@/modules/tasks/components/task-modal";
 import { Route } from "@/routes/projects/$projectId";
 
@@ -52,11 +59,16 @@ export const ProjectPage = () => {
     data: { data: projects },
   } = useProjectsSuspenseQuery();
   const { data: taskStatuses } = useTaskStatusesQuery();
+  const { data: taskComments } = useTaskCommentsQuery();
+  const { data: taskAttachments } = useTaskAttachmentsQuery();
 
   const task = tasks.find(
     (task) => task.id === String(taskId) && task.projectId === projectId,
   );
   const sortedStatuses = sortBy(taskStatuses, "order");
+  const filteredComments = taskComments.filter(
+    (comment) => comment.taskId === String(taskId),
+  );
   const project = projects.find((project) => String(project.id) === projectId);
 
   useEffect(() => {
@@ -108,7 +120,7 @@ export const ProjectPage = () => {
           Action={
             isMd && (
               <Button>
-                <Plus />
+                <Plus size={18} />
                 {is3Xl && <Typography>New Task</Typography>}
               </Button>
             )
@@ -134,21 +146,42 @@ export const ProjectPage = () => {
                           count={filteredTasks.length}
                         />
                       }
-                      Content={filteredTasks.map((task) => (
-                        <DialogTrigger
-                          asChild
-                          className="text-left"
-                          key={task.id}
-                          onClick={() => handleModalOnClick(task.id)}
-                        >
-                          <BoardColumnItem
-                            title={task.title}
-                            description={task.description}
-                            priority={task.priority}
-                            type={task.type}
-                          />
-                        </DialogTrigger>
-                      ))}
+                      Content={filteredTasks.map((task) => {
+                        const filteredComments = taskComments.filter(
+                          (comment) => comment.taskId === task?.id,
+                        );
+
+                        const filteredAttachments = taskAttachments.filter(
+                          (attachment) => attachment.taskId === task?.id,
+                        );
+
+                        return (
+                          <DialogTrigger
+                            asChild
+                            className="text-left"
+                            key={task.id}
+                            onClick={() => handleModalOnClick(task.id)}
+                          >
+                            <BoardColumnItem
+                              title={task.title}
+                              description={task.description}
+                              priority={task.priority}
+                              type={task.type}
+                              commentsCount={filteredComments.length}
+                              attachmentsCount={filteredAttachments.length}
+                              Avatar={
+                                <Avatar
+                                  avatarUrl={task.assignee?.avatarUrl}
+                                  fallback={acronym([
+                                    task.assignee?.name,
+                                    task.assignee?.lastname,
+                                  ])}
+                                />
+                              }
+                            />
+                          </DialogTrigger>
+                        );
+                      })}
                     />
                   );
                 })}
@@ -161,7 +194,7 @@ export const ProjectPage = () => {
               <Flex>Timeline</Flex>
             </TabsContent>
           </Flex>
-          <TaskModal
+          <TaskModalContent
             Header={
               <TaskModalHeader
                 breadcrumbs={[
@@ -170,8 +203,55 @@ export const ProjectPage = () => {
                 ]}
               />
             }
-            Content={task && <TaskModalDetails task={task} />}
-            task={task}
+            Content={
+              task && (
+                <TaskModalDetails>
+                  <DialogTitle className="px-6">{task?.title}</DialogTitle>
+                  <TaskModalSummary task={task} />
+                  <TaskModalDetailsTabs
+                    CommentsTab={
+                      <Typography className="flex gap-1">
+                        Comments
+                        {!!filteredComments.length && (
+                          <Badge colorScheme="violet" className="self-center">
+                            {filteredComments.length}
+                          </Badge>
+                        )}
+                      </Typography>
+                    }
+                    CommentsTabContent={
+                      <Flex className="w-full flex-col">
+                        <Flex className="w-full justify-between">
+                          <Typography>Comments</Typography>
+                          <Button variant="ghost">
+                            <Ellipsis size={18} />
+                          </Button>
+                        </Flex>
+                        <Flex className="flex-col gap-2">
+                          {filteredComments.map((comment) => (
+                            <Flex key={comment.id} className="gap-2">
+                              <Avatar
+                                avatarUrl={comment.author?.avatarUrl}
+                                className="self-start"
+                              />
+                              <Flex className="flex-col gap-1">
+                                <Typography className="font-semibold">
+                                  {joinStrings([
+                                    comment.author?.name,
+                                    comment.author?.lastname,
+                                  ])}
+                                </Typography>
+                                <Typography>{comment.description}</Typography>
+                              </Flex>
+                            </Flex>
+                          ))}
+                        </Flex>
+                      </Flex>
+                    }
+                  />
+                </TaskModalDetails>
+              )
+            }
           />
         </Dialog>
       </Tabs>

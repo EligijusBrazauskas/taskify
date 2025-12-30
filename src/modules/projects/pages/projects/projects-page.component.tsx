@@ -3,6 +3,7 @@ import { sortBy } from "lodash";
 import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent } from "@/components/ui/tabs";
+import { Avatar } from "@/modules/_shared/components";
 import { Divider, Flex, Typography } from "@/modules/_shared/components/base";
 import {
   Board,
@@ -20,6 +21,7 @@ import {
   projectsActions,
   projectsBreadcrumbs,
 } from "@/modules/_shared/components/navbar/defaults";
+import { acronym } from "@/modules/_shared/helpers";
 import { useContainerQuery } from "@/modules/_shared/hooks";
 import {
   useProjectStatusesQuery,
@@ -52,7 +54,7 @@ export const ProjectsPage = () => {
           Action={
             isMd && (
               <Button>
-                <Plus />
+                <Plus size={18} />
                 {is3Xl && <Typography>New Project</Typography>}
               </Button>
             )
@@ -85,6 +87,15 @@ export const ProjectsPage = () => {
                           title={project.title}
                           description={project.description}
                           priority={project.priority}
+                          Avatar={
+                            <Avatar
+                              avatarUrl={project.owner?.avatarUrl}
+                              fallback={acronym([
+                                project.owner?.name,
+                                project.owner?.lastname,
+                              ])}
+                            />
+                          }
                         />
                       </Link>
                     ))}

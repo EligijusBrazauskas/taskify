@@ -16,7 +16,11 @@ export const SideBarTrigger = ({ children, ...rest }: ButtonProps) => {
       {...rest}
     >
       {children ?? (
-        <PanelLeftOpen className={clsx(open && !isMd && "rotate-180")} />
+        <PanelLeftOpen
+          className={clsx(open && !isMd && "rotate-180")}
+          size={20}
+          strokeWidth={1.5}
+        />
       )}
     </Button>
   );

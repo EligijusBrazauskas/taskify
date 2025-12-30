@@ -1,9 +1,17 @@
+import { formatDistance } from "date-fns";
 import { sortBy } from "lodash";
-import { Plus } from "lucide-react";
+import { Ellipsis, Plus, SmilePlus } from "lucide-react";
 import { useEffect } from "react";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogOverlay, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogOverlay,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { Tabs, TabsContent } from "@/components/ui/tabs";
+import { Avatar } from "@/modules/_shared/components";
 import { Divider, Flex, Typography } from "@/modules/_shared/components/base";
 import {
   Board,
@@ -22,6 +30,7 @@ import {
   tasksActions,
   tasksBreadcrumbs,
 } from "@/modules/_shared/components/navbar/defaults";
+import { acronym, joinStrings } from "@/modules/_shared/helpers";
 import { useContainerQuery, useToast } from "@/modules/_shared/hooks";
 import { useProjectStatusesQuery } from "@/modules/projects/api/queries";
 import {
@@ -30,9 +39,11 @@ import {
   useTasksSuspenseQuery,
 } from "@/modules/tasks/api/queries";
 import {
-  TaskModal,
+  TaskModalContent,
   TaskModalDetails,
+  TaskModalDetailsTabs,
   TaskModalHeader,
+  TaskModalSummary,
 } from "@/modules/tasks/components/task-modal";
 import { Route } from "@/routes/tasks";
 
@@ -43,6 +54,7 @@ export const TasksPage = () => {
   const navigate = Route.useNavigate();
   const { taskId } = Route.useSearch();
 
+  //TODO: figure out how to better compose queries and use them only where data is needed
   const {
     data: { data: tasks },
     isSuccess,
@@ -52,6 +64,9 @@ export const TasksPage = () => {
   const { data: taskAttachments } = useTaskAttachmentsQuery();
 
   const sortedStatuses = sortBy(projectStatuses, "order");
+  const filteredComments = taskComments.filter(
+    (comment) => comment.taskId === String(taskId),
+  );
   const task = tasks.find(({ id }) => id === String(taskId));
 
   useEffect(() => {
@@ -95,7 +110,7 @@ export const TasksPage = () => {
           Action={
             isMd && (
               <Button>
-                <Plus />
+                <Plus size={16} />
                 {is3Xl && <Typography>New Task</Typography>}
               </Button>
             )
@@ -104,7 +119,7 @@ export const TasksPage = () => {
         <Dialog open={!!task} onOpenChange={handleOnOpenChange}>
           <DialogOverlay />
           <Flex className="h-full overflow-hidden">
-            <TabsContent value="board" className="w-full">
+            <TabsContent value="board" asChild>
               <Board>
                 {sortedStatuses.map((status) => {
                   const filteredTasks = tasks.filter(
@@ -145,6 +160,15 @@ export const TasksPage = () => {
                               type={task.type}
                               commentsCount={filteredComments.length}
                               attachmentsCount={filteredAttachments.length}
+                              Avatar={
+                                <Avatar
+                                  avatarUrl={task.assignee?.avatarUrl}
+                                  fallback={acronym([
+                                    task.assignee?.name,
+                                    task.assignee?.lastname,
+                                  ])}
+                                />
+                              }
                             />
                           </DialogTrigger>
                         );
@@ -154,21 +178,129 @@ export const TasksPage = () => {
                 })}
               </Board>
             </TabsContent>
-            <TabsContent value="list">
+            <TabsContent value="list" asChild>
               <Flex>List</Flex>
             </TabsContent>
-            <TabsContent value="timeline">
+            <TabsContent value="timeline" asChild>
               <Flex>Timeline</Flex>
             </TabsContent>
           </Flex>
-          <TaskModal
+          <TaskModalContent
             Header={
               <TaskModalHeader
                 breadcrumbs={taskBreadcrumbs(`#${taskId}`, String(taskId))}
               />
             }
-            Content={task && <TaskModalDetails task={task} />}
-            task={task}
+            Content={
+              task && (
+                <TaskModalDetails>
+                  <DialogTitle className="px-6">{task?.title}</DialogTitle>
+                  <TaskModalSummary task={task} />
+                  <TaskModalDetailsTabs
+                    CommentsTab={
+                      <Typography className="flex gap-1">
+                        Comments
+                        {!!filteredComments.length && (
+                          <Badge colorScheme="violet" className="self-center">
+                            {filteredComments.length}
+                          </Badge>
+                        )}
+                      </Typography>
+                    }
+                    /*Todo: Add comments to project page, this means extracting this to a separate component*/
+                    CommentsTabContent={
+                      <Flex className="w-full flex-col gap-2">
+                        <Flex className="w-full justify-between">
+                          <Typography>Comments</Typography>
+                          <Button variant="ghost">
+                            <Ellipsis size={18} />
+                          </Button>
+                        </Flex>
+                        {!filteredComments.length && (
+                          <Typography className="text-secondary">
+                            No comments
+                          </Typography>
+                        )}
+                        {!!filteredComments.length && (
+                          <Flex className="flex-col gap-4">
+                            {filteredComments.map((comment) => (
+                              <Flex
+                                key={comment.id}
+                                className="group/comment gap-2"
+                              >
+                                <Avatar
+                                  avatarUrl={comment.author?.avatarUrl}
+                                  className="self-start"
+                                />
+                                <Flex className="flex-col gap-1">
+                                  <Flex className="items-center justify-between gap-1">
+                                    <Flex className="gap-1">
+                                      <Typography className="font-semibold">
+                                        {joinStrings([
+                                          comment.author?.name,
+                                          comment.author?.lastname,
+                                        ])}
+                                      </Typography>
+                                      <Typography className="text-secondary">
+                                        &#x2022;
+                                      </Typography>
+                                      <Typography className="text-secondary">
+                                        {formatDistance(
+                                          comment.postedAt,
+                                          new Date(),
+                                        )}
+                                      </Typography>
+                                    </Flex>
+                                    <Flex className="gap-1 opacity-0 transition group-hover/comment:opacity-100">
+                                      <Button
+                                        variant="ghost"
+                                        size="sm"
+                                        className="rounded-full"
+                                      >
+                                        <SmilePlus size={16} />
+                                      </Button>
+                                      <Button variant="ghost" size="sm">
+                                        <Ellipsis size={16} />
+                                      </Button>
+                                    </Flex>
+                                  </Flex>
+                                  <Typography>{comment.description}</Typography>
+                                  <Flex className="items-center gap-1">
+                                    {comment.reactions?.map((reaction) => (
+                                      <Badge
+                                        variant="secondary"
+                                        className="cursor-pointer gap-1 rounded-lg"
+                                        key={reaction.id}
+                                      >
+                                        <Typography>
+                                          {reaction.reaction}
+                                        </Typography>
+                                        <Typography className="text-secondary">
+                                          {reaction.count}
+                                        </Typography>
+                                      </Badge>
+                                    ))}
+                                    {!!comment.reactions?.length && (
+                                      <Button
+                                        variant="ghost"
+                                        size="sm"
+                                        className="rounded-full"
+                                      >
+                                        <SmilePlus size={16} />
+                                      </Button>
+                                    )}
+                                  </Flex>
+                                </Flex>
+                              </Flex>
+                            ))}
+                          </Flex>
+                        )}
+                      </Flex>
+                    }
+                  />
+                </TaskModalDetails>
+              )
+            }
           />
         </Dialog>
       </Tabs>

@@ -33,7 +33,7 @@ export const SideBar = () => {
         <SideBarUserButton />
         {isMd && (
           <SideBarTrigger>
-            <PanelRightOpen />
+            <PanelRightOpen size={20} />
           </SideBarTrigger>
         )}
       </SidebarHeader>

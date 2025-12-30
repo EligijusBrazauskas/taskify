@@ -35,10 +35,10 @@ export const BoardColumnHeader = ({
         variant="ghost"
         className="opacity-0 hover:bg-secondary-light group-focus-within:opacity-100 group-hover:opacity-100"
       >
-        <EyeOff />
+        <EyeOff size={18} />
       </Button>
       <Button size="xs" variant="ghost" className="hover:bg-secondary-light">
-        <Plus />
+        <Plus size={18} />
       </Button>
     </Flex>
   </Flex>

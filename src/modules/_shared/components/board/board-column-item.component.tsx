@@ -1,5 +1,5 @@
 import { Ellipsis, MessageSquare, Paperclip } from "lucide-react";
-import { forwardRef, HTMLAttributes, MouseEvent } from "react";
+import { forwardRef, HTMLAttributes, MouseEvent, ReactNode } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -11,7 +11,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { AvatarButton } from "@/modules/_shared/components";
 import { Divider, Flex, Typography } from "@/modules/_shared/components/base";
 import {
   priorityColorSchemeMap,
@@ -35,6 +34,7 @@ interface BoardColumnItemProps extends HTMLAttributes<HTMLDivElement> {
   onAvatarClick?: () => void;
   onCommentsClick?: () => void;
   onAttachmentsClick?: () => void;
+  Avatar?: ReactNode;
 }
 
 export const BoardColumnItem = forwardRef<HTMLDivElement, BoardColumnItemProps>(
@@ -50,6 +50,7 @@ export const BoardColumnItem = forwardRef<HTMLDivElement, BoardColumnItemProps>(
       onAvatarClick,
       onCommentsClick,
       onAttachmentsClick,
+      Avatar,
       className,
       ...rest
     },
@@ -82,6 +83,7 @@ export const BoardColumnItem = forwardRef<HTMLDivElement, BoardColumnItemProps>(
     return (
       <Card
         ref={ref}
+        role="button"
         tabIndex={0}
         className={cn(
           "cursor-pointer transition-all duration-200 hover:bg-secondary-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
@@ -120,7 +122,7 @@ export const BoardColumnItem = forwardRef<HTMLDivElement, BoardColumnItemProps>(
               className="hover:bg-secondary-light"
               onClick={handleOnMoreClick}
             >
-              <Ellipsis />
+              <Ellipsis size={18} />
             </Button>
           </Flex>
         </CardHeader>
@@ -136,7 +138,7 @@ export const BoardColumnItem = forwardRef<HTMLDivElement, BoardColumnItemProps>(
         </CardContent>
         <Divider orientation="horizontal" className="my-2" />
         <CardFooter className="flex justify-between">
-          <AvatarButton onClick={handleOnAvatarClick} />
+          {Avatar}
           <Flex className="gap-2">
             {!!attachmentsCount && (
               <Button
@@ -144,7 +146,7 @@ export const BoardColumnItem = forwardRef<HTMLDivElement, BoardColumnItemProps>(
                 className="gap-1 px-1 hover:bg-secondary-light"
                 onClick={handleOnAttachmentsClick}
               >
-                <Paperclip />
+                <Paperclip size={18} />
                 {attachmentsCount}
               </Button>
             )}
@@ -154,7 +156,7 @@ export const BoardColumnItem = forwardRef<HTMLDivElement, BoardColumnItemProps>(
                 className="gap-1 px-1 hover:bg-secondary-light"
                 onClick={handleOnCommentsClick}
               >
-                <MessageSquare />
+                <MessageSquare size={18} />
                 {commentsCount}
               </Button>
             )}
