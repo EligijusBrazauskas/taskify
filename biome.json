@@ -57,7 +57,8 @@
         "noConsole": { "level": "error", "options": { "allow": ["log"] } }
       },
       "a11y": {
-        "useFocusableInteractive": "off"
+        "useFocusableInteractive": "off",
+        "useSemanticElements": "warn"
       },
       "nursery": {
         "noNestedComponentDefinitions": "error",

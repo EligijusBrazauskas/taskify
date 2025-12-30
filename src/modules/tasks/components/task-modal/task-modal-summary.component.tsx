@@ -15,7 +15,7 @@ import {
   priorityColorSchemeMap,
   priorityIconMap,
 } from "@/modules/_shared/defaults";
-import { acronym } from "@/modules/_shared/helpers";
+import { acronym, joinStrings } from "@/modules/_shared/helpers";
 import { useTaskStatusesQuery } from "@/modules/tasks/api/queries";
 import { TaskModalSummaryItem } from "@/modules/tasks/components/task-modal";
 import {
@@ -71,16 +71,21 @@ export const TaskModalSummary = ({ task }: TaskModalSummaryProps) => {
         label="Assignee"
         icon={<CircleUserRound size={16} />}
       >
-        <Avatar
-          className="size-5"
-          onClick={handleOnAvatarClick}
-          avatarUrl={task.assignee?.avatarUrl}
-          fallback={
-            !acronym([task.assignee?.name, task.assignee?.lastname]) && (
-              <UserPlus size={16} />
-            )
-          }
-        />
+        <Flex className="gap-2">
+          <Typography>
+            {joinStrings([task.assignee?.name, task.assignee?.lastname])}
+          </Typography>
+          <Avatar
+            className="size-5"
+            onClick={handleOnAvatarClick}
+            avatarUrl={task.assignee?.avatarUrl}
+            fallback={
+              !acronym([task.assignee?.name, task.assignee?.lastname]) && (
+                <UserPlus size={16} />
+              )
+            }
+          />
+        </Flex>
       </TaskModalSummaryItem>
       {task?.dueDate && (
         <TaskModalSummaryItem label="Date due" icon={<Calendar size={16} />}>

@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { taskCommentsWithAuthors } from "@/mocks";
+import { taskCommentReactions, taskComments, users } from "@/mocks";
 import { SuccessResponse } from "@/modules/_shared/api/types";
 import { TaskComment } from "@/modules/tasks/interfaces";
 
@@ -9,7 +9,13 @@ export const useTaskCommentsQuery = () => {
     return new Promise((resolve, reject) => {
       if (mode === "resolve") {
         resolve({
-          data: taskCommentsWithAuthors,
+          data: taskComments.map((comment) => ({
+            ...comment,
+            author: users.find((user) => user.id === comment.authorId),
+            reactions: taskCommentReactions.filter(
+              (reaction) => reaction.commentId === comment.id,
+            ),
+          })),
         });
       }
 

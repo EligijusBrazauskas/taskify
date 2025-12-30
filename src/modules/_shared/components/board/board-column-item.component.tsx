@@ -83,6 +83,7 @@ export const BoardColumnItem = forwardRef<HTMLDivElement, BoardColumnItemProps>(
     return (
       <Card
         ref={ref}
+        role="button"
         tabIndex={0}
         className={cn(
           "cursor-pointer transition-all duration-200 hover:bg-secondary-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
