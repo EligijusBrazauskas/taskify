@@ -1,15 +1,17 @@
 import { formatDistance } from "date-fns";
 import { sortBy } from "lodash";
-import { Ellipsis, Plus, SmilePlus } from "lucide-react";
+import { Ellipsis, Paperclip, Plus, Send, SmilePlus } from "lucide-react";
 import { useEffect } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
+  DialogFooter,
   DialogOverlay,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent } from "@/components/ui/tabs";
 import { Avatar } from "@/modules/_shared/components";
 import { Divider, Flex, Typography } from "@/modules/_shared/components/base";
@@ -209,7 +211,7 @@ export const TasksPage = () => {
                     }
                     /*Todo: Add comments to project page, this means extracting this to a separate component*/
                     CommentsTabContent={
-                      <Flex className="w-full flex-col gap-2">
+                      <Flex className="w-full flex-1 flex-col gap-2">
                         <Flex className="w-full justify-between">
                           <Typography>Comments</Typography>
                           <Button variant="ghost">
@@ -222,7 +224,7 @@ export const TasksPage = () => {
                           </Typography>
                         )}
                         {!!filteredComments.length && (
-                          <Flex className="flex-col gap-4">
+                          <Flex className="flex-1 flex-col gap-4">
                             {filteredComments.map((comment) => (
                               <Flex
                                 key={comment.id}
@@ -300,6 +302,22 @@ export const TasksPage = () => {
                   />
                 </TaskModalDetails>
               )
+            }
+            Footer={
+              <DialogFooter className="flex-col">
+                <Divider orientation="horizontal" />
+                <Flex className="justify-between gap-2 px-6 py-2">
+                  <Input placeholder="Add comment" className="h-7" />
+                  <Flex className="gap-2">
+                    <Button variant="outline">
+                      <Paperclip size={16} />
+                    </Button>
+                    <Button>
+                      <Send size={16} /> Send
+                    </Button>
+                  </Flex>
+                </Flex>
+              </DialogFooter>
             }
           />
         </Dialog>

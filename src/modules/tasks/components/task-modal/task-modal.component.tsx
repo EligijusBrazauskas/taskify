@@ -7,11 +7,13 @@ import { Divider } from "@/modules/_shared/components/base";
 interface TaskModalContentProps extends DialogContentProps {
   Header?: ReactNode;
   Content?: ReactNode;
+  Footer?: ReactNode;
 }
 
 export const TaskModalContent = ({
   Header,
   Content,
+  Footer,
   className,
   ...rest
 }: TaskModalContentProps) => (
@@ -25,5 +27,6 @@ export const TaskModalContent = ({
     {Header}
     <Divider orientation="horizontal" />
     {Content}
+    {Footer}
   </DialogContent>
 );

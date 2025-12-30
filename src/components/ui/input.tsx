@@ -1,32 +1,21 @@
 import * as React from "react";
-import { ReactNode } from "react";
+
 import { cn } from "@/lib/utils";
-import { Flex } from "@/modules/_shared/components/base";
 
-interface InputProps extends Omit<React.ComponentProps<"input">, "prefix"> {
-  prefix?: ReactNode;
+function Input({ className, type, ...props }: React.ComponentProps<"input">) {
+  return (
+    <input
+      type={type}
+      data-slot="input"
+      className={cn(
+        "h-9 w-full min-w-0 rounded-md border border-input bg-transparent px-3 py-1 text-base shadow-xs outline-none transition-[color,box-shadow] selection:bg-primary selection:text-primary-foreground file:inline-flex file:h-7 file:border-0 file:bg-transparent file:font-medium file:text-foreground file:text-sm placeholder:text-muted-foreground disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm dark:bg-input/30",
+        "focus-visible:border-ring focus-visible:ring-[1px] focus-visible:ring-ring/50",
+        "aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40",
+        className,
+      )}
+      {...props}
+    />
+  );
 }
-
-const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, type, prefix, ...props }, ref) => {
-    return (
-      <Flex
-        className={cn(
-          "relative rounded-md border text-secondary transition-all duration-200 hover:border-primary hover:text-primary [&_svg]:pointer-events-none [&_svg]:absolute [&_svg]:top-[3px] [&_svg]:left-2 [&_svg]:size-5 [&_svg]:shrink-0 [&_svg]:stroke-0.25 ",
-          className,
-        )}
-      >
-        {prefix}
-        <input
-          type={type}
-          className="flex w-full min-w-28 max-w-52 rounded-md bg-background pr-2 pl-8 text-primary text-sm ring-offset-background transition-all file:border-0 file:bg-transparent file:font-medium file:text-foreground file:text-sm placeholder:text-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-          ref={ref}
-          {...props}
-        />
-      </Flex>
-    );
-  },
-);
-Input.displayName = "Input";
 
 export { Input };
