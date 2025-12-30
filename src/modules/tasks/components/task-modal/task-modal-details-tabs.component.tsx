@@ -15,17 +15,14 @@ export const TaskModalDetailsTabs = ({
   CommentsTabContent,
   Activity,
 }: TaskModalDetailsTabsProps) => (
-  <Tabs
-    defaultValue="subtasks"
-    className="flex h-full w-full flex-col items-start"
-  >
-    <TabsList className="my-2 flex w-full justify-start px-6">
+  <Tabs defaultValue="comments" className="flex w-full flex-col">
+    <TabsList className="my-2 w-full justify-start px-6">
       <TabsTrigger value="subtasks">Subtasks</TabsTrigger>
       <TabsTrigger value="comments">{CommentsTab}</TabsTrigger>
       <TabsTrigger value="activity">Activity</TabsTrigger>
     </TabsList>
     <Divider orientation="horizontal" />
-    <Flex className="h-full w-full px-6 py-4">
+    <Flex className="w-full px-6 py-4">
       <TabsContent value="subtasks" asChild>
         {Subtasks}
       </TabsContent>

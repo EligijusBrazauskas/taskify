@@ -73,14 +73,18 @@ export const TaskModalSummary = ({ task }: TaskModalSummaryProps) => {
       >
         <Flex className="gap-2">
           <Typography>
-            {joinStrings([task.assignee?.name, task.assignee?.lastname])}
+            {task.assignee
+              ? joinStrings([task.assignee?.name, task.assignee?.lastname])
+              : "Unassigned"}
           </Typography>
           <Avatar
             className="size-5"
             onClick={handleOnAvatarClick}
             avatarUrl={task.assignee?.avatarUrl}
             fallback={
-              !acronym([task.assignee?.name, task.assignee?.lastname]) && (
+              task.assignee ? (
+                acronym([task.assignee?.name, task.assignee?.lastname])
+              ) : (
                 <UserPlus size={16} />
               )
             }
