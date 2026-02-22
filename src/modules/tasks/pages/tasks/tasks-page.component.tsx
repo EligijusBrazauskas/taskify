@@ -11,8 +11,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent } from "@/components/ui/tabs";
+import { Textarea } from "@/components/ui/textarea";
 import { Avatar } from "@/modules/_shared/components";
 import { Divider, Flex, Typography } from "@/modules/_shared/components/base";
 import {
@@ -34,10 +34,10 @@ import {
 } from "@/modules/_shared/components/navbar/defaults";
 import { acronym, joinStrings } from "@/modules/_shared/helpers";
 import { useContainerQuery, useToast } from "@/modules/_shared/hooks";
-import { useProjectStatusesQuery } from "@/modules/projects/api/queries";
 import {
   useTaskAttachmentsQuery,
   useTaskCommentsQuery,
+  useTaskStatusesQuery,
   useTasksSuspenseQuery,
 } from "@/modules/tasks/api/queries";
 import {
@@ -61,11 +61,11 @@ export const TasksPage = () => {
     data: { data: tasks },
     isSuccess,
   } = useTasksSuspenseQuery();
-  const { data: projectStatuses } = useProjectStatusesQuery();
+  const { data: taskStatuses } = useTaskStatusesQuery();
   const { data: taskComments } = useTaskCommentsQuery();
   const { data: taskAttachments } = useTaskAttachmentsQuery();
 
-  const sortedStatuses = sortBy(projectStatuses, "order");
+  const sortedStatuses = sortBy(taskStatuses, "order");
   const filteredComments = taskComments.filter(
     (comment) => comment.taskId === String(taskId),
   );
@@ -306,8 +306,8 @@ export const TasksPage = () => {
             Footer={
               <DialogFooter className="flex-col">
                 <Divider orientation="horizontal" />
-                <Flex className="justify-between gap-2 px-6 py-2">
-                  <Input placeholder="Add comment" className="h-7" />
+                <Flex className="items-start justify-between gap-2 px-6 py-2">
+                  <Textarea placeholder="Add comment" className="resize-none" />
                   <Flex className="gap-2">
                     <Button variant="outline">
                       <Paperclip size={16} />
