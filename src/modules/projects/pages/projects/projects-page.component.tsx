@@ -1,10 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { sortBy } from "lodash";
-import { Plus } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent } from "@/components/ui/tabs";
 import { Avatar } from "@/modules/_shared/components";
-import { Divider, Flex, Typography } from "@/modules/_shared/components/base";
+import { Divider, Flex } from "@/modules/_shared/components/base";
 import {
   Board,
   BoardColumn,
@@ -12,15 +10,7 @@ import {
   BoardColumnItem,
 } from "@/modules/_shared/components/board";
 import { Filters } from "@/modules/_shared/components/filters";
-import {
-  NavBar,
-  NavBarActions,
-  NavBarBreadcrumbs,
-} from "@/modules/_shared/components/navbar";
-import {
-  projectsActions,
-  projectsBreadcrumbs,
-} from "@/modules/_shared/components/navbar/defaults";
+import { NavBar } from "@/modules/_shared/components/navbar";
 import { acronym } from "@/modules/_shared/helpers";
 import { useContainerQuery } from "@/modules/_shared/hooks";
 import {
@@ -41,25 +31,13 @@ export const ProjectsPage = () => {
 
   return (
     <Flex className="h-full w-full flex-col overflow-hidden">
-      <NavBar
-        BreadCrumbs={<NavBarBreadcrumbs breadcrumbs={projectsBreadcrumbs} />}
-        Actions={<NavBarActions actions={projectsActions} />}
-      />
+      <NavBar />
       <Divider orientation="horizontal" />
       <Tabs
         defaultValue="board"
         className="flex h-full flex-col overflow-hidden"
       >
-        <Filters
-          Action={
-            isMd && (
-              <Button>
-                <Plus size={18} />
-                {is3Xl && <Typography>New Project</Typography>}
-              </Button>
-            )
-          }
-        />
+        <Filters />
         <Flex className="h-full overflow-hidden">
           <TabsContent value="board" className="overflow-hidden">
             <Board>

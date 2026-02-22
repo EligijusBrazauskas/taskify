@@ -1,6 +1,6 @@
 import { User } from "@/modules/_shared/interfaces/user.interface";
 
-export interface TaskCommentReactions {
+export interface TaskCommentReaction {
   id: string;
   commentId: string;
   userId: string;
@@ -16,5 +16,5 @@ export interface TaskComment {
   postedAt: Date;
   updatedAt?: Date;
   author?: User;
-  reactions?: TaskCommentReactions[];
+  reactions?: TaskCommentReaction[];
 }

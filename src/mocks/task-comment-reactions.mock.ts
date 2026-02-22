@@ -1,6 +1,6 @@
-import { TaskCommentReactions } from "@/modules/tasks/interfaces";
+import { TaskCommentReaction } from "@/modules/tasks/interfaces";
 
-export const taskCommentReactions: TaskCommentReactions[] = [
+export const taskCommentReactions: TaskCommentReaction[] = [
   {
     id: "1",
     commentId: "1",
